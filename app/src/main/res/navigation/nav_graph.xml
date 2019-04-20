@@ -5,5 +5,22 @@
             app:startDestination="@id/loginFragment">
 
     <fragment android:id="@+id/loginFragment" android:name="com.example.wipcantieredigitale.LoginFragment"
-              android:label="fragment_login" tools:layout="@layout/fragment_login"/>
+              android:label="fragment_login" tools:layout="@layout/fragment_login">
+        <action android:id="@+id/action_loginFragment_to_capoFragment" app:destination="@id/capoFragment"/>
+        <action android:id="@+id/action_loginFragment_to_compitiFragment" app:destination="@id/compitiFragment"/>
+    </fragment>
+    <fragment android:id="@+id/capoFragment" android:name="com.example.wipcantieredigitale.CapoFragment"
+              android:label="fragment_capo" tools:layout="@layout/fragment_capo">
+        <action android:id="@+id/action_capoFragment_to_lavoratore3" app:destination="@id/lavoratore"/>
+    </fragment>
+    <fragment android:id="@+id/lavoratore" android:name="com.example.wipcantieredigitale.lavoratore"
+              android:label="lavoratore">
+        <action android:id="@+id/action_lavoratore_to_compitiFragment" app:destination="@id/compitiFragment"/>
+    </fragment>
+    <fragment android:id="@+id/compitiFragment" android:name="com.example.wipcantieredigitale.CompitiFragment"
+              android:label="fragment_compiti" tools:layout="@layout/fragment_compiti">
+        <action android:id="@+id/action_compitiFragment_to_compitoFragment" app:destination="@id/compitoFragment"/>
+    </fragment>
+    <fragment android:id="@+id/compitoFragment" android:name="com.example.wipcantieredigitale.CompitoFragment"
+              android:label="CompitoFragment"/>
 </navigation>
