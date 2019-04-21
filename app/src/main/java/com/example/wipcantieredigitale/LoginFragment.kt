@@ -8,8 +8,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.WindowManager
-
-
+import androidx.navigation.Navigation
+import kotlinx.android.synthetic.main.fragment_login.*
 
 
 class LoginFragment :   Fragment() {
@@ -22,6 +22,15 @@ class LoginFragment :   Fragment() {
     ): View? {
         return inflater.inflate(R.layout.fragment_login, container, false)
 
-    }
 
-}
+        }
+        override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+            super.onViewCreated(view, savedInstanceState)
+            btnLogin.setOnClickListener {
+                Navigation.findNavController(it).navigate(R.id.action_loginFragment_to_capoFragment)
+    btnSignup.setOnClickListener{
+
+            Navigation.findNavController(it).navigate(R.id.action_loginFragment_to_compitiFragment)
+        }
+
+    }}}

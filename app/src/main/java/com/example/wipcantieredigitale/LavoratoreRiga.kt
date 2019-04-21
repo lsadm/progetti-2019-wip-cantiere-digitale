@@ -1,21 +1,11 @@
 package com.example.wipcantieredigitale
 
 
-import android.os.Bundle
-import android.support.v4.app.Fragment
-import android.view.LayoutInflater
+import android.support.v7.widget.RecyclerView
 import android.view.View
-import android.view.ViewGroup
+import kotlinx.android.synthetic.main.riga_lavoratore.view.*
 
-class LavoratoreRiga : Fragment() {
-
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.riga_lavoratore, container, false)
-    }
-
-
+class LavoratoreRiga(view: View) : RecyclerView.ViewHolder(view) {
+    val tvNome = view.textNome
+    val tvDati = view.Dati
 }
