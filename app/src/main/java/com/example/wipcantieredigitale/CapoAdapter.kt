@@ -7,7 +7,7 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.navigation.Navigation
-import com.example.wipcantieredigitale.lavoratore
+import com.example.wipcantieredigitale.datamodel.lavoratore
 
 
 class CapoAdapter(val dataset: ArrayList<lavoratore>, val context: Context) : RecyclerView.Adapter<LavoratoreRiga>() {
@@ -21,12 +21,17 @@ class CapoAdapter(val dataset: ArrayList<lavoratore>, val context: Context) : Re
     }
 
     override fun onBindViewHolder(viewHolder: LavoratoreRiga, position: Int) {
-        val lavoratore = dataset.get(position)
+        val worker = dataset.get(position)
 
-        viewHolder.tvNome.text = lavoratore.nome
-        viewHolder.tvDati.text = lavoratore.dati
+        viewHolder.tvNome.text = worker.nome
+        viewHolder.tvDati.text = worker.dati
 
-     
+        viewHolder.itemView.setOnClickListener {
+
+             val b = Bundle()
+            b.putParcelable("scelta", worker)
+            Navigation.findNavController(it).navigate(R.id.action_capoFragment_to_lavoratoreFragment, b)
+        }
     }
 
 }

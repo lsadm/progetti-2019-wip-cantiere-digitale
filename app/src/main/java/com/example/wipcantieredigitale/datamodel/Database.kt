@@ -1,4 +1,4 @@
-import com.example.wipcantieredigitale.lavoratore
+import com.example.wipcantieredigitale.datamodel.lavoratore
 
 
 object DataBase {
