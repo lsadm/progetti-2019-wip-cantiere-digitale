@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "73630048684",
+    "firebase_url": "https://progetti-2019-wip-cantiere-dig.firebaseio.com",
+    "project_id": "progetti-2019-wip-cantiere-dig",
+    "storage_bucket": "progetti-2019-wip-cantiere-dig.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:73630048684:android:c108d756358e9481",
+        "android_client_info": {
+          "package_name": "com.example.wipcantieredigitale"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "73630048684-37kgr3equb6hrj0ge5ueoitbnh36aglg.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.wipcantieredigitale",
+            "certificate_hash": "64f88c9e212d8746d91aaabd9005c5b57cc282c8"
+          }
+        },
+        {
+          "client_id": "73630048684-u3gmp9gli2mfm3c74n8bjii67roqohad.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAdMCLgEnRJIIJ6lPHD5Q9OKYrcQMlRobA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "73630048684-u3gmp9gli2mfm3c74n8bjii67roqohad.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

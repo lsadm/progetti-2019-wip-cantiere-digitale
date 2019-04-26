@@ -9,6 +9,11 @@
     <string name="SignUp">Registrati</string>
     <string name="Signin">Entra</string>
 
+        <string-array name="ruoli">
+            <item>Capo</item>
+            <item>Lavoratore</item>
+
+        </string-array>
 
 
 </resources>
