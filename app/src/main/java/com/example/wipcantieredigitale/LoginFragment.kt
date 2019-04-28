@@ -15,8 +15,9 @@ import kotlinx.android.synthetic.main.fragment_login.editUsername
  import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.ValueEventListener
-
-
+import android.widget.Toast
+import com.example.wipcantieredigitale.datamodel.login
+import java.security.KeyStore
 
 
 class LoginFragment :   Fragment() {
@@ -32,27 +33,30 @@ class LoginFragment :   Fragment() {
 
         }
         override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+            btnSignup.setOnClickListener{Navigation.findNavController(it).navigate(R.id.action_loginFragment_to_registrazioneFragment)}
             super.onViewCreated(view, savedInstanceState)
             val database = FirebaseDatabase.getInstance()
-            val myRef = database.getReference(editUsername.text.toString()).child("2")
-            myRef.addValueEventListener(object : ValueEventListener {
-                override fun onDataChange(dataSnapshot: DataSnapshot) {
-                    // This method is called once with the initial value and again
-                    // whenever data at this location is updated.
-                    val value = dataSnapshot.getValue(String::class.java)
-                    Log.d(TAG, "Value is: " + value!!)
-                    if(value=="Capo")
+
                         btnLogin.setOnClickListener {
+                            if(!editUsername.text.toString().equals("")){
 
-                            Navigation.findNavController(it).navigate(R.id.action_loginFragment_to_capoFragment)}
-                }
+                                val myRef = database.getReference(editUsername.text.toString())
+                             myRef.addValueEventListener(object : ValueEventListener {
+                                 override fun onDataChange(dataSnapshot: DataSnapshot) {
+                                     val value = dataSnapshot.getValue(login::class.java)
+                                    if (idpass.text.toString()==value?.password) {
+                                         if (value?.classe.equals("Capo"))
+                                             Navigation.findNavController(it).navigate(R.id.action_loginFragment_to_capoFragment)
+                                         else
+                                             Navigation.findNavController(it).navigate(R.id.action_loginFragment_to_compitiFragment)
+                                     }
 
-                override fun onCancelled(error: DatabaseError) {
-                    // Failed to read value
-                    Log.w(TAG, "Failed to read value.", error.toException())
-                }
-            })
+                                 }
 
-    //TODO creare schermata per la registrazione del lavoratore o capo//
-            btnSignup.setOnClickListener{Navigation.findNavController(it).navigate(R.id.action_loginFragment_to_registrazioneFragment)}
-    }}
+                                 override fun onCancelled(error: DatabaseError) {
+                                     // Failed to read value
+                                     Log.w(TAG, "Failed to read value.", error.toException())
+                                 }
+                             })
+                            }
+    }}}
