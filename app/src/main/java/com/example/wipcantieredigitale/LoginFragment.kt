@@ -46,6 +46,7 @@ class LoginFragment :   Fragment() {
                                      val value = dataSnapshot.getValue(login::class.java)
                                     if (idpass.text.toString()==value?.password) {
                                          if (value?.classe.equals("Capo"))
+
                                              Navigation.findNavController(it).navigate(R.id.action_loginFragment_to_capoFragment)
                                          else
                                              Navigation.findNavController(it).navigate(R.id.action_loginFragment_to_compitiFragment)

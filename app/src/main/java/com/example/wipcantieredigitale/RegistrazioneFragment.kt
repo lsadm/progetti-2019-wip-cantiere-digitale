@@ -9,9 +9,10 @@ import android.view.ViewGroup
 import androidx.navigation.Navigation
 import com.example.wipcantieredigitale.datamodel.login
 import com.google.firebase.database.FirebaseDatabase
+import kotlinx.android.synthetic.main.fragment_login.*
 import kotlinx.android.synthetic.main.fragment_registrazione.*
-
-
+import kotlinx.android.synthetic.main.fragment_registrazione.editUsername
+import kotlinx.android.synthetic.main.fragment_registrazione.idpass
 
 
 class RegistrazioneFragment : Fragment() {
@@ -24,7 +25,7 @@ class RegistrazioneFragment : Fragment() {
     }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+        if(!editUsername.text.toString().equals(""))
         button2.setOnClickListener {
             val database = FirebaseDatabase.getInstance()
             val myRef = database.getReference(editUsername.text.toString())

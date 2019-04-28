@@ -7,7 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.Navigation
-import com.example.wipcantieredigitale.datamodel.lavoratore
+import com.example.wipcantieredigitale.datamodel.login
 import kotlinx.android.synthetic.main.fragment_lavoratore.*
 
 class LavoratoreFragment : Fragment() {
@@ -22,10 +22,10 @@ class LavoratoreFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         arguments?.let {
-            val prova: lavoratore? = it.getParcelable("scelta")
+            val prova: login? = it.getParcelable("scelta")
             prova?.let {
-                campoNome.text = it.nome
-                campoTempo.text = it.dati
+                campoNome.text = it.username
+                campoTempo.text = it.mail
                 campoCognome.text="null"
                 campoUser.text="null"
                 campoCompiti.text="null"

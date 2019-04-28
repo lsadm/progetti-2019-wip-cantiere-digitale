@@ -7,10 +7,10 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.navigation.Navigation
-import com.example.wipcantieredigitale.datamodel.lavoratore
+import com.example.wipcantieredigitale.datamodel.login
 
 
-class CapoAdapter(val dataset: ArrayList<lavoratore>, val context: Context) : RecyclerView.Adapter<LavoratoreRiga>() {
+class CapoAdapter(val dataset: ArrayList<login?>, val context: Context) : RecyclerView.Adapter<LavoratoreRiga>() {
 
     override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): LavoratoreRiga {
         return LavoratoreRiga(LayoutInflater.from(context).inflate(R.layout.riga_lavoratore, viewGroup, false))
@@ -23,8 +23,8 @@ class CapoAdapter(val dataset: ArrayList<lavoratore>, val context: Context) : Re
     override fun onBindViewHolder(viewHolder: LavoratoreRiga, position: Int) {
         val worker = dataset.get(position)
 
-        viewHolder.tvNome.text = worker.nome
-        viewHolder.tvDati.text = worker.dati
+        viewHolder.tvNome.text = worker?.username
+        viewHolder.tvDati.text = worker?.password
 
         viewHolder.itemView.setOnClickListener {
 
