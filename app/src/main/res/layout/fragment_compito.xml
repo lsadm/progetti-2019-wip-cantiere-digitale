@@ -8,23 +8,23 @@
     <TextView
             android:text="Compito"
             android:layout_width="156dp"
-            android:layout_height="46dp" android:id="@+id/idCompito"
+            android:layout_height="46dp" android:id="@+id/idInserireDescrizione"
             app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="8dp"
             app:layout_constraintTop_toTopOf="parent" android:layout_marginTop="16dp" android:textStyle="bold"
             android:textSize="24sp"/>
     <TextView
             android:layout_width="391dp"
-            android:layout_height="305dp" android:id="@+id/idDescrizione"
+            android:layout_height="305dp" android:id="@+id/idAggiungiDescrizione"
             android:layout_marginTop="32dp"
-            app:layout_constraintTop_toBottomOf="@+id/idCompito" app:layout_constraintStart_toStartOf="@+id/idCompito"
+            app:layout_constraintTop_toBottomOf="@+id/idInserireDescrizione" app:layout_constraintStart_toStartOf="@+id/idInserireDescrizione"
             android:text="Descrizione" android:visibility="visible" tools:visibility="visible"
             android:background="?attr/colorButtonNormal"/>
     <Button
             android:text="Button"
             android:layout_width="285dp"
             android:layout_height="98dp"
-            android:id="@+id/Fatto" android:layout_marginTop="88dp"
-            app:layout_constraintTop_toBottomOf="@+id/idDescrizione" app:layout_constraintStart_toStartOf="parent"
+            android:id="@+id/idAggiungi" android:layout_marginTop="88dp"
+            app:layout_constraintTop_toBottomOf="@+id/idAggiungiDescrizione" app:layout_constraintStart_toStartOf="parent"
             android:layout_marginStart="8dp" android:layout_marginBottom="8dp"
             app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginEnd="8dp"/>

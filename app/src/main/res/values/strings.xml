@@ -9,6 +9,16 @@
     <string name="SignUp">Registrati</string>
     <string name="Signin">Entra</string>
 
+    <string name="compito">Compito</string>
+    <string name="descrizione">Descrizione</string>
+    <string name="aggiungi">Aggiungi</string>
+    <string name="aggiungicompito">Inserire nome del compito:</string>
+    <string name="aggiungidescrizione">Inserire nuova descrizione:</string>
+
+    <array name="Ruoli">
+        <item>Capo</item>
+        <item>Lavoratore</item>
+    </array>
 
 
 </resources>

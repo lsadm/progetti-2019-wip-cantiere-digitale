@@ -7,12 +7,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.wipcantieredigitale.datamodel.compito
-import com.example.wipcantieredigitale.datamodel.lavoratore
-import kotlinx.android.synthetic.main.fragment_compito.*
-import kotlinx.android.synthetic.main.fragment_lavoratore.*
-import kotlinx.android.synthetic.main.riga_compito.*
-import kotlinx.android.synthetic.main.riga_compito.idCompito
-import kotlinx.android.synthetic.main.riga_compito.idDescrizione
 
 class CompitoFragment : Fragment() {
 
@@ -28,8 +22,8 @@ class CompitoFragment : Fragment() {
         arguments?.let {
             val prova: compito? = it.getParcelable("compito")
             prova?.let {
-                idCompito.text = it.nome
-                idDescrizione.text = it.desc
+                `@+id/idAggiungiCompito`.text = it.nome
+                `@+id/idAggiungiDescrizione`.text = it.desc
 
             }
         }
