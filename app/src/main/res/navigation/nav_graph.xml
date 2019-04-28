@@ -8,6 +8,8 @@
               android:label="fragment_login" tools:layout="@layout/fragment_login">
         <action android:id="@+id/action_loginFragment_to_capoFragment" app:destination="@id/capoFragment"/>
         <action android:id="@+id/action_loginFragment_to_compitiFragment" app:destination="@id/compitiFragment"/>
+        <action android:id="@+id/action_loginFragment_to_registrazioneFragment"
+                app:destination="@id/registrazioneFragment"/>
     </fragment>
     <fragment android:id="@+id/capoFragment" android:name="com.example.wipcantieredigitale.CapoFragment"
               android:label="fragment_capo" tools:layout="@layout/fragment_capo">
@@ -22,5 +24,10 @@
     <fragment android:id="@+id/lavoratoreFragment" android:name="com.example.wipcantieredigitale.LavoratoreFragment"
               android:label="LavoratoreFragment">
         <action android:id="@+id/action_lavoratoreFragment_to_compitiFragment" app:destination="@id/compitiFragment"/>
+    </fragment>
+    <fragment android:id="@+id/registrazioneFragment"
+              android:name="com.example.wipcantieredigitale.RegistrazioneFragment"
+              android:label="RegistrazioneFragment">
+        <action android:id="@+id/action_registrazioneFragment_to_loginFragment" app:destination="@id/loginFragment"/>
     </fragment>
 </navigation>
