@@ -19,7 +19,7 @@
     <TextView
             android:text="@string/aggiungidescrizione"
             android:layout_width="410dp"
-            android:layout_height="52dp" android:id="@+id/idInserireDescrizione"
+            android:layout_height="52dp" android:id="@+id/nomeCompito"
             android:textStyle="bold"
             android:textSize="24sp"
             android:textAlignment="center"
@@ -39,11 +39,11 @@
             app:layout_constraintStart_toStartOf="@+id/idInserireNome"/>
     <EditText
             android:layout_width="391dp"
-            android:layout_height="305dp" android:id="@+id/idAggiungiDescrizione"
+            android:layout_height="305dp" android:id="@+id/idDescrizione"
             android:text="@string/descrizione" android:visibility="visible" tools:visibility="visible"
             android:background="?attr/colorButtonNormal"
             android:layout_marginTop="16dp"
-            app:layout_constraintTop_toBottomOf="@+id/idInserireDescrizione" app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/nomeCompito" app:layout_constraintStart_toStartOf="parent"
             android:layout_marginStart="8dp" android:layout_marginEnd="8dp" app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginBottom="70dp" app:layout_constraintBottom_toTopOf="@+id/idAggiungi"
             app:layout_constraintVertical_bias="0.0"/>

@@ -3,19 +3,16 @@ package com.example.wipcantieredigitale
 
 import android.content.ContentValues.TAG
 import android.os.Bundle
-import android.support.v4.app.DialogFragment
-import android.support.v4.app.Fragment
+ import android.support.v4.app.Fragment
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.WindowManager
-import androidx.navigation.Navigation
+ import androidx.navigation.Navigation
 import com.google.firebase.database.FirebaseDatabase
 import kotlinx.android.synthetic.main.fragment_login.*
 import kotlinx.android.synthetic.main.fragment_login.editUsername
-import kotlinx.android.synthetic.main.fragment_registrazione.*
-import com.google.firebase.database.DatabaseError
+ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.ValueEventListener
 

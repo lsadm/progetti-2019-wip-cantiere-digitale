@@ -27,8 +27,8 @@ import kotlinx.android.synthetic.main.fragment_compiti.*
         listaCompiti.adapter = CompitiAdapter(DatabaseC.getjobs(), requireContext())
 
 
-    /* fabAggiungiCompito.setOnClickListener {
-        Navigation.findNavController(it).navigate(R.id.action_compitiFragment_to_aggiungiCompito)
-    } */
+     fabAggiungiCompito.setOnClickListener {
+        Navigation.findNavController(it).navigate(R.id.action_compitiFragment_to_aggiungiCompitoFragment)
 
-}}
+
+}}}

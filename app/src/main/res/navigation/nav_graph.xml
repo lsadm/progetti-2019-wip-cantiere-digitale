@@ -18,6 +18,8 @@
     <fragment android:id="@+id/compitiFragment" android:name="com.example.wipcantieredigitale.CompitiFragment"
               android:label="fragment_compiti" tools:layout="@layout/fragment_compiti">
         <action android:id="@+id/action_compitiFragment_to_compitoFragment" app:destination="@id/compitoFragment"/>
+        <action android:id="@+id/action_compitiFragment_to_aggiungiCompitoFragment"
+                app:destination="@+id/aggiungiCompitoFragment"/>
     </fragment>
     <fragment android:id="@+id/compitoFragment" android:name="com.example.wipcantieredigitale.CompitoFragment"
               android:label="CompitoFragment"/>
@@ -30,4 +32,7 @@
               android:label="RegistrazioneFragment">
         <action android:id="@+id/action_registrazioneFragment_to_loginFragment" app:destination="@id/loginFragment"/>
     </fragment>
+    <fragment android:id="@+id/aggiungiCompitoFragment"
+              android:name="com.example.wipcantieredigitale.AggiungiCompitoFragment"
+              android:label="AggiungiCompitoFragment"/>
 </navigation>

@@ -8,14 +8,14 @@
     <TextView
             android:text="Compito"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" android:id="@+id/idInserireDescrizione"
+            android:layout_height="wrap_content" android:id="@+id/nomeCompito"
             app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="8dp"
             app:layout_constraintTop_toTopOf="parent" android:layout_marginTop="16dp" android:textStyle="bold"
             android:textSize="18sp"/>
     <TextView
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" android:id="@+id/idAggiungiDescrizione"
+            android:layout_height="wrap_content" android:id="@+id/idDescrizione"
             android:layout_marginTop="8dp"
-            app:layout_constraintTop_toBottomOf="@+id/idInserireDescrizione" app:layout_constraintStart_toStartOf="@+id/idInserireDescrizione"
+            app:layout_constraintTop_toBottomOf="@+id/nomeCompito" app:layout_constraintStart_toStartOf="@+id/nomeCompito"
             android:layout_marginStart="16dp" android:text="Descrizione"/>
 </android.support.constraint.ConstraintLayout>
