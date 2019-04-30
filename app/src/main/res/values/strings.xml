@@ -12,8 +12,30 @@
     <string name="compito">Compito</string>
     <string name="descrizione">Descrizione</string>
     <string name="aggiungi">Aggiungi</string>
-    <string name="aggiungicompito">Inserire nome del compito:</string>
-    <string name="aggiungidescrizione">Inserire nuova descrizione:</string>
+    <string name="inserire_compito">Inserire nome del compito:</string>
+    <string name="inserire_desc">Inserire nuova descrizione:</string>
+
+    // stringhe per fragment_lavoratore
+
+    <string name="Nome">Nome</string>
+    <string name="Cognome">Cognome</string>
+    <string name="username">Username</string>
+    <string name="Tempo">Tempo di permanenza</string>
+    <string name="Compiti">Compiti svolti</string>
+
+    <string name="nome">Nome lavoratore</string>
+    <string name="cognome">Cognome lavoratore</string>
+    <string name="user_name">Username lavoratore</string>
+    <string name="tempo">Tempo di permanenza del lavoratore</string>
+    <string name="compiti_svolti">Compiti svolti dal lavoratore</string>
+    <string name="email">E-mail</string>
+    <string name="seleziona_ruolo">Seleziona ruolo:</string>
+
+    // stringhe per riga_lavoratore
+    <string name="lavoratore">Lavoratore</string>
+
+
+    //spinner
 
     <array name="Ruoli">
         <item>Capo</item>

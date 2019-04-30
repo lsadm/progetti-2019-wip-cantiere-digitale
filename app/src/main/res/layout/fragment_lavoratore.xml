@@ -6,8 +6,20 @@
                                              android:layout_height="match_parent"
                                              tools:context=".lavoratore">
 
+
+    <ScrollView
+            android:layout_width="0dp"
+            android:layout_height="0dp" app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginEnd="8dp" app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="8dp" android:layout_marginBottom="8dp"
+            app:layout_constraintBottom_toBottomOf="parent" android:layout_marginTop="8dp"
+            app:layout_constraintTop_toTopOf="parent" app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintVertical_bias="0.0">
+        <android.support.constraint.ConstraintLayout android:layout_width="match_parent"
+                                                     android:layout_height="match_parent"
+                                                     android:id="@+id/linearLayout">
     <TextView
-            android:text="Cognome"
+            android:text="@string/Cognome"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" android:id="@+id/tvcognome"
             app:layout_constraintStart_toStartOf="@+id/guideline"
@@ -16,7 +28,7 @@
                                           android:id="@+id/guideline" app:layout_constraintGuide_begin="15dp"
                                           android:orientation="vertical"/>
     <TextView
-            android:text="Username"
+            android:text="@string/username"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" android:id="@+id/tvusername"
             app:layout_constraintStart_toStartOf="@+id/guideline"
@@ -27,7 +39,7 @@
             android:inputType="textPersonName"
             android:ems="10"
             android:id="@+id/campoCognome"
-            android:hint="Cognome lavoratore"
+            android:hint="@string/cognome"
             android:layout_marginStart="8dp"
             app:layout_constraintStart_toStartOf="@+id/campoNome" android:layout_marginTop="30dp"
             app:layout_constraintTop_toBottomOf="@+id/campoNome" app:layout_constraintEnd_toEndOf="parent"
@@ -38,13 +50,13 @@
             android:inputType="numberDecimal"
             android:ems="10"
             android:id="@+id/campoUser"
-            android:hint="Username lavoratore"
+            android:hint="@string/user_name"
             android:layout_marginStart="8dp"
             app:layout_constraintStart_toStartOf="@+id/campoCognome" android:layout_marginTop="30dp"
             app:layout_constraintTop_toBottomOf="@+id/campoCognome" app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginEnd="15dp" app:layout_constraintHorizontal_bias="1.0"/>
     <TextView
-            android:text="Nome"
+            android:text="@string/Nome"
             android:layout_width="49dp"
             android:layout_height="18dp"
             android:id="@+id/tvnome" app:layout_constraintStart_toStartOf="@+id/guideline"
@@ -55,31 +67,32 @@
             android:inputType="textPersonName"
             android:ems="10"
             android:id="@+id/campoNome"
-            android:hint="Nome lavoratore"
+            android:hint="@string/nome"
             android:layout_marginTop="70dp" app:layout_constraintTop_toTopOf="parent"
             android:layout_marginEnd="15dp" app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/tvnome" android:layout_marginStart="8dp"
             app:layout_constraintHorizontal_bias="0.988"/>
+            <TextView
+                    android:text="@string/Tempo"
+                    android:layout_width="94dp"
+                    android:layout_height="37dp"
+                    android:id="@+id/tvTempo" android:textSize="14sp"
+                    app:layout_constraintBaseline_toBaselineOf="@+id/campoTempo"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:layout_marginStart="16dp"/>
+            <TextView
+                    android:layout_width="240dp"
+                    android:layout_height="38dp"
+                    android:inputType="textPersonName"
+                    android:ems="10"
+                    android:id="@+id/campoTempo"
+                    android:hint="@string/tempo" android:textSize="14sp"
+                    android:layout_marginStart="8dp"
+                    app:layout_constraintStart_toStartOf="@+id/campoUser" android:layout_marginTop="30dp"
+                    app:layout_constraintTop_toBottomOf="@+id/campoUser" app:layout_constraintEnd_toEndOf="parent"
+                    android:layout_marginEnd="15dp" app:layout_constraintHorizontal_bias="1.0"/>
     <TextView
-            android:text="Tempo di permanenza"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/tvTempo" android:textSize="12sp"
-            app:layout_constraintBaseline_toBaselineOf="@+id/campoTempo" app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginStart="20dp"/>
-    <TextView
-            android:layout_width="240dp"
-            android:layout_height="38dp"
-            android:inputType="textPersonName"
-            android:ems="10"
-            android:id="@+id/campoTempo"
-            android:hint="Tempo di permanenza del lavoratore" android:textSize="14sp"
-            android:layout_marginStart="8dp"
-            app:layout_constraintStart_toStartOf="@+id/campoUser" android:layout_marginTop="30dp"
-            app:layout_constraintTop_toBottomOf="@+id/campoUser" app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginEnd="15dp" app:layout_constraintHorizontal_bias="1.0"/>
-    <TextView
-            android:text="Compiti svolti"
+            android:text="@string/Compiti"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/tvCompiti"
@@ -91,7 +104,7 @@
             android:inputType="textPersonName"
             android:ems="10"
             android:id="@+id/campoCompiti"
-            android:hint="Compiti svolti del lavoratore"
+            android:hint="@string/compiti_svolti"
             android:layout_marginStart="8dp"
             app:layout_constraintStart_toStartOf="@+id/campoTempo" android:layout_marginTop="30dp"
             app:layout_constraintTop_toBottomOf="@+id/campoTempo" app:layout_constraintEnd_toEndOf="parent"
@@ -105,5 +118,7 @@
             app:layout_constraintEnd_toEndOf="parent" app:layout_constraintBottom_toBottomOf="parent"
             android:layout_marginBottom="70dp" app:layout_constraintHorizontal_bias="0.497"
             app:layout_constraintVertical_bias="0.256" app:layout_constraintTop_toBottomOf="@+id/campoCompiti"/>
+              </android.support.constraint.ConstraintLayout>
+        </ScrollView>
 
-</android.support.constraint.ConstraintLayout>
+        </android.support.constraint.ConstraintLayout>

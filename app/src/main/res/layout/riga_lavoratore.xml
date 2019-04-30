@@ -6,14 +6,13 @@
                                              android:layout_height="90dip">
 
     <TextView
-            android:text="Lavoratore"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" android:id="@+id/textNome"
             app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="8dp"
             app:layout_constraintTop_toTopOf="parent" android:layout_marginTop="16dp" android:textStyle="bold"
-            android:textSize="18sp"/>
+            android:textSize="18sp" android:text="@string/lavoratore"/>
     <TextView
-            android:text="Nome lavoratore"
+            android:text="@string/nome"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" android:id="@+id/Dati"
             android:layout_marginTop="8dp"
