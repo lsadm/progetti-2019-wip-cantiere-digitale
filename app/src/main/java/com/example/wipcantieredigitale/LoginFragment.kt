@@ -16,7 +16,6 @@ import kotlinx.android.synthetic.main.fragment_login.editUsername
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.ValueEventListener
 import com.example.wipcantieredigitale.datamodel.login
-import java.security.KeyStore
 
 
 class LoginFragment :   Fragment() {
@@ -24,19 +23,15 @@ class LoginFragment :   Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-
-
     ): View? {
         return inflater.inflate(R.layout.fragment_login, container, false)
-
-
         }
-        override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-            btnSignup.setOnClickListener{Navigation.findNavController(it).navigate(R.id.action_loginFragment_to_registrazioneFragment)}
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
             super.onViewCreated(view, savedInstanceState)
             val database = FirebaseDatabase.getInstance()
 
-                        btnLogin.setOnClickListener {
+                        btnSignin.setOnClickListener {
                             if(!editUsername.text.toString().equals("")){
 
                                 val myRef = database.getReference(editUsername.text.toString())

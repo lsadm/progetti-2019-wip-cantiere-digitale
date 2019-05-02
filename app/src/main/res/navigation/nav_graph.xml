@@ -2,7 +2,7 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
             xmlns:app="http://schemas.android.com/apk/res-auto"
             xmlns:tools="http://schemas.android.com/tools" android:id="@+id/nav_graph"
-            app:startDestination="@id/loginFragment">
+            app:startDestination="@id/splashScreen">
 
     <fragment android:id="@+id/loginFragment" android:name="com.example.wipcantieredigitale.LoginFragment"
               android:label="fragment_login" tools:layout="@layout/fragment_login">
@@ -35,4 +35,14 @@
     <fragment android:id="@+id/aggiungiCompitoFragment"
               android:name="com.example.wipcantieredigitale.AggiungiCompitoFragment"
               android:label="AggiungiCompitoFragment"/>
+    <fragment android:id="@+id/splashScreen" android:name="com.example.wipcantieredigitale.SplashScreen"
+              android:label="fragment_splash_screen" tools:layout="@layout/fragment_splash_screen">
+        <action android:id="@+id/action_splashScreen_to_welcomeFragment" app:destination="@id/welcomeFragment"/>
+    </fragment>
+    <fragment android:id="@+id/welcomeFragment" android:name="com.example.wipcantieredigitale.WelcomeFragment"
+              android:label="fragment_welcome" tools:layout="@layout/fragment_welcome">
+        <action android:id="@+id/action_welcomeFragment_to_loginFragment" app:destination="@id/loginFragment"/>
+        <action android:id="@+id/action_welcomeFragment_to_registrazioneFragment"
+                app:destination="@id/registrazioneFragment"/>
+    </fragment>
 </navigation>

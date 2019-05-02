@@ -1,13 +1,15 @@
 <resources>
-    <string name="app_name">WIPCantiereDigitale</string>
+    <string name="app_name">Wip</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="Username">Nome Utente</string>
     <string name="Password">Password</string>
     <string name="NomeApp">WIP</string>
-    <string name="SignUp">Registrati</string>
-    <string name="Signin">Entra</string>
+    <string name="SignUp">Crea un account</string>
+    <string name="Signin">Accedi</string>
+    <string name="welcome1">Benvenuto su</string>
+    <string name="welcome2">Wip!</string>
 
     <string name="compito">Compito</string>
     <string name="descrizione">Descrizione</string>
@@ -33,7 +35,10 @@
 
     // stringhe per riga_lavoratore
     <string name="lavoratore">Lavoratore</string>
-
+    <string name="Intro">Tieni sotto controllo i tuoi progetti, quando vuoi, con tutti i membri della tua
+        organizzazione!
+    </string>
+    <string name="accedilogin">ENTRA</string>
 
     //spinner
 
