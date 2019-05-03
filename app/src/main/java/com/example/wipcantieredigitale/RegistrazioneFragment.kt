@@ -16,6 +16,7 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import android.widget.Toast
+import com.example.wipcantieredigitale.datamodel.hideKeyboard
 
 import kotlinx.android.synthetic.main.fragment_registrazione.*
 import kotlinx.android.synthetic.main.fragment_registrazione.editUsername
@@ -32,8 +33,8 @@ class RegistrazioneFragment : Fragment() {
     }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         button2.setOnClickListener {
+            hideKeyboard()
             if(!editUsername.text.toString().equals("")){
             val database = FirebaseDatabase.getInstance()
                 var uti=true

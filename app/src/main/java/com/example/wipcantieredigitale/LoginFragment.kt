@@ -9,6 +9,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
  import androidx.navigation.Navigation
+import com.example.wipcantieredigitale.datamodel.hideKeyboard
 import com.google.firebase.database.FirebaseDatabase
 import kotlinx.android.synthetic.main.fragment_login.*
 import kotlinx.android.synthetic.main.fragment_login.editUsername
@@ -32,6 +33,7 @@ class LoginFragment :   Fragment() {
             val database = FirebaseDatabase.getInstance()
 
                         btnSignin.setOnClickListener {
+                            hideKeyboard()
                             if(!editUsername.text.toString().equals("")){
 
                                 val myRef = database.getReference(editUsername.text.toString())
@@ -39,11 +41,14 @@ class LoginFragment :   Fragment() {
                                  override fun onDataChange(dataSnapshot: DataSnapshot) {
                                      val value = dataSnapshot.getValue(login::class.java)
                                     if (idpass.text.toString()==value?.password) {
-                                         if (value?.classe.equals("Capo"))
+                                         if (value.classe.equals("Capo"))
 
                                              Navigation.findNavController(it).navigate(R.id.action_loginFragment_to_capoFragment)
-                                         else
-                                             Navigation.findNavController(it).navigate(R.id.action_loginFragment_to_compitiFragment)
+                                         else{
+
+                                             val b = Bundle()
+                                             b.putParcelable("scelta", value)
+                                              Navigation.findNavController(it).navigate(R.id.action_loginFragment_to_compitiFragment,b)}
                                      }
 
                                  }

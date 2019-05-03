@@ -10,7 +10,7 @@ import androidx.navigation.Navigation
 import com.example.wipcantieredigitale.datamodel.compito
 
 
-class CompitiAdapter(val dataset: ArrayList<compito>, val context: Context) : RecyclerView.Adapter<CompitoRiga>() {
+class CompitiAdapter(val dataset: ArrayList<compito?>, val context: Context) : RecyclerView.Adapter<CompitoRiga>() {
 
     override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): CompitoRiga {
         return CompitoRiga(LayoutInflater.from(context).inflate(R.layout.riga_compito, viewGroup, false))
@@ -23,8 +23,8 @@ class CompitiAdapter(val dataset: ArrayList<compito>, val context: Context) : Re
    override fun onBindViewHolder(viewHolder: CompitoRiga, position: Int) {
         val job = dataset.get(position)
 
-        viewHolder.nome.text = job.nome
-        viewHolder.desc.text = job.desc
+        viewHolder.nome.text = job?.nome
+        viewHolder.desc.text = job?.desc
 
         viewHolder.itemView.setOnClickListener {
 

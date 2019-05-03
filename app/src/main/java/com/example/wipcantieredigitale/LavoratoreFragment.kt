@@ -30,10 +30,12 @@ class LavoratoreFragment : Fragment() {
                 campoUser.text="null"
                 campoCompiti.text="null"
              }
-        }
 
-    button.setOnClickListener {
 
-        Navigation.findNavController(it).navigate(R.id.action_lavoratoreFragment_to_compitiFragment)
+    listaCompiti.setOnClickListener {
+        val b=Bundle();
+
+        b.putParcelable("scelta", prova)
+        Navigation.findNavController(it).navigate(R.id.action_lavoratoreFragment_to_compitiFragment,b)
     }
-}}
+}}}
