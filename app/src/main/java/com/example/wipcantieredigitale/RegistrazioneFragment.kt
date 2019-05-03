@@ -3,7 +3,9 @@ package com.example.wipcantieredigitale
 
 import android.content.ContentValues
 import android.os.Bundle
+import android.os.Handler
 import android.support.v4.app.Fragment
+import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentTransaction
 import android.util.Log
 import android.view.LayoutInflater
@@ -56,7 +58,7 @@ class RegistrazioneFragment : Fragment() {
                            myRef.child("compiti").push()
                            uti=false;
 
-                        Navigation.findNavController(it).navigate(R.id.action_registrazioneFragment_to_loginFragment)}
-
-                            }})}}}}
-//
+                        Navigation.findNavController(it).navigate(R.id.action_registrazioneFragment_to_loginFragment)
+                           Handler().postDelayed({
+                               fragmentManager?.popBackStack()
+                           }, 2000)}}})}}}}
