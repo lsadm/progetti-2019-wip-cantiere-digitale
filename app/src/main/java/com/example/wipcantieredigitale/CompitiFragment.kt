@@ -33,22 +33,29 @@ import kotlinx.android.synthetic.main.fragment_compito.*
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+          val database = FirebaseDatabase.getInstance()
+
+          fabAggiungiCompito.setOnClickListener {
+            Navigation.findNavController(it).navigate(R.id.action_compitiFragment_to_aggiungiCompitoFragment)}
         arguments?.let {
             val prova: login? = it.getParcelable("scelta")
             prova?.let {
-                prova?.username = it.username
+                prova.username=it.username
             }
-        fabAggiungiCompito.setOnClickListener {
-            Navigation.findNavController(it).navigate(R.id.action_compitiFragment_to_aggiungiCompitoFragment)}
-        val database = FirebaseDatabase.getInstance()
-        val myRef = database.getReference(prova!!.username).child("compiti")
+        val myRef = database.getReference(prova!!.username)
             myRef.addValueEventListener(object : ValueEventListener {
-                var lista=ArrayList<compito?>()
+                var lista =ArrayList<compito?>()
+
         override fun onDataChange(dataSnapshot: DataSnapshot) {
-                for (dsp in dataSnapshot.getChildren()) {
-                    lista.add(dsp.getValue(compito::class.java))}
-            listaCompiti.layoutManager = LinearLayoutManager(activity)
-            listaCompiti.adapter = CompitiAdapter (lista, requireContext())}
+            if(dataSnapshot.hasChild("compiti")){
+                for (dsp in dataSnapshot.child("compiti").getChildren())
+                    lista.add(dsp.getValue(compito::class.java))
+                listaCompiti.layoutManager = LinearLayoutManager(activity)
+                listaCompiti.adapter = CompitiAdapter (lista, requireContext())
+          }
+
+            }
         override  fun onCancelled(error: DatabaseError) {
+
              Log.w(ContentValues.TAG, "Failed to read value.", error.toException())
         }})}}}

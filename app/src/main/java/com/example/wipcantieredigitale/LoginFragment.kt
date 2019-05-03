@@ -39,7 +39,7 @@ class LoginFragment :   Fragment() {
                                 val myRef = database.getReference(editUsername.text.toString())
                              myRef.addValueEventListener(object : ValueEventListener {
                                  override fun onDataChange(dataSnapshot: DataSnapshot) {
-                                     val value = dataSnapshot.getValue(login::class.java)
+                                     val value:login? = dataSnapshot.getValue(login::class.java)
                                     if (idpass.text.toString()==value?.password) {
                                          if (value.classe.equals("Capo"))
 

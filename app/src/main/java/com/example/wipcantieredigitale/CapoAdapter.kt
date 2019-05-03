@@ -5,6 +5,7 @@ import android.content.Context
 import android.os.Bundle
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.Navigation
 import com.example.wipcantieredigitale.datamodel.login
@@ -21,6 +22,7 @@ class CapoAdapter(val dataset: ArrayList<login?>, val context: Context) : Recycl
     }
 
     override fun onBindViewHolder(viewHolder: LavoratoreRiga, position: Int) {
+
         val worker = dataset.get(position)
 
         viewHolder.tvNome.text = worker?.username

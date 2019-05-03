@@ -34,8 +34,7 @@ class RegistrazioneFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         button2.setOnClickListener {
-            hideKeyboard()
-            if(!editUsername.text.toString().equals("")){
+             if(!editUsername.text.toString().equals("")){
             val database = FirebaseDatabase.getInstance()
                 var uti=true
                  val myRef = database.getReference(editUsername.text.toString() )
@@ -54,6 +53,7 @@ class RegistrazioneFragment : Fragment() {
                        {
             var nameList= login(editUsername.text.toString(),editp.text.toString(),idpass.text.toString(),mySpinner.getSelectedItem().toString())
             myRef.setValue(nameList)
+                           myRef.child("compiti").push()
                            uti=false;
 
                         Navigation.findNavController(it).navigate(R.id.action_registrazioneFragment_to_loginFragment)}

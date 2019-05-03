@@ -41,6 +41,7 @@
     <string name="accedilogin">ENTRA</string>
     <string name="listaC">Compiti</string>
     <string name="Done">Compito Svolto</string>
+    <string name="VUOTO">Nessun Compito</string>
 
     //spinner
 
