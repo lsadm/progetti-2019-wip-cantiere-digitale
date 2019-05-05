@@ -58,7 +58,6 @@ class RegistrazioneFragment : Fragment() {
                            myRef.child("compiti").push()
                            uti=false;
 
-                        Navigation.findNavController(it).navigate(R.id.action_registrazioneFragment_to_loginFragment)
-                           Handler().postDelayed({
-                               fragmentManager?.popBackStack()
-                           }, 2000)}}})}}}}
+                        Navigation.findNavController(view!!).navigateUp()
+                           fragmentManager?.popBackStack()
+                          ;}}})}}}}

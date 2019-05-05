@@ -22,6 +22,8 @@ import com.example.wipcantieredigitale.datamodel.login
 
 class LoginFragment :   Fragment() {
 
+
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -32,7 +34,8 @@ class LoginFragment :   Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
             super.onViewCreated(view, savedInstanceState)
-            val database = FirebaseDatabase.getInstance()
+
+        val database = FirebaseDatabase.getInstance()
 
                         btnSignin.setOnClickListener {
                             hideKeyboard()

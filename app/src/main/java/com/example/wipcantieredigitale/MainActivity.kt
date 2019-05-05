@@ -1,12 +1,14 @@
 package com.example.wipcantieredigitale
 
-import android.content.pm.ActivityInfo
-import android.support.v7.app.AppCompatActivity
+ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import com.example.wipcantieredigitale.datamodel.hideKeyboard
-import com.google.firebase.database.FirebaseDatabase
+ import android.view.View
+ import androidx.navigation.Navigation
+ import com.example.wipcantieredigitale.datamodel.hideKeyboard
+
 
 class MainActivity : AppCompatActivity() {
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
