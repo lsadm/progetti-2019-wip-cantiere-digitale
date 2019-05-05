@@ -22,13 +22,13 @@
     <string name="Nome">Nome</string>
     <string name="Cognome">Cognome</string>
     <string name="username">Username</string>
-    <string name="Tempo">Tempo di permanenza</string>
+    <string name="Tempo">Durata</string>
     <string name="Compiti">Compiti svolti</string>
 
     <string name="nome">Nome lavoratore</string>
     <string name="cognome">Cognome lavoratore</string>
     <string name="user_name">Username lavoratore</string>
-    <string name="tempo">Tempo di permanenza del lavoratore</string>
+    <string name="tempo">Tempo di permanenza</string>
     <string name="compiti_svolti">Compiti svolti dal lavoratore</string>
     <string name="email">E-mail</string>
     <string name="seleziona_ruolo">Seleziona ruolo:</string>
@@ -39,7 +39,7 @@
         organizzazione!
     </string>
     <string name="accedilogin">ENTRA</string>
-    <string name="listaC">Compiti</string>
+    <string name="listaC">Lavori in corso</string>
     <string name="Done">Compito Svolto</string>
     <string name="VUOTO">Nessun Compito</string>
     <string name="lista_lavoratori">Lista dipendenti</string>
