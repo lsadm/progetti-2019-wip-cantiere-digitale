@@ -6,6 +6,6 @@ import android.view.View
 import kotlinx.android.synthetic.main.riga_compito.view.*
 
 class CompitoRiga(view: View) : RecyclerView.ViewHolder(view) {
-    val nome = view.nomeCompito
+    val nome = view.DescrizioneCompito
     val desc = view.idDescrizione
 }

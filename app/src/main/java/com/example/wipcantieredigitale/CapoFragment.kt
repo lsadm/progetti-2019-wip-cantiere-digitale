@@ -32,6 +32,7 @@ public class CapoFragment: Fragment() {
             var lista=ArrayList<login?>()
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                  for (dsp in dataSnapshot.getChildren()) {
+                     if(dsp.getValue(login::class.java)?.classe=="Lavoratore")
                    lista.add(dsp.getValue(login::class.java)) //add result into array list
 
                 }

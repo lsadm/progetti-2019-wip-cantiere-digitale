@@ -1,11 +1,24 @@
 package com.example.wipcantieredigitale
 
 
+import android.content.ContentValues
 import android.os.Bundle
 import android.support.v4.app.Fragment
+ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.Navigation
+import com.example.wipcantieredigitale.datamodel.compito
+import com.example.wipcantieredigitale.datamodel.hideKeyboard
+import com.example.wipcantieredigitale.datamodel.login
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
+import kotlinx.android.synthetic.main.fragment_aggiungi_compito.*
+import com.google.firebase.database.DatabaseReference
+import kotlinx.android.synthetic.main.fragment_compiti.*
 
 
 class AggiungiCompitoFragment : Fragment() {
@@ -17,6 +30,27 @@ class AggiungiCompitoFragment : Fragment() {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_aggiungi_compito, container, false)
     }
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        val database = FirebaseDatabase.getInstance()
+       hideKeyboard()
+        idDone.setOnClickListener{
+        arguments?.let {
+            val prova: login? = it.getParcelable("scelta")
+            prova?.let {
+                prova.username=it.username
+            }
+            val myRef = database.getReference(prova!!.username)
+            myRef.addListenerForSingleValueEvent (object : ValueEventListener {
+                override fun onDataChange(dataSnapshot: DataSnapshot) {
+                    val newRef=myRef.child("compiti").child(idAggiungiCompito.text.toString())
+                    val newc=compito(idAggiungiCompito.text.toString(),idDescrizione.text.toString())
+                    newRef.setValue(newc)
+                    Navigation.findNavController(view!!).navigateUp()
+                }
 
+                override  fun onCancelled(error: DatabaseError) {
 
-}
+                    Log.w(ContentValues.TAG, "Failed to read value.", error.toException())} })}
+        } }}
+

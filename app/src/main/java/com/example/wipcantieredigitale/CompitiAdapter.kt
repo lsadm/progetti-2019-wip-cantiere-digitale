@@ -23,11 +23,9 @@ class CompitiAdapter(val dataset: ArrayList<compito?>, val context: Context) : R
     }
 
    override fun onBindViewHolder(viewHolder: CompitoRiga, position: Int) {
-
        val job = dataset.get(position)
-         viewHolder.nome.text = job?.nome
-        viewHolder.desc.text = job?.desc
-
+       viewHolder.nome.text = job?.nome
+       viewHolder.desc.text = job?.desc
         viewHolder.itemView.setOnClickListener {
 
              val b = Bundle()

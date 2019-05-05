@@ -29,7 +29,7 @@
             <TextView
                     android:text="@string/inserire_desc"
                     android:layout_width="300dp"
-                    android:layout_height="52dp" android:id="@+id/nomeCompito"
+                    android:layout_height="52dp" android:id="@+id/DescrizioneCompito"
                     android:textStyle="bold"
                     android:textSize="18sp"
                     android:textAlignment="center"
@@ -53,7 +53,7 @@
                     android:layout_height="300dp" android:id="@+id/idDescrizione"
                     android:visibility="visible" tools:visibility="visible"
                     android:background="?attr/colorButtonNormal"
-                    app:layout_constraintTop_toBottomOf="@+id/nomeCompito" app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/DescrizioneCompito" app:layout_constraintStart_toStartOf="parent"
                     android:layout_marginStart="8dp" android:layout_marginEnd="8dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     android:textSize="22sp" android:inputType="textMultiLine"

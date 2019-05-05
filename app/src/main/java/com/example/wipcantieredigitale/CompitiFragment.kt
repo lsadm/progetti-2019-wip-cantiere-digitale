@@ -35,13 +35,16 @@ import kotlinx.android.synthetic.main.fragment_compito.*
         super.onViewCreated(view, savedInstanceState)
           val database = FirebaseDatabase.getInstance()
 
-          fabAggiungiCompito.setOnClickListener {
-            Navigation.findNavController(it).navigate(R.id.action_compitiFragment_to_aggiungiCompitoFragment)}
+
         arguments?.let {
-            val prova: login? = it.getParcelable("scelta")
+            var prova: login? = it.getParcelable("scelta")
             prova?.let {
-                prova.username=it.username
+                prova=it
             }
+            fabAggiungiCompito.setOnClickListener {
+                val b=Bundle();
+                b.putParcelable("scelta",prova)
+                Navigation.findNavController(it).navigate(R.id.action_compitiFragment_to_aggiungiCompitoFragment,b)}
         val myRef = database.getReference(prova!!.username)
             myRef.addValueEventListener(object : ValueEventListener {
                 var lista =ArrayList<compito?>()
@@ -52,7 +55,7 @@ import kotlinx.android.synthetic.main.fragment_compito.*
                     lista.add(dsp.getValue(compito::class.java))
                 listaCompiti.layoutManager = LinearLayoutManager(activity)
                 listaCompiti.adapter = CompitiAdapter (lista, requireContext())
-          }
+              }
 
             }
         override  fun onCancelled(error: DatabaseError) {

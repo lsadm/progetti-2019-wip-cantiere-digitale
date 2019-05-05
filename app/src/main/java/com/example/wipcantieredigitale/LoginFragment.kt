@@ -3,7 +3,8 @@ package com.example.wipcantieredigitale
 
 import android.content.ContentValues.TAG
 import android.os.Bundle
- import android.support.v4.app.Fragment
+import android.os.Handler
+import android.support.v4.app.Fragment
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -38,26 +39,26 @@ class LoginFragment :   Fragment() {
                             if(!editUsername.text.toString().equals("")){
 
                                 val myRef = database.getReference(editUsername.text.toString())
-                             myRef.addValueEventListener(object : ValueEventListener {
+                             myRef.addListenerForSingleValueEvent (object : ValueEventListener {
                                  override fun onDataChange(dataSnapshot: DataSnapshot) {
-                                     val value:login? = dataSnapshot.getValue(login::class.java)
+                                      val value:login? = dataSnapshot.getValue(login::class.java)
                                     if (idpass.text.toString()==value?.password) {
                                          if (value.classe.equals("Capo"))
 
                                              Navigation.findNavController(it).navigate(R.id.action_loginFragment_to_capoFragment)
+
                                          else{
 
                                              val b = Bundle()
                                              b.putParcelable("scelta", value)
-                                              Navigation.findNavController(it).navigate(R.id.action_loginFragment_to_compitiFragment,b)}
-                                     }
+                                        Navigation.findNavController(it).navigate(R.id.action_loginFragment_to_compitiFragment,b)
+                                             }}}
 
-                                 }
+
 
                                  override fun onCancelled(error: DatabaseError) {
                                      // Failed to read value
                                      Log.w(TAG, "Failed to read value.", error.toException())
                                  }
-                             })
-                            }
-    }}}
+                             })}
+                           }}}
