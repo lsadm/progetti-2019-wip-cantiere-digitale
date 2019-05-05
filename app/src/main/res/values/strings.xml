@@ -42,6 +42,7 @@
     <string name="listaC">Compiti</string>
     <string name="Done">Compito Svolto</string>
     <string name="VUOTO">Nessun Compito</string>
+    <string name="lista_lavoratori">Lista dipendenti</string>
 
     //spinner
 
