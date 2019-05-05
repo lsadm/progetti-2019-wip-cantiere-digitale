@@ -23,7 +23,7 @@ class CompitoFragment : Fragment() {
         arguments?.let {
             val prova: compito? = it.getParcelable("compito")
             prova?.let {
-                 DescrizioneCompito.text = it.nome
+                 nomeCompito.text = it.nome
                 idDescrizione.text = it.desc
 
             }
