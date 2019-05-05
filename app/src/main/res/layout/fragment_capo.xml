@@ -5,12 +5,19 @@
                                              android:layout_height="match_parent"
                                              tools:context=".CapoFragment">
     <android.support.v7.widget.RecyclerView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent" android:id="@+id/listLavoratori"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/listLavoratori"
             android:scrollbars="vertical"
-            tools:listitem="@layout/riga_lavoratore" app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintVertical_bias="0.0">
+            tools:listitem="@layout/riga_lavoratore"
+            app:layout_constraintTop_toBottomOf="@+id/title_fragment_capo" app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" android:layout_marginTop="32dp">
     </android.support.v7.widget.RecyclerView>
+    <TextView
+            android:text="@string/lista_lavoratori"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" android:id="@+id/title_fragment_capo"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="32dp" app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="32dp" android:textColor="#4D1CD6" android:textSize="30sp"/>
 </android.support.constraint.ConstraintLayout>
