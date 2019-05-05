@@ -11,7 +11,7 @@
     <string name="welcome1">Benvenuto su</string>
     <string name="welcome2">Wip!</string>
 
-    <string name="compito">Titolo</string>
+    <string name="compito">Descrizione attività</string>
     <string name="descrizione">Descrizione</string>
     <string name="aggiungi">Aggiungi</string>
     <string name="inserire_compito">Dati attività</string>
@@ -40,9 +40,10 @@
     </string>
     <string name="accedilogin">ENTRA</string>
     <string name="listaC">Lavori in corso</string>
-    <string name="Done">Compito Svolto</string>
+    <string name="Done">Fatto</string>
     <string name="VUOTO">Nessun Compito</string>
     <string name="lista_lavoratori">Lista dipendenti</string>
+    <string name="lista_attivita">Lista attività</string>
 
     //spinner
 
