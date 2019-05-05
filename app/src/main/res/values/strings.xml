@@ -11,10 +11,10 @@
     <string name="welcome1">Benvenuto su</string>
     <string name="welcome2">Wip!</string>
 
-    <string name="compito">Compito</string>
+    <string name="compito">Titolo</string>
     <string name="descrizione">Descrizione</string>
     <string name="aggiungi">Aggiungi</string>
-    <string name="inserire_compito">Inserire nome del compito:</string>
+    <string name="inserire_compito">Dati attività</string>
     <string name="inserire_desc">Inserire nuova descrizione:</string>
 
     // stringhe per fragment_lavoratore
