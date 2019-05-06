@@ -25,16 +25,15 @@ class LavoratoreFragment : Fragment() {
             val prova: login? = it.getParcelable("scelta")
             prova?.let {
                 campoNome.text = it.username
-                campoTempo.text = it.mail
+                campoTempo.text = it.tempo
                 campoCognome.text="null"
                 campoUser.text="null"
                 campoCompiti.text="null"
              }
 
 
-    listaCompiti.setOnClickListener {
+    ListaCompiti.setOnClickListener {
         val b=Bundle();
-
         b.putParcelable("scelta", prova)
         Navigation.findNavController(it).navigate(R.id.action_lavoratoreFragment_to_compitiFragment,b)
     }

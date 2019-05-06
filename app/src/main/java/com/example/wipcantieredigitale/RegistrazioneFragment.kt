@@ -2,6 +2,7 @@ package com.example.wipcantieredigitale
 
 
 import android.content.ContentValues
+import android.icu.text.TimeZoneFormat
 import android.os.Bundle
 import android.os.Handler
 import android.support.v4.app.Fragment
@@ -23,6 +24,9 @@ import com.example.wipcantieredigitale.datamodel.hideKeyboard
 import kotlinx.android.synthetic.main.fragment_registrazione.*
 import kotlinx.android.synthetic.main.fragment_registrazione.editUsername
 import kotlinx.android.synthetic.main.fragment_registrazione.idpass
+import java.text.SimpleDateFormat
+import java.time.LocalDateTime
+import java.util.*
 
 
 class RegistrazioneFragment : Fragment() {
@@ -53,7 +57,12 @@ class RegistrazioneFragment : Fragment() {
                         }
                            else
                        {
-            var nameList= login(editUsername.text.toString(),editp.text.toString(),idpass.text.toString(),mySpinner.getSelectedItem().toString())
+                           val dateFormatter = SimpleDateFormat("dd/MM/yyyy hh.mm.ss")
+                          dateFormatter.setTimeZone(TimeZone.getTimeZone("GMT+2"));
+                           dateFormatter.isLenient = false
+                           val today = Date()
+                           val s = dateFormatter.format(today)
+            var nameList= login(editUsername.text.toString(),editp.text.toString(),idpass.text.toString(),mySpinner.getSelectedItem().toString(),s)
             myRef.setValue(nameList)
                            myRef.child("compiti").push()
                            uti=false;

@@ -16,7 +16,6 @@ import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 
 import kotlinx.android.synthetic.main.fragment_compiti.*
-import kotlinx.android.synthetic.main.fragment_compito.*
 
 /**
  *
@@ -46,15 +45,15 @@ import kotlinx.android.synthetic.main.fragment_compito.*
                 b.putParcelable("scelta",prova)
                 Navigation.findNavController(it).navigate(R.id.action_compitiFragment_to_aggiungiCompitoFragment,b)}
         val myRef = database.getReference(prova!!.username)
-            myRef.addValueEventListener(object : ValueEventListener {
+            myRef.addListenerForSingleValueEvent (object : ValueEventListener {
                 var lista =ArrayList<compito?>()
 
         override fun onDataChange(dataSnapshot: DataSnapshot) {
             if(dataSnapshot.hasChild("compiti")){
                 for (dsp in dataSnapshot.child("compiti").getChildren())
                     lista.add(dsp.getValue(compito::class.java))
-                listaCompiti.layoutManager = LinearLayoutManager(activity)
-                listaCompiti.adapter = CompitiAdapter (lista, requireContext())
+                ListaCompiti.layoutManager = LinearLayoutManager(activity)
+                ListaCompiti.adapter = CompitiAdapter (lista, requireContext())
               }
 
             }
