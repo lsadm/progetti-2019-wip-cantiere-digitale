@@ -3,7 +3,7 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="Username">Nome Utente</string>
+    <string name="Username">Username</string>
     <string name="Password">Password</string>
     <string name="NomeApp">WIP</string>
     <string name="SignUp">Crea un account</string>
@@ -45,6 +45,10 @@
     <string name="lista_lavoratori">Lista dipendenti</string>
     <string name="lista_attivita">Lista attività</string>
     <string name="schedaDipendente">Scheda dipendente</string>
+    <string name="Nome">Nome</string>
+    <string name="Cognome">Cognome</string>
+    <string name="registrati">Registrati</string>
+    <string name="inserisci">Inserisci i tuoi dati</string>
 
     //spinner
 
