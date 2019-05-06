@@ -24,6 +24,8 @@ import com.example.wipcantieredigitale.datamodel.hideKeyboard
 import kotlinx.android.synthetic.main.fragment_registrazione.*
 import kotlinx.android.synthetic.main.fragment_registrazione.editUsername
 import kotlinx.android.synthetic.main.fragment_registrazione.idpass
+import kotlinx.android.synthetic.main.fragment_registrazione.editNome
+import kotlinx.android.synthetic.main.fragment_registrazione.editCognome
 import java.text.SimpleDateFormat
 import java.time.LocalDateTime
 import java.util.*
@@ -62,7 +64,7 @@ class RegistrazioneFragment : Fragment() {
                            dateFormatter.isLenient = false
                            val today = Date()
                            val s = dateFormatter.format(today)
-            var nameList= login(editUsername.text.toString(),editp.text.toString(),idpass.text.toString(),mySpinner.getSelectedItem().toString(),s)
+            var nameList= login(editUsername.text.toString(),editp.text.toString(),idpass.text.toString(),editNome.text.toString(),editCognome.text.toString(),mySpinner.getSelectedItem().toString(),s)
             myRef.setValue(nameList)
                            myRef.child("compiti").push()
                            uti=false;

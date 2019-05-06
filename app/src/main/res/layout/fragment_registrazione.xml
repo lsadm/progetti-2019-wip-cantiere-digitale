@@ -43,9 +43,9 @@
                     android:hint="@string/Username"
                     android:background="#D6D7D7"
                     android:id="@+id/editUsername"
-                    android:layout_marginTop="16dp" app:layout_constraintTop_toBottomOf="@+id/editText"
-                    app:layout_constraintStart_toStartOf="@+id/editText"
-                    app:layout_constraintEnd_toEndOf="@+id/editText"/>
+                    android:layout_marginTop="16dp" app:layout_constraintTop_toBottomOf="@+id/editCognome"
+                    app:layout_constraintStart_toStartOf="@+id/editCognome"
+                    app:layout_constraintEnd_toEndOf="@+id/editCognome"/>
             <EditText
                     android:layout_width="0dp"
                     android:layout_height="40dp"
@@ -112,19 +112,19 @@
                     android:layout_height="40dp"
                     android:inputType="textPersonName"
                     android:ems="10"
-                    android:id="@+id/editText"
-                    app:layout_constraintStart_toStartOf="@+id/editText4"
-                    app:layout_constraintEnd_toEndOf="@+id/editText4"
-                    android:layout_marginTop="16dp" app:layout_constraintTop_toBottomOf="@+id/editText4"
-                    android:hint="@string/Cognome" android:background="#D6D7D7"/>
+                    android:id="@+id/editCognome"
+                    app:layout_constraintStart_toStartOf="@+id/editNome"
+                    app:layout_constraintEnd_toEndOf="@+id/editNome"
+                    android:layout_marginTop="16dp" app:layout_constraintTop_toBottomOf="@+id/editNome"
+                    android:hint="@string/cognome" android:background="#D6D7D7"/>
             <EditText
                     android:layout_width="0dp"
                     android:layout_height="40dp"
                     android:inputType="textPersonName"
                     android:ems="10"
-                    android:id="@+id/editText4" android:layout_marginStart="64dp"
+                    android:id="@+id/editNome" android:layout_marginStart="64dp"
                     app:layout_constraintStart_toStartOf="parent" android:layout_marginEnd="64dp"
-                    app:layout_constraintEnd_toEndOf="parent" android:hint="@string/Nome" android:textSize="18sp"
+                    app:layout_constraintEnd_toEndOf="parent" android:hint="@string/nome" android:textSize="18sp"
                     android:layout_marginTop="16dp" app:layout_constraintTop_toBottomOf="@+id/intro2"
                     android:background="#D6D7D7"/>
 

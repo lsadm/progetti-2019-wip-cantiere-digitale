@@ -25,8 +25,8 @@
     <string name="Tempo">Durata</string>
     <string name="Compiti">Compiti svolti</string>
 
-    <string name="nome">Nome lavoratore</string>
-    <string name="cognome">Cognome lavoratore</string>
+    <string name="nome">Nome</string>
+    <string name="cognome">Cognome</string>
     <string name="user_name">Username lavoratore</string>
     <string name="tempo">Tempo di permanenza</string>
     <string name="compiti_svolti">Compiti svolti dal lavoratore</string>
@@ -45,8 +45,6 @@
     <string name="lista_lavoratori">Lista dipendenti</string>
     <string name="lista_attivita">Lista attività</string>
     <string name="schedaDipendente">Scheda dipendente</string>
-    <string name="Nome">Nome</string>
-    <string name="Cognome">Cognome</string>
     <string name="registrati">Registrati</string>
     <string name="inserisci">Inserisci i tuoi dati</string>
 
