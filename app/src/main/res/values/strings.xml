@@ -44,6 +44,7 @@
     <string name="VUOTO">Nessun Compito</string>
     <string name="lista_lavoratori">Lista dipendenti</string>
     <string name="lista_attivita">Lista attività</string>
+    <string name="schedaDipendente">Scheda dipendente</string>
 
     //spinner
 
