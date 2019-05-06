@@ -5,8 +5,9 @@
                                              android:layout_width="match_parent"
                                              android:layout_height="90dip">
 
-    <TextView
+    <CheckBox
             android:text="@string/compito"
+            android:clickable="false"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" android:id="@+id/nomeCompito"
             app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="48dp"

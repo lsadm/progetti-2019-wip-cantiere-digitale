@@ -26,9 +26,10 @@ class CompitiAdapter(val dataset: ArrayList<compito?>, val context: Context) : R
        val job = dataset.get(position)
        viewHolder.nome.text = job?.nome
        viewHolder.desc.text = job?.desc
-        viewHolder.itemView.setOnClickListener {
-
-             val b = Bundle()
+       if(job!!.done)
+       viewHolder.nome.setChecked(true)
+       viewHolder.itemView.setOnClickListener {
+            val b = Bundle()
             b.putParcelable("compito", job)
             Navigation.findNavController(it).navigate(R.id.action_compitiFragment_to_compitoFragment, b)
         }

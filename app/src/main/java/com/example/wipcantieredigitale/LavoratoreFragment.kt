@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.Navigation
 import com.example.wipcantieredigitale.datamodel.login
+import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.fragment_lavoratore.*
 
 class LavoratoreFragment : Fragment() {
@@ -20,21 +21,19 @@ class LavoratoreFragment : Fragment() {
     }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         arguments?.let {
             val prova: login? = it.getParcelable("scelta")
             prova?.let {
-                campoNome.text = it.username
+                campoNome.text = it.nome
                 campoTempo.text = it.tempo
-                campoCognome.text="null"
-                campoUser.text="null"
-                campoCompiti.text="null"
+                campoCognome.text=it.cognome
+                campoUser.text=it.username
+                campoMail.text=it.mail
              }
 
 
     listaCompiti.setOnClickListener {
-        val b=Bundle();
-        b.putParcelable("scelta", prova)
-        Navigation.findNavController(it).navigate(R.id.action_lavoratoreFragment_to_compitiFragment,b)
+
+        Navigation.findNavController(it).navigate(R.id.action_lavoratoreFragment_to_compitiFragment )
     }
 }}}

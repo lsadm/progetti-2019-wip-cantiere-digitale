@@ -44,8 +44,9 @@ class LoginFragment :   Fragment() {
                                 val myRef = database.getReference(editUsername.text.toString())
                              myRef.addListenerForSingleValueEvent (object : ValueEventListener {
                                  override fun onDataChange(dataSnapshot: DataSnapshot) {
-                                      val value:login? = dataSnapshot.getValue(login::class.java)
-                                    if (idpass.text.toString()==value?.password) {
+                                     val value:login?=dataSnapshot.getValue(login::class.java)
+                                     (activity as MainActivity).setL(value)
+                                     if (idpass.text.toString()==value?.password) {
                                          if (value.classe.equals("Capo"))
 
                                              Navigation.findNavController(it).navigate(R.id.action_loginFragment_to_capoFragment)

@@ -1,13 +1,15 @@
 apply plugin: 'com.android.application'
 
 apply plugin: 'kotlin-android'
+apply plugin: 'com.google.gms.google-services'
 
 apply plugin: 'kotlin-android-extensions'
-apply plugin: 'com.google.gms.google-services'
 
 androidExtensions {
     experimental = true
 }
+
+
 
 
 
@@ -31,6 +33,7 @@ android {
 
 dependencies {
 
+    implementation 'com.google.firebase:firebase-auth:16.0.4'
 
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"

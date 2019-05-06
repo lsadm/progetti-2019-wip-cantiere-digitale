@@ -20,6 +20,7 @@ import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import android.widget.Toast
 import com.example.wipcantieredigitale.datamodel.hideKeyboard
+import com.google.firebase.auth.FirebaseAuth
 
 import kotlinx.android.synthetic.main.fragment_registrazione.*
 import kotlinx.android.synthetic.main.fragment_registrazione.editUsername
@@ -44,7 +45,10 @@ class RegistrazioneFragment : Fragment() {
         button2.setOnClickListener {
              if(!editUsername.text.toString().equals("")){
             val database = FirebaseDatabase.getInstance()
-                var uti=true
+           /*      val auth=FirebaseAuth.getInstance()
+                 auth.createUserWithEmailAndPassword(idpass.text.toString(),editp.text.toString())*/
+
+                 var uti=true
                  val myRef = database.getReference(editUsername.text.toString() )
                 myRef.addValueEventListener(object : ValueEventListener {
 
@@ -64,6 +68,8 @@ class RegistrazioneFragment : Fragment() {
                            dateFormatter.isLenient = false
                            val today = Date()
                            val s = dateFormatter.format(today)
+
+
             var nameList= login(editUsername.text.toString(),editp.text.toString(),idpass.text.toString(),editNome.text.toString(),editCognome.text.toString(),mySpinner.getSelectedItem().toString(),s)
             myRef.setValue(nameList)
                            myRef.child("compiti").push()

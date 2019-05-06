@@ -16,6 +16,7 @@ import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 
 import kotlinx.android.synthetic.main.fragment_compiti.*
+import kotlinx.android.synthetic.main.riga_compito.*
 
 /**
  *
@@ -35,11 +36,7 @@ import kotlinx.android.synthetic.main.fragment_compiti.*
           val database = FirebaseDatabase.getInstance()
 
 
-        arguments?.let {
-            var prova: login? = it.getParcelable("scelta")
-            prova?.let {
-                prova=it
-            }
+       val prova=(activity as MainActivity).getL()
             fabAggiungiCompito.setOnClickListener {
                 val b=Bundle();
                 b.putParcelable("scelta",prova)
@@ -47,11 +44,16 @@ import kotlinx.android.synthetic.main.fragment_compiti.*
         val myRef = database.getReference(prova!!.username)
             myRef.addListenerForSingleValueEvent (object : ValueEventListener {
                 var lista =ArrayList<compito?>()
+                var cont=0;
 
         override fun onDataChange(dataSnapshot: DataSnapshot) {
             if(dataSnapshot.hasChild("compiti")){
                 for (dsp in dataSnapshot.child("compiti").getChildren())
                     lista.add(dsp.getValue(compito::class.java))
+                for(item in lista )
+                    if(item?.done==true)
+                        cont++;
+                numero.text=cont.toString()
                 ListaCompiti.layoutManager = LinearLayoutManager(activity)
                 ListaCompiti.adapter = CompitiAdapter (lista, requireContext())
               }
@@ -60,4 +62,4 @@ import kotlinx.android.synthetic.main.fragment_compiti.*
         override  fun onCancelled(error: DatabaseError) {
 
              Log.w(ContentValues.TAG, "Failed to read value.", error.toException())
-        }})}}}
+        }})}}

@@ -11,7 +11,7 @@
     <string name="welcome1">Benvenuto su</string>
     <string name="welcome2">Wip!</string>
 
-    <string name="compito">Descrizione attività</string>
+    <string name="compito">ID compito</string>
     <string name="descrizione">Descrizione</string>
     <string name="aggiungi">Aggiungi</string>
     <string name="inserire_compito">Dati attività</string>
@@ -22,13 +22,13 @@
     <string name="Nome">Nome</string>
     <string name="Cognome">Cognome</string>
     <string name="username">Username</string>
-    <string name="Tempo">Durata</string>
+    <string name="Tempo">Assunzione</string>
     <string name="Compiti">Compiti svolti</string>
 
-    <string name="nome">Nome</string>
+    <string name="nome">Username</string>
     <string name="cognome">Cognome</string>
     <string name="user_name">Username lavoratore</string>
-    <string name="tempo">Tempo di permanenza</string>
+    <string name="tempo">Data</string>
     <string name="compiti_svolti">Compiti svolti dal lavoratore</string>
     <string name="email">E-mail</string>
     <string name="seleziona_ruolo">Seleziona ruolo:</string>
@@ -47,6 +47,9 @@
     <string name="schedaDipendente">Scheda dipendente</string>
     <string name="registrati">Registrati</string>
     <string name="inserisci">Inserisci i tuoi dati</string>
+    <string name="InsMail">Inserire Mail</string>
+    <string name="empty"/>
+    <string name="Svolti">Svolti</string>
 
     //spinner
 
