@@ -8,6 +8,7 @@ import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.navigation.Navigation
 import com.example.wipcantieredigitale.datamodel.compito
 import com.example.wipcantieredigitale.datamodel.hideKeyboard
@@ -35,6 +36,7 @@ class AggiungiCompitoFragment : Fragment() {
         val database = FirebaseDatabase.getInstance()
        hideKeyboard()
         idDone.setOnClickListener{
+            if(!idAggiungiCompito.text.toString().equals(""))
         arguments?.let {
             val prova: login? = it.getParcelable("scelta")
             prova?.let {
@@ -42,6 +44,7 @@ class AggiungiCompitoFragment : Fragment() {
             }
             val myRef = database.getReference(prova!!.username)
             myRef.addListenerForSingleValueEvent (object : ValueEventListener {
+
                 override fun onDataChange(dataSnapshot: DataSnapshot) {
                     val newRef=myRef.child("compiti").child(idAggiungiCompito.text.toString())
                     val newc=compito(idAggiungiCompito.text.toString(),idDescrizione.text.toString())
@@ -52,5 +55,7 @@ class AggiungiCompitoFragment : Fragment() {
                 override  fun onCancelled(error: DatabaseError) {
 
                     Log.w(ContentValues.TAG, "Failed to read value.", error.toException())} })}
+            else
+                Toast.makeText(activity, "Campo non valido", Toast.LENGTH_SHORT).show()
         } }}
 

@@ -32,7 +32,7 @@ class LavoratoreFragment : Fragment() {
              }
 
 
-    ListaCompiti.setOnClickListener {
+    listaCompiti.setOnClickListener {
         val b=Bundle();
         b.putParcelable("scelta", prova)
         Navigation.findNavController(it).navigate(R.id.action_lavoratoreFragment_to_compitiFragment,b)
