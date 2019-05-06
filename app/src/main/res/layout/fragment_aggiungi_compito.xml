@@ -41,17 +41,18 @@
                     android:textSize="18sp" android:inputType="textMultiLine"
                     android:hint="@string/descrizione"
                     android:autofillHints=""
+                    android:gravity="top"
                     android:textDirection="locale" android:singleLine="false"
                     android:textAppearance="@style/TextAppearance.AppCompat.Display4"
                     android:lineSpacingExtra="10sp" android:fontFamily="monospace"
                     android:layout_marginTop="32dp" app:layout_constraintTop_toBottomOf="@+id/idAggiungiCompito"
                     app:layout_constraintStart_toStartOf="@+id/idAggiungiCompito"
-                    android:textAlignment="center" app:layout_constraintEnd_toEndOf="@+id/idAggiungiCompito"
-                    android:backgroundTint="#25818181"/>
+                    app:layout_constraintEnd_toEndOf="@+id/idAggiungiCompito"
+                    android:backgroundTint="#25818181" android:textAlignment="center"/>
             <Button
                     android:text="@string/aggiungi"
                     android:layout_width="0dp"
-                    android:layout_height="98dp"
+                    android:layout_height="80dp"
                     android:id="@+id/idDone"
                     android:layout_marginTop="32dp" app:layout_constraintTop_toBottomOf="@+id/idDescrizione"
                     android:textSize="18sp"
