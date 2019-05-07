@@ -25,7 +25,7 @@ class CapoAdapter(val dataset: ArrayList<login?>, val context: Context) : Recycl
 
         val worker = dataset.get(position)
 
-        viewHolder.tvNome.text = (worker?.nome+worker?.cognome)
+        viewHolder.tvNome.text = (worker?.nome+" "+worker?.cognome)
         viewHolder.tvDati.text = worker?.username
         viewHolder.itemView.setOnClickListener {
 
