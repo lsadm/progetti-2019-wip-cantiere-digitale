@@ -37,6 +37,8 @@ class CompitoFragment : Fragment() {
                  nomeCompito.text = it.nome
                 idDescrizione.text = it.desc
              }
+            if(prova?.done==true)
+               idDone.setVisibility(View.GONE);
             idDone.setOnClickListener{
         prova?.done=true
             val database=FirebaseDatabase.getInstance( )
@@ -46,7 +48,7 @@ class CompitoFragment : Fragment() {
                 override fun onDataChange(dataSnapshot: DataSnapshot) {
 
                     myRef.setValue(prova)
-                    Navigation.findNavController(view!!).navigateUp()
+                    Navigation.findNavController(view).navigateUp()
                 }
 
                 override  fun onCancelled(error: DatabaseError) {

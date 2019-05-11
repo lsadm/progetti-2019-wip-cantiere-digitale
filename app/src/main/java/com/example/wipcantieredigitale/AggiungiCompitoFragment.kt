@@ -49,7 +49,7 @@ class AggiungiCompitoFragment : Fragment() {
                     val newRef=myRef.child("compiti").child(idAggiungiCompito.text.toString())
                     val newc=compito(idAggiungiCompito.text.toString(),idDescrizione.text.toString())
                     newRef.setValue(newc)
-                    Navigation.findNavController(view!!).navigateUp()
+                    Navigation.findNavController(view).navigateUp()
                 }
 
                 override  fun onCancelled(error: DatabaseError) {

@@ -33,7 +33,8 @@ class LavoratoreFragment : Fragment() {
 
 
     listaCompiti.setOnClickListener {
+       (activity as MainActivity).setL(prova)
 
-        Navigation.findNavController(it).navigate(R.id.action_lavoratoreFragment_to_compitiFragment )
+        Navigation.findNavController(it).navigate(R.id.action_lavoratoreFragment_to_compitiFragment)
     }
 }}}

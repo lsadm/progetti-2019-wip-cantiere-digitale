@@ -75,6 +75,6 @@ class RegistrazioneFragment : Fragment() {
                            myRef.child("compiti").push()
                            uti=false;
 
-                        Navigation.findNavController(view!!).navigateUp()
+                        Navigation.findNavController(view).navigateUp()
                            fragmentManager?.popBackStack()
                           ;}}})}}}}
