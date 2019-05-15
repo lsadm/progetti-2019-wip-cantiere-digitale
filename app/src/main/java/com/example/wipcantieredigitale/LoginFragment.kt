@@ -44,10 +44,12 @@ class LoginFragment :   Fragment() {
                         (activity as MainActivity).setL(value)
                         if (idpass.text.toString()==value?.password) {
 
-                            if (value.classe.equals("Capo"))
-
+                            if (value.classe.equals("Capo")) {
+                                val alfa = login();
+                                alfa.username = value.username;
+                                (activity as MainActivity).setL(alfa)
                                 Navigation.findNavController(it).navigate(R.id.action_loginFragment_to_capoFragment)
-
+                            }
                             else{
                                 val b = Bundle()
                                 b.putParcelable("scelta", value)

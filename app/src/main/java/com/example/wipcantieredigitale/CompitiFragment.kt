@@ -39,7 +39,7 @@ import kotlinx.android.synthetic.main.riga_compito.*
        val prova=(activity as MainActivity).getL()
 
         fabChat.setOnClickListener {
-            Navigation.findNavController(it).navigate(R.id.action_compitiFragment_to_chatFragment)
+            Navigation.findNavController(it).navigate(R.id.action_compitiFragment_to_messaggiFragment)
         }
 
         fabAggiungiCompito.setOnClickListener {

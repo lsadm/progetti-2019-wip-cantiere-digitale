@@ -18,6 +18,7 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import kotlinx.android.synthetic.main.fragment_chat.*
+import kotlinx.android.synthetic.main.fragment_lavoratore.*
 import kotlinx.android.synthetic.main.fragment_registrazione.*
 import kotlinx.android.synthetic.main.riga_chat.*
 import java.text.SimpleDateFormat
@@ -36,73 +37,44 @@ class ChatFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        val mittente=(activity as MainActivity).getL()
 
+        //Recupero username lavoratore
+        arguments?.let {
+            val prova: login? = it.getParcelable("scelta")
+            prova?.let {
+                nomeDipendente.text = it.username
 
+                val destinatario = it.username
 
-        /////////////////////////////////////
-        /////////////////////////////////////
-        val databaseChat = FirebaseDatabase.getInstance()
-        val myRef = databaseChat.getReference()
-        val chatRef = myRef.child("chat")
+                val database = FirebaseDatabase.getInstance()
+                val myRef = database.getReference()
 
-        ////////////////////////////////////////////////////////////
-            button2.setOnClickListener {
-                if(!editUsername.text.toString().equals("")){
-                    val database = FirebaseDatabase.getInstance()
-                    /*      val auth=FirebaseAuth.getInstance()
-                          auth.createUserWithEmailAndPassword(idpass.text.toString(),editp.text.toString())*/
+                //INSERIMENTO MESSAGGI
+                btnInvia.setOnClickListener {
 
-                    var uti=true
-                    val myRef = database.getReference(editUsername.text.toString() )
-                    myRef.addValueEventListener(object : ValueEventListener {
+                    //if(!editMessage.text.toString().equals("")){   //Se il campo non è scrittura non è vuoto:
 
-                        override fun onCancelled(error: DatabaseError) {
-                        }
-                        override fun onDataChange(dataSnapshot: DataSnapshot) {
+                        val chatRef = database.getReference("chat")
+                        val myMessagesRef = chatRef.child(destinatario)
 
-                            if(dataSnapshot.exists()) {
-                                if (uti){ Toast.makeText(activity, "esiste giá", Toast.LENGTH_SHORT).show()
-                                }
+                        myMessagesRef.addListenerForSingleValueEvent(object : ValueEventListener {
+
+                            override fun onDataChange(dataSnapshot: DataSnapshot) {
+
+                                    var nameList= Chat(mittente!!.username, editMessage.text.toString())
+                                    myMessagesRef.push().setValue(nameList)
+
+                                    Navigation.findNavController(view).navigateUp()
 
                             }
-                            else
-                            {
-                                val dateFormatter = SimpleDateFormat("dd/MM/yyyy hh.mm.ss")
-                                dateFormatter.setTimeZone(TimeZone.getTimeZone("GMT+2"));
-                                dateFormatter.isLenient = false
-                                val today = Date()
-                                val s = dateFormatter.format(today)
-
-
-                                var nameList= login(editUsername.text.toString(),editp.text.toString(),idpass.text.toString(),editNome.text.toString(),editCognome.text.toString(),mySpinner.getSelectedItem().toString(),s)
-                                myRef.setValue(nameList)
-                                myRef.child("compiti").push()
-                                uti=false;
-
-                                Navigation.findNavController(view).navigateUp()
-                                fragmentManager?.popBackStack()
-                                ;
+                            override fun onCancelled(error: DatabaseError) {
                             }
-                        }
-                    })
+                        })
+                    //}
                 }
             }
-        ////////////////////////////////////////////////////////////
-        chatRef.addListenerForSingleValueEvent(object : ValueEventListener {
-            var lista=ArrayList<String?>()
-
-            override fun onDataChange(dataSnapshot: DataSnapshot) {
-                for (dsp in dataSnapshot.getChildren()) {
-                        lista.add(dsp.getValue(String::class.java)) //add result into array list
-                }
-                listMessaggi.layoutManager = LinearLayoutManager(activity)
-                listMessaggi.adapter = ChatAdapter(lista, requireContext())
-            }
-            override fun onCancelled(error: DatabaseError) {
-                // Failed to read value
-                Log.w(ContentValues.TAG, "Failed to read value.", error.toException())
-            }
-        })
+        }
     }
 }
 

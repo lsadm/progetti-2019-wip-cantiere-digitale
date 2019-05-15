@@ -21,7 +21,7 @@
         <action android:id="@+id/action_compitiFragment_to_compitoFragment" app:destination="@id/compitoFragment"/>
         <action android:id="@+id/action_compitiFragment_to_aggiungiCompitoFragment"
                 app:destination="@id/aggiungiCompitoFragment"/>
-        <action android:id="@+id/action_compitiFragment_to_chatFragment" app:destination="@id/chatFragment"/>
+        <action android:id="@+id/action_compitiFragment_to_messaggiFragment" app:destination="@id/messaggiFragment"/>
     </fragment>
     <fragment android:id="@+id/compitoFragment" android:name="com.example.wipcantieredigitale.CompitoFragment"
               android:label="CompitoFragment">
@@ -51,4 +51,6 @@
     </fragment>
     <fragment android:id="@+id/chatFragment" android:name="com.example.wipcantieredigitale.ChatFragment"
               android:label="fragment_chat" tools:layout="@layout/fragment_chat"/>
+    <fragment android:id="@+id/messaggiFragment" android:name="com.example.wipcantieredigitale.MessaggiFragment"
+              android:label="fragment_messaggi" tools:layout="@layout/fragment_messaggi"/>
 </navigation>
