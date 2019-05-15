@@ -15,7 +15,7 @@ import com.google.firebase.database.ValueEventListener
 
 import kotlinx.android.synthetic.main.fragment_capo.*
 
-public class CapoFragment: Fragment() {
+class CapoFragment: Fragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -33,7 +33,7 @@ public class CapoFragment: Fragment() {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                  for (dsp in dataSnapshot.getChildren()) {
                      if(dsp.getValue(login::class.java)!!.classe=="Lavoratore")
-                   lista.add(dsp.getValue(login::class.java)) //add result into array list
+                         lista.add(dsp.getValue(login::class.java)) //add result into array list
 
                 }
                 listLavoratori.layoutManager = LinearLayoutManager(activity)

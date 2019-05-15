@@ -43,13 +43,13 @@ class RegistrazioneFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         button2.setOnClickListener {
-             if(!editUsername.text.toString().equals("")){
-            val database = FirebaseDatabase.getInstance()
+            if(!editUsername.text.toString().equals("")){
+                val database = FirebaseDatabase.getInstance()
            /*      val auth=FirebaseAuth.getInstance()
                  auth.createUserWithEmailAndPassword(idpass.text.toString(),editp.text.toString())*/
 
-                 var uti=true
-                 val myRef = database.getReference(editUsername.text.toString() )
+                var uti=true
+                val myRef = database.getReference(editUsername.text.toString() )
                 myRef.addValueEventListener(object : ValueEventListener {
 
                     override fun onCancelled(error: DatabaseError) {
@@ -62,19 +62,26 @@ class RegistrazioneFragment : Fragment() {
 
                         }
                            else
-                       {
-                           val dateFormatter = SimpleDateFormat("dd/MM/yyyy hh.mm.ss")
-                          dateFormatter.setTimeZone(TimeZone.getTimeZone("GMT+2"));
-                           dateFormatter.isLenient = false
-                           val today = Date()
-                           val s = dateFormatter.format(today)
+                        {
+                            val dateFormatter = SimpleDateFormat("dd/MM/yyyy hh.mm.ss")
+                            dateFormatter.setTimeZone(TimeZone.getTimeZone("GMT+2"));
+                            dateFormatter.isLenient = false
+                            val today = Date()
+                            val s = dateFormatter.format(today)
 
 
-            var nameList= login(editUsername.text.toString(),editp.text.toString(),idpass.text.toString(),editNome.text.toString(),editCognome.text.toString(),mySpinner.getSelectedItem().toString(),s)
-            myRef.setValue(nameList)
-                           myRef.child("compiti").push()
-                           uti=false;
+                            var nameList= login(editUsername.text.toString(),editp.text.toString(),idpass.text.toString(),editNome.text.toString(),editCognome.text.toString(),mySpinner.getSelectedItem().toString(),s)
+                            myRef.setValue(nameList)
+                            myRef.child("compiti").push()
+                            uti=false;
 
-                        Navigation.findNavController(view).navigateUp()
-                           fragmentManager?.popBackStack()
-                          ;}}})}}}}
+                            Navigation.findNavController(view).navigateUp()
+                            fragmentManager?.popBackStack()
+                            ;
+                        }
+                    }
+                })
+            }
+        }
+    }
+}

@@ -23,12 +23,15 @@ class LavoratoreFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        btnChat.setOnClickListener {
-            Navigation.findNavController(it).navigate(R.id.action_lavoratoreFragment_to_chatFragment)
-        }
-
         arguments?.let {
             val prova: login? = it.getParcelable("scelta")
+
+            //PASSAGGIO INFO LAVORATORE A CHAT FRAGMENT
+            val bundleDipendente = it
+            btnChat.setOnClickListener {
+                Navigation.findNavController(it).navigate(R.id.action_lavoratoreFragment_to_chatFragment,bundleDipendente)
+            }
+
             prova?.let {
                 campoNome.text = it.nome
                 campoTempo.text = it.tempo

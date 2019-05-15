@@ -19,10 +19,7 @@ import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.ValueEventListener
 import com.example.wipcantieredigitale.datamodel.login
 
-
 class LoginFragment :   Fragment() {
-
-
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -31,38 +28,40 @@ class LoginFragment :   Fragment() {
         return inflater.inflate(R.layout.fragment_login, container, false)
         }
 
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-            super.onViewCreated(view, savedInstanceState)
-
+        super.onViewCreated(view, savedInstanceState)
         val database = FirebaseDatabase.getInstance()
 
-                        btnSignin.setOnClickListener {
-                            hideKeyboard()
-                            if(!editUsername.text.toString().equals("")){
+        btnSignin.setOnClickListener {
+            hideKeyboard()
 
-                                val myRef = database.getReference(editUsername.text.toString())
-                             myRef.addListenerForSingleValueEvent (object : ValueEventListener {
-                                 override fun onDataChange(dataSnapshot: DataSnapshot) {
-                                     val value:login?=dataSnapshot.getValue(login::class.java)
-                                     (activity as MainActivity).setL(value)
-                                     if (idpass.text.toString()==value?.password) {
-                                         if (value.classe.equals("Capo"))
+            if(!editUsername.text.toString().equals("")){
+                val myRef = database.getReference(editUsername.text.toString())
 
-                                             Navigation.findNavController(it).navigate(R.id.action_loginFragment_to_capoFragment)
+                myRef.addListenerForSingleValueEvent (object : ValueEventListener {
+                    override fun onDataChange(dataSnapshot: DataSnapshot) {
+                        val value:login?=dataSnapshot.getValue(login::class.java)
+                        (activity as MainActivity).setL(value)
+                        if (idpass.text.toString()==value?.password) {
 
-                                         else{
+                            if (value.classe.equals("Capo"))
 
-                                             val b = Bundle()
-                                             b.putParcelable("scelta", value)
-                                        Navigation.findNavController(it).navigate(R.id.action_loginFragment_to_compitiFragment,b)
-                                             }}}
+                                Navigation.findNavController(it).navigate(R.id.action_loginFragment_to_capoFragment)
 
+                            else{
+                                val b = Bundle()
+                                b.putParcelable("scelta", value)
+                                Navigation.findNavController(it).navigate(R.id.action_loginFragment_to_compitiFragment,b)
+                            }
+                        }
+                    }
 
-
-                                 override fun onCancelled(error: DatabaseError) {
-                                     // Failed to read value
-                                     Log.w(TAG, "Failed to read value.", error.toException())
-                                 }
-                             })}
-                           }}}
+                    override fun onCancelled(error: DatabaseError) {
+                        // Failed to read value
+                        Log.w(TAG, "Failed to read value.", error.toException())
+                    }
+                })
+            }
+        }
+    }
+}

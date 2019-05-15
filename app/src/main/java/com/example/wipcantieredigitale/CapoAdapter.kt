@@ -29,7 +29,7 @@ class CapoAdapter(val dataset: ArrayList<login?>, val context: Context) : Recycl
         viewHolder.tvDati.text = worker?.username
         viewHolder.itemView.setOnClickListener {
 
-             val b = Bundle()
+            val b = Bundle()
             b.putParcelable("scelta", worker)
             Navigation.findNavController(it).navigate(R.id.action_capoFragment_to_lavoratoreFragment, b)
         }
