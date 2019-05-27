@@ -24,6 +24,7 @@ import com.example.wipcantieredigitale.datamodel.hideKeyboard
 import com.google.android.gms.tasks.OnCompleteListener
 import com.google.firebase.auth.AuthResult
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
 
 import kotlinx.android.synthetic.main.fragment_registrazione.*
 import kotlinx.android.synthetic.main.fragment_registrazione.editUsername
@@ -39,6 +40,7 @@ class RegistrazioneFragment : Fragment() {
 
     var mAuth = FirebaseAuth.getInstance()
     var database = FirebaseDatabase.getInstance()
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -75,7 +77,12 @@ class RegistrazioneFragment : Fragment() {
 
                     if(task.isSuccessful){
 
-                        val myRef = database.getReference(editUsername.text.toString() )
+                        val utenti = database.getReference("utenti")
+
+                        val user = mAuth!!.currentUser!!.uid
+
+
+                        val myRef = utenti.child(user)
 
 
 

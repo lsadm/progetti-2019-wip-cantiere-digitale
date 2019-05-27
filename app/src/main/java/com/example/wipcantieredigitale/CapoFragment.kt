@@ -27,7 +27,8 @@ class CapoFragment: Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val database = FirebaseDatabase.getInstance()
-        val myRef = database.getReference()
+        val myRef = database.getReference().child("utenti")
+
         myRef.addListenerForSingleValueEvent(object : ValueEventListener {
             var lista=ArrayList<login?>()
             override fun onDataChange(dataSnapshot: DataSnapshot) {

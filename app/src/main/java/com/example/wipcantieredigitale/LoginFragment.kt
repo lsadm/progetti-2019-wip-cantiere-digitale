@@ -15,7 +15,7 @@ import androidx.navigation.Navigation
 import com.example.wipcantieredigitale.datamodel.hideKeyboard
 import com.google.firebase.database.FirebaseDatabase
 import kotlinx.android.synthetic.main.fragment_login.*
-import kotlinx.android.synthetic.main.fragment_login.editUsername
+
  import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.ValueEventListener
@@ -26,6 +26,7 @@ import com.google.firebase.auth.FirebaseAuth
 class LoginFragment :   Fragment() {
 
     private lateinit var mAuth : FirebaseAuth
+    var database = FirebaseDatabase.getInstance()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -62,38 +63,47 @@ class LoginFragment :   Fragment() {
 
                             mAuth.signInWithEmailAndPassword(email, password)
                                 .addOnCompleteListener { task ->
-                                    if(task.isSuccessful){
+                                    if(task.isSuccessful){  // l account esiste
 
-                                        val database = FirebaseDatabase.getInstance()
+                                        val user = mAuth!!.currentUser!!.uid
 
-                                        val myRef = database.getReference(editUsername.text.toString())
-                                        myRef.addListenerForSingleValueEvent (object : ValueEventListener {
+                                        val utenti = database.getReference("utenti")
 
-                                            override fun onCancelled(error: DatabaseError) {
-                                                // Failed to read value
-                                                Log.w(TAG, "Failed to read value.", error.toException())
+
+
+                                        val classe = utenti.child(user).child("classe")
+
+                                        classe.addValueEventListener(object: ValueEventListener {
+
+                                            override fun onCancelled(p0: DatabaseError){}
+                                            
+                                            override fun onDataChange(snapshot: DataSnapshot){
+
+                                                val valore=snapshot.getValue(String::class.java)
+
+                                                if (valore == "Capo") {
+                                                    Navigation.findNavController(it)
+                                                        .navigate(R.id.action_loginFragment_to_capoFragment)
+                                                } else {
+                                                    Navigation.findNavController(it)
+                                                        .navigate(R.id.action_loginFragment_to_compitiFragment)
+                                                }
+
+
                                             }
 
-                                            override fun onDataChange(dataSnapshot: DataSnapshot) {
-                                                val value:login?=dataSnapshot.getValue(login::class.java)
-                                                (activity as MainActivity).setL(value)
 
-                                                    if (value?.classe.equals("Capo")) {
 
-                                                        Navigation.findNavController(it)
-                                                            .navigate(R.id.action_loginFragment_to_capoFragment)
-                                                    }
-                                                    else{
 
-                                                        val b = Bundle()
-                                                        b.putParcelable("scelta", value)
-                                                        Navigation.findNavController(it).navigate(R.id.action_loginFragment_to_compitiFragment,b)
-                                                    }}
+                                        })
 
 
 
 
-                                    }) } else{
+
+
+
+                                         } else{
                                         Toast.makeText(context , "Errato" , Toast.LENGTH_SHORT).show()
                                         }
 
