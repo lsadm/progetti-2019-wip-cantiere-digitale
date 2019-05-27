@@ -33,7 +33,7 @@
     <fragment android:id="@+id/registrazioneFragment"
               android:name="com.example.wipcantieredigitale.RegistrazioneFragment"
               android:label="RegistrazioneFragment">
-        <action android:id="@+id/action_registrazioneFragment_to_loginFragment" app:destination="@id/loginFragment"/>
+        <action android:id="@+id/action_registrazioneFragment_to_loginFragment" app:destination="@+id/loginFragment"/>
     </fragment>
     <fragment android:id="@+id/aggiungiCompitoFragment"
               android:name="com.example.wipcantieredigitale.AggiungiCompitoFragment"

@@ -2,6 +2,7 @@ package com.example.wipcantieredigitale
 
 
 import android.content.ContentValues
+import android.content.Intent
 import android.icu.text.TimeZoneFormat
 import android.os.Bundle
 import android.os.Handler
@@ -20,6 +21,8 @@ import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import android.widget.Toast
 import com.example.wipcantieredigitale.datamodel.hideKeyboard
+import com.google.android.gms.tasks.OnCompleteListener
+import com.google.firebase.auth.AuthResult
 import com.google.firebase.auth.FirebaseAuth
 
 import kotlinx.android.synthetic.main.fragment_registrazione.*
@@ -34,47 +37,100 @@ import java.util.*
 
 class RegistrazioneFragment : Fragment() {
 
+    var mAuth = FirebaseAuth.getInstance()
+    var database = FirebaseDatabase.getInstance()
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         return inflater.inflate(R.layout.fragment_registrazione, container, false)
+
+
     }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         button2.setOnClickListener {
-             if(!editUsername.text.toString().equals("")){
-            val database = FirebaseDatabase.getInstance()
-           /*      val auth=FirebaseAuth.getInstance()
-                 auth.createUserWithEmailAndPassword(idpass.text.toString(),editp.text.toString())*/
 
-                 var uti=true
-                 val myRef = database.getReference(editUsername.text.toString() )
-                myRef.addValueEventListener(object : ValueEventListener {
+            val email = idpass.text.toString().trim()
+            val password = editp.text.toString().trim()
 
-                    override fun onCancelled(error: DatabaseError) {
-                    }
-                    override fun onDataChange(dataSnapshot: DataSnapshot) {
+            if (email.isEmpty()) {
+                idpass.error = "Email richiesta"
+                idpass.requestFocus()
+                return@setOnClickListener
 
-                        if(dataSnapshot.exists()) {
-                             if (uti){ Toast.makeText(activity, "esiste giá", Toast.LENGTH_SHORT).show()
-                        }
+            }
 
-                        }
-                           else
-                       {
-                           val dateFormatter = SimpleDateFormat("dd/MM/yyyy hh.mm.ss")
-                          dateFormatter.setTimeZone(TimeZone.getTimeZone("GMT+2"));
-                           dateFormatter.isLenient = false
-                           val today = Date()
-                           val s = dateFormatter.format(today)
+            if (password.isEmpty() || password.length < 6) {
+                idpass.error = "6 caratteri richiesti"
+                idpass.requestFocus()
+                return@setOnClickListener
+            }
 
 
-            var nameList= login(editUsername.text.toString(),editp.text.toString(),idpass.text.toString(),editNome.text.toString(),editCognome.text.toString(),mySpinner.getSelectedItem().toString(),s)
-            myRef.setValue(nameList)
-                           myRef.child("compiti").push()
-                           uti=false;
 
-                        Navigation.findNavController(view).navigateUp()
-                           fragmentManager?.popBackStack()
-                          ;}}})}}}}
+            mAuth.createUserWithEmailAndPassword(email, password)
+                .addOnCompleteListener { task->
+
+                    if(task.isSuccessful){
+
+                        val myRef = database.getReference(editUsername.text.toString() )
+
+
+
+
+                                val dateFormatter = SimpleDateFormat("dd/MM/yyyy hh.mm.ss")
+                                dateFormatter.setTimeZone(TimeZone.getTimeZone("GMT+2"));
+                                dateFormatter.isLenient = false
+                                val today = Date()
+                                val s = dateFormatter.format(today)
+
+
+                                var nameList= login(editUsername.text.toString(),editp.text.toString(),idpass.text.toString(),editNome.text.toString(),editCognome.text.toString(),mySpinner.getSelectedItem().toString(),s)
+                                myRef.setValue(nameList)
+                                myRef.child("compiti").push()
+
+
+                                Navigation.findNavController(it).navigateUp()
+                                fragmentManager?.popBackStack()
+                                ;}
+
+
+                else{
+                        Toast.makeText(context , "L'account è già stato registrato" , Toast.LENGTH_SHORT).show()
+                    }}}}}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            /*
+
+
+                   */
+
+
+
+
+
+
+
+
+
+

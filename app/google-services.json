@@ -15,6 +15,22 @@
       },
       "oauth_client": [
         {
+          "client_id": "73630048684-ehr8j0i3o05d00m711dookkq8uo6c16r.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.wipcantieredigitale",
+            "certificate_hash": "44998324bf0d29e59ba829cf9a33eeeeb48efba1"
+          }
+        },
+        {
+          "client_id": "73630048684-05bqvgp4rj2ogsnh61auro4o06cj7flb.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.wipcantieredigitale",
+            "certificate_hash": "bfd73c937b7dcd9e9f1cadbd18f73c8f7cfcd4a9"
+          }
+        },
+        {
           "client_id": "73630048684-37kgr3equb6hrj0ge5ueoitbnh36aglg.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
