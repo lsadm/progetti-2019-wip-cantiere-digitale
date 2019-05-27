@@ -10,6 +10,7 @@ import androidx.navigation.Navigation
 import com.example.wipcantieredigitale.datamodel.login
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.fragment_lavoratore.*
+import kotlinx.android.synthetic.main.fragment_compiti.*
 
 class LavoratoreFragment : Fragment() {
 
@@ -21,8 +22,16 @@ class LavoratoreFragment : Fragment() {
     }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         arguments?.let {
             val prova: login? = it.getParcelable("scelta")
+
+            //PASSAGGIO INFO LAVORATORE A CHAT FRAGMENT
+            val bundleDipendente = it
+            btnChat.setOnClickListener {
+                Navigation.findNavController(it).navigate(R.id.action_lavoratoreFragment_to_chatFragment,bundleDipendente)
+            }
+
             prova?.let {
                 campoNome.text = it.nome
                 campoTempo.text = it.tempo

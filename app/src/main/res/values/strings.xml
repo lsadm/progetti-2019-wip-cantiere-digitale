@@ -51,6 +51,11 @@
     <string name="empty"/>
     <string name="Svolti">Svolti</string>
     <string name="NOME">Nome</string>
+    <string name="Chat">chat</string>
+    <string name="chat_title">Stai chattando con:</string>
+    <string name="chat_messaggio">Messaggio</string>
+    <string name="invia">Invia</string>
+    <string name="messaggi">Messaggi</string>
 
     //spinner
 

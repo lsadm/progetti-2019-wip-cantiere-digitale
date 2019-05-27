@@ -1,4 +1,6 @@
 package com.example.wipcantieredigitale
+
+
 import android.content.ContentValues
 import android.os.Bundle
 import android.support.v4.app.Fragment
@@ -7,21 +9,22 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
- import com.example.wipcantieredigitale.datamodel.login
+import com.example.wipcantieredigitale.datamodel.login
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
-
 import kotlinx.android.synthetic.main.fragment_capo.*
 
-class CapoFragment: Fragment() {
+
+class MessaggiFragment : Fragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-         return inflater.inflate(R.layout.fragment_capo, container, false)
+        // Inflate the layout for this fragment
+        return inflater.inflate(R.layout.fragment_messaggi, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -31,18 +34,22 @@ class CapoFragment: Fragment() {
         myRef.addListenerForSingleValueEvent(object : ValueEventListener {
             var lista=ArrayList<login?>()
             override fun onDataChange(dataSnapshot: DataSnapshot) {
-                 for (dsp in dataSnapshot.getChildren()) {
-                     if(dsp.getValue(login::class.java)!!.classe=="Lavoratore")
-                         lista.add(dsp.getValue(login::class.java)) //add result into array list
+                for (dsp in dataSnapshot.getChildren()) {
+                    if(dsp.getValue(login::class.java)!!.classe=="Lavoratore")
+                        lista.add(dsp.getValue(login::class.java)) //add result into array list
 
                 }
                 listLavoratori.layoutManager = LinearLayoutManager(activity)
-            listLavoratori.adapter = CapoAdapter(lista, requireContext())}
+                listLavoratori.adapter = CapoAdapter(lista, requireContext())}
 
-                override fun onCancelled(error: DatabaseError) {
-                    // Failed to read value
-                    Log.w(ContentValues.TAG, "Failed to read value.", error.toException())
-                }
+            override fun onCancelled(error: DatabaseError) {
+                // Failed to read value
+                Log.w(ContentValues.TAG, "Failed to read value.", error.toException())
+            }
         })
     }
+
+
+
+
 }
