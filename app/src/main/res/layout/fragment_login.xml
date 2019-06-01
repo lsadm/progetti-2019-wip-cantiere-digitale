@@ -16,7 +16,7 @@
                                                      android:layout_height="wrap_content"
                                                      android:id="@+id/linearLayout">
             <EditText
-                    android:layout_width="200dp"
+                    android:layout_width="0dp"
                     android:layout_height="45dp"
                     android:inputType="textPersonName"
                     android:textColor="@color/common_google_signin_btn_text_dark_focused"
@@ -24,13 +24,14 @@
                     android:drawableStart="@android:drawable/ic_dialog_email"
                     android:ems="10"
                     android:hint="@string/email"
-                    android:background="#11000000"
+                    android:background="#EFEFF0"
                     android:id="@+id/editmail"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintHorizontal_bias="0.497" app:layout_constraintEnd_toEndOf="parent"
-                    android:layout_marginTop="40dp" app:layout_constraintTop_toBottomOf="@+id/intro"/>
+                    android:layout_marginTop="16dp" app:layout_constraintTop_toBottomOf="@+id/tvHint"
+                    android:layout_marginStart="64dp" android:layout_marginEnd="64dp"/>
             <EditText
-                    android:layout_width="200dp"
+                    android:layout_width="0dp"
                     android:layout_height="45dp"
                     android:inputType="textPassword"
                     android:textColor="@color/common_google_signin_btn_text_dark_focused"
@@ -38,20 +39,20 @@
                     android:drawableStart="@drawable/ic_action_password"
                     android:ems="10"
                     android:hint="@string/Password"
-                    android:background="#11000000"
+                    android:background="#EFEFF0"
                     android:id="@+id/idpass"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintHorizontal_bias="0.5" app:layout_constraintEnd_toEndOf="parent"
-                    android:layout_marginTop="16dp" app:layout_constraintTop_toBottomOf="@+id/editmail"/>
+                    android:layout_marginTop="8dp" app:layout_constraintTop_toBottomOf="@+id/editmail"
+                    android:layout_marginStart="64dp" android:layout_marginEnd="64dp"/>
             <Button
                     android:text="@string/accedilogin"
-                    android:layout_width="250dp"
+                    android:layout_width="0dp"
                     android:layout_height="50dp" android:id="@+id/btnSignin"
-                    app:layout_constraintStart_toStartOf="parent" app:layout_constraintHorizontal_bias="0.498"
-                    app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/idpass"
-                    android:layout_marginTop="32dp" android:textSize="18sp" android:textColor="#FFFFFF"
-                    android:backgroundTint="#4D1CD6"/>
+                    android:layout_marginTop="24dp" android:textSize="18sp" android:textColor="#FFFFFF"
+                    android:backgroundTint="#4D1CD6"
+                    app:layout_constraintStart_toStartOf="@+id/idpass" app:layout_constraintEnd_toEndOf="@+id/idpass"/>
             <TextView
                     android:text="@string/welcome1"
                     android:layout_width="wrap_content"
@@ -75,6 +76,14 @@
                     app:layout_constraintHorizontal_bias="0.5" app:layout_constraintEnd_toEndOf="parent"
                     android:layout_marginTop="16dp" app:layout_constraintTop_toBottomOf="@+id/welcome2"
                     android:textSize="18sp" android:textAlignment="center"/>
+            <TextView
+                    android:text="@string/tvHint"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/tvHint" android:textSize="18sp"
+                    android:layout_marginTop="50dp" app:layout_constraintTop_toBottomOf="@+id/intro"
+                    app:layout_constraintStart_toStartOf="@+id/editmail"
+                    app:layout_constraintEnd_toEndOf="@+id/editmail" android:textStyle="bold"/>
         </android.support.constraint.ConstraintLayout>
     </ScrollView>
 

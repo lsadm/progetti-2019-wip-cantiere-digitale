@@ -1,24 +1,22 @@
 package com.example.wipcantieredigitale
 
- import android.app.Activity
  import android.os.Bundle
- import android.support.v4.app.ActivityCompat
  import android.support.v7.app.AppCompatActivity
 
  import com.example.wipcantieredigitale.datamodel.hideKeyboard
- import com.example.wipcantieredigitale.datamodel.login
+ import com.example.wipcantieredigitale.datamodel.Utente
 
 
 class MainActivity :  AppCompatActivity() {
-protected var globalL:login?=null
-   public fun setL(a: login?){
+protected var globalL:Utente?=null
+   public fun setL(a: Utente?){
     globalL=a}
 
     fun init(){
-        globalL=login()}
+        globalL=Utente()}
 
 
-   public fun getL():login?{
+   public fun getL():Utente?{
         return globalL
     }
     override fun onCreate(savedInstanceState: Bundle?) {

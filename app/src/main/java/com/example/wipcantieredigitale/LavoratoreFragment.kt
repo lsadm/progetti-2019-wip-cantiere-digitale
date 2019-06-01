@@ -7,10 +7,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.Navigation
-import com.example.wipcantieredigitale.datamodel.login
-import com.google.firebase.auth.FirebaseAuth
+import com.example.wipcantieredigitale.datamodel.Utente
 import kotlinx.android.synthetic.main.fragment_lavoratore.*
-import kotlinx.android.synthetic.main.fragment_compiti.*
 
 class LavoratoreFragment : Fragment() {
 
@@ -24,7 +22,7 @@ class LavoratoreFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         arguments?.let {
-            val prova: login? = it.getParcelable("scelta")
+            val prova: Utente? = it.getParcelable("scelta")
 
             //PASSAGGIO INFO LAVORATORE A CHAT FRAGMENT
             val bundleDipendente = it

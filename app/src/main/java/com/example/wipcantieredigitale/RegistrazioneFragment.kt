@@ -1,30 +1,19 @@
 package com.example.wipcantieredigitale
 
 
-import android.content.ContentValues
-import android.content.Intent
-import android.icu.text.TimeZoneFormat
 import android.os.Bundle
-import android.os.Handler
 import android.support.v4.app.Fragment
-import android.support.v4.app.FragmentManager
-import android.support.v4.app.FragmentTransaction
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.Navigation
-import com.example.wipcantieredigitale.datamodel.login
+import com.example.wipcantieredigitale.datamodel.Utente
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import android.widget.Toast
-import com.example.wipcantieredigitale.datamodel.hideKeyboard
-import com.google.android.gms.tasks.OnCompleteListener
-import com.google.firebase.auth.AuthResult
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.FirebaseUser
 
 import kotlinx.android.synthetic.main.fragment_registrazione.*
 import kotlinx.android.synthetic.main.fragment_registrazione.editUsername
@@ -32,7 +21,6 @@ import kotlinx.android.synthetic.main.fragment_registrazione.idpass
 import kotlinx.android.synthetic.main.fragment_registrazione.editNome
 import kotlinx.android.synthetic.main.fragment_registrazione.editCognome
 import java.text.SimpleDateFormat
-import java.time.LocalDateTime
 import java.util.*
 
 
@@ -41,18 +29,16 @@ class RegistrazioneFragment : Fragment() {
     var mAuth = FirebaseAuth.getInstance()
     var database = FirebaseDatabase.getInstance()
 
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         return inflater.inflate(R.layout.fragment_registrazione, container, false)
-
-
     }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        button2.setOnClickListener {
+        btnCrea.setOnClickListener {
 
             val email = idpass.text.toString().trim()
             val password = editp.text.toString().trim()
@@ -61,52 +47,59 @@ class RegistrazioneFragment : Fragment() {
                 idpass.error = "Email richiesta"
                 idpass.requestFocus()
                 return@setOnClickListener
-
             }
-
             if (password.isEmpty() || password.length < 6) {
                 idpass.error = "6 caratteri richiesti"
                 idpass.requestFocus()
                 return@setOnClickListener
             }
 
+            mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener { task->
 
+                if(task.isSuccessful){
 
-            mAuth.createUserWithEmailAndPassword(email, password)
-                .addOnCompleteListener { task->
+                    val utentiRef = database.getReference("utenti")
+                    val currentUid = mAuth!!.currentUser!!.uid
+                    val currentUidRef = utentiRef.child(currentUid)
 
-                    if(task.isSuccessful){
+                    val dateFormatter = SimpleDateFormat("dd/MM/yyyy hh.mm.ss")
+                    dateFormatter.setTimeZone(TimeZone.getTimeZone("GMT+2"));
+                    dateFormatter.isLenient = false
+                    val today = Date()
+                    val s = dateFormatter.format(today)
 
-                        val utenti = database.getReference("utenti")
+                    var datiUtente = Utente(editUsername.text.toString(),editp.text.toString(),idpass.text.toString(),editNome.text.toString(),editCognome.text.toString(),mySpinner.getSelectedItem().toString(),s)
+                    currentUidRef.setValue(datiUtente)
+                    //currentUidRef.child("compiti").push()
 
-                        val user = mAuth!!.currentUser!!.uid
+                    val classeRef = utentiRef.child(currentUid).child("classe")
 
+                    classeRef.addValueEventListener(object: ValueEventListener {
 
-                        val myRef = utenti.child(user)
+                        override fun onCancelled(p0: DatabaseError){
+                            //niente
+                        }
 
+                        override fun onDataChange(snapshot: DataSnapshot) {
 
+                            val valore=snapshot.getValue(String::class.java)
 
-
-                                val dateFormatter = SimpleDateFormat("dd/MM/yyyy hh.mm.ss")
-                                dateFormatter.setTimeZone(TimeZone.getTimeZone("GMT+2"));
-                                dateFormatter.isLenient = false
-                                val today = Date()
-                                val s = dateFormatter.format(today)
-
-
-                                var nameList= login(editUsername.text.toString(),editp.text.toString(),idpass.text.toString(),editNome.text.toString(),editCognome.text.toString(),mySpinner.getSelectedItem().toString(),s)
-                                myRef.setValue(nameList)
-                                myRef.child("compiti").push()
-
-
-                                Navigation.findNavController(it).navigateUp()
-                                fragmentManager?.popBackStack()
-                                ;}
-
-
-                else{
-                        Toast.makeText(context , "L'account è già stato registrato" , Toast.LENGTH_SHORT).show()
-                    }}}}}
+                            if (valore == "Capo") {
+                                Navigation.findNavController(it).navigate(R.id.action_registrazioneFragment_to_capoFragment2)
+                            }
+                            else {
+                                Navigation.findNavController(it).navigate(R.id.action_registrazioneFragment_to_compitiFragment)
+                            }
+                        }
+                    })
+                }
+                else {
+                    Toast.makeText(context , "L'account è già stato registrato" , Toast.LENGTH_SHORT).show()
+                }
+            }
+        }
+    }
+}
 
 
 

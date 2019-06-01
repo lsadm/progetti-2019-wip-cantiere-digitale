@@ -9,7 +9,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.example.wipcantieredigitale.datamodel.login
+import com.example.wipcantieredigitale.datamodel.Utente
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
@@ -32,11 +32,11 @@ class MessaggiFragment : Fragment() {
         val database = FirebaseDatabase.getInstance()
         val myRef = database.getReference()
         myRef.addListenerForSingleValueEvent(object : ValueEventListener {
-            var lista=ArrayList<login?>()
+            var lista=ArrayList<Utente?>()
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 for (dsp in dataSnapshot.getChildren()) {
-                    if(dsp.getValue(login::class.java)!!.classe=="Lavoratore")
-                        lista.add(dsp.getValue(login::class.java)) //add result into array list
+                    if(dsp.getValue(Utente::class.java)!!.classe=="Lavoratore")
+                        lista.add(dsp.getValue(Utente::class.java)) //add result into array list
 
                 }
                 listLavoratori.layoutManager = LinearLayoutManager(activity)

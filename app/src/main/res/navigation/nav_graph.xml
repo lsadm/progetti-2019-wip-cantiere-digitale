@@ -2,15 +2,12 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
             xmlns:app="http://schemas.android.com/apk/res-auto"
             xmlns:tools="http://schemas.android.com/tools" android:id="@+id/nav_graph"
-            app:startDestination="@id/welcomeFragment">
+            app:startDestination="@id/splashScreen">
 
     <fragment android:id="@+id/loginFragment" android:name="com.example.wipcantieredigitale.LoginFragment"
               android:label="fragment_login" tools:layout="@layout/fragment_login">
         <action android:id="@+id/action_loginFragment_to_capoFragment" app:destination="@id/capoFragment"/>
         <action android:id="@+id/action_loginFragment_to_compitiFragment" app:destination="@id/compitiFragment"/>
-        <action android:id="@+id/action_loginFragment_to_registrazioneFragment"
-                app:destination="@id/registrazioneFragment"/>
-        <action android:id="@+id/action_loginFragment_to_welcomeFragment" app:destination="@id/welcomeFragment"/>
     </fragment>
     <fragment android:id="@+id/capoFragment" android:name="com.example.wipcantieredigitale.CapoFragment"
               android:label="fragment_capo" tools:layout="@layout/fragment_capo">
@@ -35,7 +32,10 @@
     <fragment android:id="@+id/registrazioneFragment"
               android:name="com.example.wipcantieredigitale.RegistrazioneFragment"
               android:label="RegistrazioneFragment">
-        <action android:id="@+id/action_registrazioneFragment_to_loginFragment" app:destination="@+id/loginFragment"/>
+        <action android:id="@+id/action_registrazioneFragment_to_capoFragment2" app:destination="@id/capoFragment"/>
+        <action android:id="@+id/action_registrazioneFragment_to_compitiFragment"
+                app:destination="@id/compitiFragment"/>
+        <action android:id="@+id/action_registrazioneFragment_to_loginFragment" app:destination="@id/loginFragment"/>
     </fragment>
     <fragment android:id="@+id/aggiungiCompitoFragment"
               android:name="com.example.wipcantieredigitale.AggiungiCompitoFragment"
@@ -53,4 +53,8 @@
               android:label="fragment_chat" tools:layout="@layout/fragment_chat"/>
     <fragment android:id="@+id/messaggiFragment" android:name="com.example.wipcantieredigitale.MessaggiFragment"
               android:label="fragment_messaggi" tools:layout="@layout/fragment_messaggi"/>
+    <fragment android:id="@+id/splashScreen" android:name="com.example.wipcantieredigitale.SplashScreen"
+              android:label="fragment_splash_screen" tools:layout="@layout/fragment_splash_screen">
+        <action android:id="@+id/action_splashScreen_to_welcomeFragment" app:destination="@id/welcomeFragment"/>
+    </fragment>
 </navigation>

@@ -9,14 +9,12 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.Navigation
 import com.example.wipcantieredigitale.datamodel.compito
-import com.example.wipcantieredigitale.datamodel.login
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 
 import kotlinx.android.synthetic.main.fragment_compiti.*
-import kotlinx.android.synthetic.main.riga_compito.*
 
 /**
  *

@@ -1,29 +1,19 @@
 package com.example.wipcantieredigitale
 
 
-import android.content.ContentValues
 import android.os.Bundle
 import android.support.v4.app.Fragment
-import android.support.v7.widget.LinearLayoutManager
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.navigation.Navigation
 import com.example.wipcantieredigitale.datamodel.Chat
-import com.example.wipcantieredigitale.datamodel.login
+import com.example.wipcantieredigitale.datamodel.Utente
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import kotlinx.android.synthetic.main.fragment_chat.*
-import kotlinx.android.synthetic.main.fragment_lavoratore.*
-import kotlinx.android.synthetic.main.fragment_registrazione.*
-import kotlinx.android.synthetic.main.riga_chat.*
-import java.text.SimpleDateFormat
-import java.util.*
-import kotlin.collections.ArrayList
 
 class ChatFragment : Fragment() {
 
@@ -41,7 +31,7 @@ class ChatFragment : Fragment() {
 
         //Recupero username lavoratore
         arguments?.let {
-            val prova: login? = it.getParcelable("scelta")
+            val prova: Utente? = it.getParcelable("scelta")
             prova?.let {
                 nomeDipendente.text = it.username
 

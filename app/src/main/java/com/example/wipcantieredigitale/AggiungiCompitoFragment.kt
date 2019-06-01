@@ -12,14 +12,12 @@ import android.widget.Toast
 import androidx.navigation.Navigation
 import com.example.wipcantieredigitale.datamodel.compito
 import com.example.wipcantieredigitale.datamodel.hideKeyboard
-import com.example.wipcantieredigitale.datamodel.login
+import com.example.wipcantieredigitale.datamodel.Utente
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import kotlinx.android.synthetic.main.fragment_aggiungi_compito.*
-import com.google.firebase.database.DatabaseReference
-import kotlinx.android.synthetic.main.fragment_compiti.*
 
 
 class AggiungiCompitoFragment : Fragment() {
@@ -38,7 +36,7 @@ class AggiungiCompitoFragment : Fragment() {
         idDone.setOnClickListener{
             if(!idAggiungiCompito.text.toString().equals(""))
         arguments?.let {
-            val prova: login? = it.getParcelable("scelta")
+            val prova: Utente? = it.getParcelable("scelta")
             prova?.let {
                 prova.username=it.username
             }
