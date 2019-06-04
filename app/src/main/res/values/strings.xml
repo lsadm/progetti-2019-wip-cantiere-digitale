@@ -10,6 +10,7 @@
     <string name="Signin">Accedi</string>
     <string name="welcome1">Benvenuto su</string>
     <string name="welcome2">Wip!</string>
+    <string name="incaricato">Incaricato!</string>
 
     <string name="compito">ID compito</string>
     <string name="descrizione">Descrizione</string>
@@ -62,6 +63,10 @@
     <string name="chat">Chat</string>
     <string name="dipendenti">Dipendenti</string>
     <string name="attività">Attività</string>
+    <string name="mittente">Mittente</string>
+    <string name="destinatario">Destinatario</string>
+    <string name="InserireM">Inserire Messaggio</string>
+    <string name="MessRicevuti">Messaggi Ricevuti</string>
 
     //spinner
 

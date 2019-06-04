@@ -6,21 +6,21 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import com.example.wipcantieredigitale.datamodel.Messaggio
 
-class MessaggiAdapter(val dataset: ArrayList<Messaggio?>, val context: Context) : RecyclerView.Adapter<RigaChatViewHolder>() {
+class MessaggiAdapter(val dataset: ArrayList<Messaggio?>, val context: Context) : RecyclerView.Adapter<MessaggioRiga>() {
 
-    override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): RigaChatViewHolder {
-        return RigaChatViewHolder(LayoutInflater.from(context).inflate(R.layout.riga_chat, viewGroup, false))
+    override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): MessaggioRiga {
+        return MessaggioRiga(LayoutInflater.from(context).inflate(R.layout.riga_messaggio, viewGroup, false))
     }
 
     override fun getItemCount(): Int {
         return dataset.size
     }
 
-    override fun onBindViewHolder(viewHolder: RigaChatViewHolder, position: Int) {
+    override fun onBindViewHolder(viewHolder: MessaggioRiga, position: Int) {
 
-        val chat = dataset.get(position)
-        viewHolder.tvMessaggio.text = chat?.messaggio
-
+        val messaggio = dataset.get(position)
+        viewHolder.tvMessaggio.text = messaggio?.testo
+        viewHolder.tvMittente.text=messaggio?.mittente
     }
 
 }

@@ -24,11 +24,12 @@ class DipendenteFragment : Fragment() {
         arguments?.let {
             val dipendente: Utente? = it.getParcelable("dipendente scelto")
 
-            /*//PASSAGGIO INFO LAVORATORE A CHAT FRAGMENT
+
             val bundleDipendente = it
             btnChat.setOnClickListener {
-                Navigation.findNavController(it).navigate(R.id.action_dipendenteFragment_to_chatFragment,bundleDipendente)
-            }*/
+                Navigation.findNavController(it)
+                    .navigate(R.id.action_dipendenteFragment_to_chatFragment, bundleDipendente)
+            }
 
             dipendente?.let {
                 campoNome.text = it.nome

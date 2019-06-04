@@ -30,6 +30,7 @@ class CompitoFragment : Fragment() {
             compito?.let {
                 tvNomeCompito.text = it.nome
                 tvDescrizionee.text = it.descrizione
+                Incaricato.text=it.dipendenteMail
             }
             if (compito?.done == true)
                 btnFatto.setVisibility(View.GONE);

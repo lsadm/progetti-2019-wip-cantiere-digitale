@@ -6,21 +6,23 @@
                                              tools:context=".CapoFragment">
     <android.support.v7.widget.RecyclerView
             android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:id="@+id/listDipendenti"
-            android:scrollbars="vertical"
-            tools:listitem="@layout/riga_dipendente"
-            app:layout_constraintTop_toBottomOf="@+id/title_fragment_capo" app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" app:layout_constraintHorizontal_bias="0.54"
-            app:layout_constraintBottom_toBottomOf="parent">
-    </android.support.v7.widget.RecyclerView>
+    android:layout_height="0dp"
+    android:id="@+id/listDipendenti"
+    android:scrollbars="vertical"
+    tools:listitem="@layout/riga_dipendente"
+    app:layout_constraintTop_toBottomOf="@+id/title_fragment_capo" app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent" app:layout_constraintHorizontal_bias="0.54"
+    app:layout_constraintBottom_toBottomOf="parent">
+</android.support.v7.widget.RecyclerView>
     <TextView
             android:text="@string/dipendenti"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" android:id="@+id/title_fragment_capo"
             app:layout_constraintTop_toTopOf="parent"
-            android:layout_marginTop="32dp" app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginStart="32dp" android:textColor="#4D1CD6" android:textSize="30sp"/>
+            android:layout_marginTop="8dp" app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="32dp" android:textColor="#4D1CD6" android:textSize="30sp"
+            android:layout_marginEnd="8dp" app:layout_constraintEnd_toStartOf="@+id/ListaAttivitá"
+            app:layout_constraintHorizontal_bias="0.0"/>
     <Button
             android:text="@string/attività"
             android:layout_width="wrap_content"
@@ -28,5 +30,6 @@
             android:id="@+id/ListaAttivitá"
             app:layout_constraintTop_toTopOf="parent"
             android:backgroundTint="#4D1CD6" android:textColor="@color/common_google_signin_btn_text_dark_default"
-            android:layout_marginTop="32dp" android:layout_marginEnd="16dp" app:layout_constraintEnd_toEndOf="parent"/>
+            app:layout_constraintEnd_toEndOf="parent" android:layout_marginTop="8dp" android:layout_marginEnd="16dp"
+            app:layout_constraintBottom_toTopOf="@+id/listDipendenti"/>
 </android.support.constraint.ConstraintLayout>

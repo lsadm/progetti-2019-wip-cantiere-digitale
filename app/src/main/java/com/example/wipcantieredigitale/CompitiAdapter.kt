@@ -26,7 +26,6 @@ class CompitiAdapter(val dataset: ArrayList<Compito?>, val context: Context) : R
 
         viewHolder.nome.text = compito?.nome
         viewHolder.descrizione.text = compito?.descrizione
-
         if(compito!!.done)
             viewHolder.nome.setChecked(true)
 
