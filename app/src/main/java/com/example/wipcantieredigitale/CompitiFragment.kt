@@ -86,10 +86,12 @@ class CompitiFragment: Fragment() {
         fabChat.setOnClickListener {
             arguments?.let {
                 val dipendente: Utente? = it.getParcelable("dipendente scelto")
+                val ruoloFlag: String? = it.getString("ruolo dipendente")
 
                 val bundle = Bundle()
                 bundle.putParcelable("dipendente scelto", dipendente)
-             Navigation.findNavController(view).navigate(R.id.action_compitiFragment_to_messaggiFragment)
+                bundle.putString("ruolo dipendente", ruoloFlag)
+             Navigation.findNavController(view).navigate(R.id.action_compitiFragment_to_messaggiFragment,bundle)
 
             }
         }

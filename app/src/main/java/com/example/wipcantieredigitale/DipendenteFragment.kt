@@ -28,7 +28,7 @@ class DipendenteFragment : Fragment() {
             val bundleDipendente = it
             btnChat.setOnClickListener {
                 Navigation.findNavController(it)
-                    .navigate(R.id.action_dipendenteFragment_to_chatFragment, bundleDipendente)
+                    .navigate(R.id.action_dipendenteFragment_to_chat, bundleDipendente)
             }
 
             dipendente?.let {

@@ -3,27 +3,28 @@
                                              xmlns:app="http://schemas.android.com/apk/res-auto"
                                              xmlns:tools="http://schemas.android.com/tools"
                                              android:layout_width="match_parent"
-                                             android:layout_height="wrap_content">
+                                             android:layout_height="200dp">
 
     <TextView
             android:text="@string/chat_messaggio"
-            android:layout_width="101dp"
-            android:layout_height="31dp"
+            android:layout_width="375dp"
+            android:layout_height="63dp"
             android:id="@+id/textMessaggio"
             android:textSize="18sp" app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginEnd="8dp" app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginStart="8dp" app:layout_constraintHorizontal_bias="0.068" android:layout_marginTop="8dp"
+            android:layout_marginStart="8dp" android:layout_marginTop="8dp"
             app:layout_constraintTop_toTopOf="@+id/textMittente" android:layout_marginBottom="8dp"
-            app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintVertical_bias="1.0"/>
+            app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintVertical_bias="0.598"
+            app:layout_constraintHorizontal_bias="0.4"/>
     <TextView
             android:text="@string/mittente"
-            android:layout_width="81dp"
-            android:layout_height="74dp"
+            android:layout_width="315dp"
+            android:layout_height="71dp"
             android:id="@+id/textMittente" app:layout_constraintEnd_toStartOf="@+id/textMessaggio"
             android:layout_marginEnd="18dp"
             app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="18dp"
             android:textSize="18sp"
-            android:textColor="#3F51B5" app:layout_constraintHorizontal_bias="0.0"
+            android:textColor="#3F51B5" app:layout_constraintHorizontal_bias="0.006"
             app:layout_constraintTop_toTopOf="parent"
-    />
+            android:layout_marginTop="4dp"/>
 </android.support.constraint.ConstraintLayout>
