@@ -5,18 +5,9 @@
                                              android:layout_height="match_parent"
                                              tools:context=".CompitiFragment">
     <TextView
-            android:text="@string/Svolti"
-            android:layout_width="wrap_content"
-            android:layout_height="0dp"
-            android:id="@+id/Svolte"
-            app:layout_constraintStart_toEndOf="@+id/title_fragment_capo2" android:layout_marginStart="8dp"
-            android:textAlignment="center" android:textSize="18sp"
-            app:layout_constraintTop_toTopOf="@+id/title_fragment_capo2"
-            app:layout_constraintBottom_toBottomOf="@+id/title_fragment_capo2" android:gravity="center"/>
-    <TextView
             android:text="@string/lista_attivita"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" android:id="@+id/title_fragment_capo2"
+            android:layout_height="wrap_content" android:id="@+id/tvHint"
             app:layout_constraintTop_toTopOf="parent"
             android:layout_marginTop="32dp" app:layout_constraintStart_toStartOf="parent"
             android:textColor="#4D1CD6" android:textSize="30sp" android:layout_marginStart="32dp"/>
@@ -24,15 +15,15 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent"
-            android:id="@+id/ListaCompiti" android:scrollbars="vertical"
+            android:id="@+id/listCompiti" android:scrollbars="vertical"
             tools:listitem="@layout/riga_compito" app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintTop_toBottomOf="@+id/title_fragment_capo2" android:layout_marginTop="32dp">
+            app:layout_constraintTop_toBottomOf="@+id/tvHint" android:layout_marginTop="32dp">
     </android.support.v7.widget.RecyclerView>
     <android.support.design.widget.FloatingActionButton
 
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:clickable="true" android:id="@+id/fabAggiungiCompito" android:focusableInTouchMode="false"
+            android:clickable="true" android:id="@+id/fabAddCompito" android:focusableInTouchMode="false"
             android:layout_marginEnd="24dp" app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginBottom="44dp"
             app:layout_constraintBottom_toBottomOf="parent" app:backgroundTint="#4D1CD6"
@@ -43,15 +34,7 @@
             android:layout_height="wrap_content"
             android:clickable="true" android:id="@+id/fabChat"
             android:layout_marginBottom="8dp"
-            app:layout_constraintBottom_toTopOf="@+id/fabAggiungiCompito"
-            app:layout_constraintEnd_toEndOf="@+id/fabAggiungiCompito"
-            app:layout_constraintStart_toStartOf="@+id/fabAggiungiCompito"/>
-    <TextView
-            android:text="@string/empty"
-            android:layout_width="50dp"
-            android:layout_height="0dp"
-            android:id="@+id/numero"
-            app:layout_constraintStart_toEndOf="@+id/Svolte" android:layout_marginStart="8dp"
-            app:layout_constraintTop_toTopOf="@+id/Svolte" app:layout_constraintBottom_toBottomOf="@+id/Svolte"
-            android:textAlignment="center" android:gravity="center"/>
+            app:layout_constraintBottom_toTopOf="@+id/fabAddCompito"
+            app:layout_constraintEnd_toEndOf="@+id/fabAddCompito"
+            app:layout_constraintStart_toStartOf="@+id/fabAddCompito"/>
 </android.support.constraint.ConstraintLayout>

@@ -10,27 +10,28 @@ import androidx.navigation.Navigation
 import com.example.wipcantieredigitale.datamodel.Utente
 
 
-class CapoAdapter(val dataset: ArrayList<Utente?>, val context: Context) : RecyclerView.Adapter<LavoratoreRiga>() {
+class CapoAdapter(val dataset: ArrayList<Utente?>, val context: Context) : RecyclerView.Adapter<DipendenteRiga>() {
 
-    override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): LavoratoreRiga {
-        return LavoratoreRiga(LayoutInflater.from(context).inflate(R.layout.riga_lavoratore, viewGroup, false))
+    override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): DipendenteRiga {
+        return DipendenteRiga(LayoutInflater.from(context).inflate(R.layout.riga_dipendente, viewGroup, false))
     }
 
     override fun getItemCount(): Int {
         return dataset.size
     }
 
-    override fun onBindViewHolder(viewHolder: LavoratoreRiga, position: Int) {
+    override fun onBindViewHolder(viewHolder: DipendenteRiga, position: Int) {
 
-        val worker = dataset.get(position)
+        val dipendente = dataset.get(position)
 
-        viewHolder.tvNome.text = (worker?.nome+" "+worker?.cognome)
-        viewHolder.tvDati.text = worker?.username
+        viewHolder.NomeCognome.text = (dipendente?.nome+" "+dipendente?.cognome)
+        viewHolder.Mail.text = dipendente?.mail
+
         viewHolder.itemView.setOnClickListener {
 
-            val b = Bundle()
-            b.putParcelable("scelta", worker)
-            Navigation.findNavController(it).navigate(R.id.action_capoFragment_to_lavoratoreFragment, b)
+            val dipendenteBundle = Bundle()
+            dipendenteBundle.putParcelable("dipendente scelto", dipendente)
+            Navigation.findNavController(it).navigate(R.id.action_capoFragment_to_dipendenteFragment, dipendenteBundle)
 
         }
     }

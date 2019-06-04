@@ -1,24 +1,17 @@
 package com.example.wipcantieredigitale
 
 
-import android.content.ContentValues
 import android.os.Bundle
-import android.provider.SyncStateContract.Helpers.update
 import android.support.v4.app.Fragment
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.Navigation
-import com.example.wipcantieredigitale.datamodel.compito
-import com.google.firebase.database.DataSnapshot
-import com.google.firebase.database.DatabaseError
+import com.example.wipcantieredigitale.datamodel.Compito
 import com.google.firebase.database.FirebaseDatabase
-import com.google.firebase.database.ValueEventListener
-import kotlinx.android.synthetic.main.fragment_aggiungi_compito.*
 import kotlinx.android.synthetic.main.fragment_compito.*
-import kotlinx.android.synthetic.main.fragment_compito.idDescrizione
-import kotlinx.android.synthetic.main.fragment_compito.idDone
+import kotlinx.android.synthetic.main.fragment_compito.tvDescrizionee
+import kotlinx.android.synthetic.main.fragment_compito.btnFatto
 
 class CompitoFragment : Fragment() {
 
@@ -32,29 +25,23 @@ class CompitoFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         arguments?.let {
-            val prova: compito? = it.getParcelable("compito")
-            prova?.let {
-                 nomeCompito.text = it.nome
-                idDescrizione.text = it.desc
-             }
-            if(prova?.done==true)
-               idDone.setVisibility(View.GONE);
-            idDone.setOnClickListener{
-        prova?.done=true
-            val database=FirebaseDatabase.getInstance( )
-            val myRef = database.getReference((activity as MainActivity).getL()!!.username ).child("compiti").child(prova!!.nome)
-            myRef.addListenerForSingleValueEvent (object : ValueEventListener {
 
-                override fun onDataChange(dataSnapshot: DataSnapshot) {
+            val compito: Compito? = it.getParcelable("compito scelto")
+            compito?.let {
+                tvNomeCompito.text = it.nome
+                tvDescrizionee.text = it.descrizione
+            }
+            if (compito?.done == true)
+                btnFatto.setVisibility(View.GONE);
+            btnFatto.setOnClickListener {
 
-                    myRef.setValue(prova)
-                    Navigation.findNavController(view).navigateUp()
-                }
+                val database = FirebaseDatabase.getInstance()
+                val compitoRef = database.getReference().child("compiti").child(compito!!.codCompito)
+                compitoRef.child("done").setValue(true)
 
-                override  fun onCancelled(error: DatabaseError) {
+                Navigation.findNavController(view).navigateUp()
 
-                    Log.w(ContentValues.TAG, "Failed to read value.", error.toException())} })}
-
-             }
+            }
         }
     }
+}

@@ -2,14 +2,12 @@ package com.example.wipcantieredigitale
 
 
 import android.os.Bundle
-import android.os.Handler
 import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.navigation.Navigation
-import com.example.wipcantieredigitale.datamodel.hideKeyboard
 import com.google.firebase.database.FirebaseDatabase
 import kotlinx.android.synthetic.main.fragment_login.*
 
@@ -41,7 +39,7 @@ class LoginFragment: Fragment() {
             hideKeyboard()
 
             val email = editmail.text.toString().trim()
-            val password = idpass.text.toString().trim()
+            val password = editMail.text.toString().trim()
 
             if (email.isEmpty()) {
                 editmail.error = "email richiesta"
@@ -51,8 +49,8 @@ class LoginFragment: Fragment() {
             }
 
             if (password.isEmpty() || password.length < 6) {
-                idpass.error = "6 caratteri richiesti"
-                idpass.requestFocus()
+                editMail.error = "6 caratteri richiesti"
+                editMail.requestFocus()
                 btnSignin.isClickable=true
                 return@setOnClickListener
             }
@@ -61,11 +59,11 @@ class LoginFragment: Fragment() {
 
                 if(task.isSuccessful){
 
-                    val user = mAuth!!.currentUser!!.uid
-                    val utenti = database.getReference("utenti")
-                    val classe = utenti.child(user).child("classe")
+                    val currentUID = mAuth!!.currentUser!!.uid
+                    val utentiRef = database.getReference("utenti")
+                    val ruoloRef = utentiRef.child(currentUID).child("ruolo")
 
-                    classe.addValueEventListener(object: ValueEventListener {
+                    ruoloRef.addValueEventListener(object: ValueEventListener {
 
                         override fun onCancelled(p0: DatabaseError){
                             //niente
@@ -79,7 +77,9 @@ class LoginFragment: Fragment() {
                                 Navigation.findNavController(it).navigate(R.id.action_loginFragment_to_capoFragment)
                             }
                             else {
-                                Navigation.findNavController(it).navigate(R.id.action_loginFragment_to_compitiFragment)
+                                val ruoloFlag = Bundle()
+                                ruoloFlag.putString("ruolo dipendente", valore)
+                                Navigation.findNavController(it).navigate(R.id.action_loginFragment_to_compitiFragment,ruoloFlag)
                             }
                         }
                     })

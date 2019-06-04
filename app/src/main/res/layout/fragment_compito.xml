@@ -17,30 +17,30 @@
             <TextView
                     android:text="@string/compito"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" android:id="@+id/nomeCompito"
+                    android:layout_height="wrap_content" android:id="@+id/tvNomeCompito"
                     app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="32dp"
                     app:layout_constraintTop_toTopOf="parent" android:layout_marginTop="32dp"
                     android:textSize="30sp"
                     android:textColor="#4D1CD6"/>
             <TextView
                     android:layout_width="0dp"
-                    android:layout_height="300dp" android:id="@+id/idDescrizione"
+                    android:layout_height="300dp" android:id="@+id/tvDescrizionee"
                     android:layout_marginTop="32dp"
-                    app:layout_constraintTop_toBottomOf="@+id/nomeCompito"
+                    app:layout_constraintTop_toBottomOf="@+id/tvNomeCompito"
                     android:text="@string/descrizione" android:visibility="visible" tools:visibility="visible"
                     android:background="?attr/colorButtonNormal" app:layout_constraintEnd_toEndOf="parent"
                     android:layout_marginEnd="32dp"
-                    app:layout_constraintStart_toStartOf="@+id/nomeCompito" android:textAlignment="center"
+                    app:layout_constraintStart_toStartOf="@+id/tvNomeCompito" android:textAlignment="center"
                     android:textSize="18sp" android:backgroundTint="#25818181"/>
             <Button
                     android:layout_width="0dp"
                     android:layout_height="80dp"
-                    android:id="@+id/idDone"
+                    android:id="@+id/btnFatto"
                     android:text="@string/Done"
                     android:layout_marginTop="32dp"
-                    app:layout_constraintTop_toBottomOf="@+id/idDescrizione"
-                    app:layout_constraintEnd_toEndOf="@+id/idDescrizione"
-                    app:layout_constraintStart_toStartOf="@+id/idDescrizione" android:textColor="#FFFFFF"
+                    app:layout_constraintTop_toBottomOf="@+id/tvDescrizionee"
+                    app:layout_constraintEnd_toEndOf="@+id/tvDescrizionee"
+                    app:layout_constraintStart_toStartOf="@+id/tvDescrizionee" android:textColor="#FFFFFF"
                     android:backgroundTint="#4D1CD6"/>
         </android.support.constraint.ConstraintLayout>
     </ScrollView>

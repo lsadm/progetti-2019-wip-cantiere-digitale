@@ -1,4 +1,4 @@
-package com.example.wipcantieredigitale.datamodel
+package com.example.wipcantieredigitale
 
 import android.app.Activity
 import android.content.Context

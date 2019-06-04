@@ -29,7 +29,7 @@ class MessaggiFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val database = FirebaseDatabase.getInstance()
+       /* val database = FirebaseDatabase.getInstance()
         val myRef = database.getReference()
         myRef.addListenerForSingleValueEvent(object : ValueEventListener {
             var lista=ArrayList<Utente?>()
@@ -39,14 +39,14 @@ class MessaggiFragment : Fragment() {
                         lista.add(dsp.getValue(Utente::class.java)) //add result into array list
 
                 }
-                listLavoratori.layoutManager = LinearLayoutManager(activity)
-                listLavoratori.adapter = CapoAdapter(lista, requireContext())}
+                listDipendenti.layoutManager = LinearLayoutManager(activity)
+                listDipendenti.adapter = CapoAdapter(lista, requireContext())}
 
             override fun onCancelled(error: DatabaseError) {
                 // Failed to read value
                 Log.w(ContentValues.TAG, "Failed to read value.", error.toException())
             }
-        })
+        })*/
     }
 
 

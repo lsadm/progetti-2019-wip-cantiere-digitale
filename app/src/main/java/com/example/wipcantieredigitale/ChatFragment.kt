@@ -27,15 +27,15 @@ class ChatFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val mittente=(activity as MainActivity).getL()
+        /*val mittente=(activity as MainActivity).getL()
 
-        //Recupero username lavoratore
+        //Recupero username dipendente
         arguments?.let {
             val prova: Utente? = it.getParcelable("scelta")
             prova?.let {
-                nomeDipendente.text = it.username
+                //nomeDipendente.text = it.username
 
-                val destinatario = it.username
+                //val destinatario = it.username
 
                 val database = FirebaseDatabase.getInstance()
                 val myRef = database.getReference()
@@ -64,7 +64,7 @@ class ChatFragment : Fragment() {
                     //}
                 }
             }
-        }
+        }*/
     }
 }
 

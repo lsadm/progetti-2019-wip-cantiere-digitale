@@ -16,8 +16,8 @@ import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
 
 import kotlinx.android.synthetic.main.fragment_registrazione.*
-import kotlinx.android.synthetic.main.fragment_registrazione.editUsername
-import kotlinx.android.synthetic.main.fragment_registrazione.idpass
+import kotlinx.android.synthetic.main.fragment_registrazione.editCellulare
+import kotlinx.android.synthetic.main.fragment_registrazione.editMail
 import kotlinx.android.synthetic.main.fragment_registrazione.editNome
 import kotlinx.android.synthetic.main.fragment_registrazione.editCognome
 import java.text.SimpleDateFormat
@@ -40,17 +40,17 @@ class RegistrazioneFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         btnCrea.setOnClickListener {
 
-            val email = idpass.text.toString().trim()
-            val password = editp.text.toString().trim()
+            val email = editMail.text.toString().trim()
+            val password = editPassword.text.toString().trim()
 
             if (email.isEmpty()) {
-                idpass.error = "Email richiesta"
-                idpass.requestFocus()
+                editMail.error = "Email richiesta"
+                editMail.requestFocus()
                 return@setOnClickListener
             }
             if (password.isEmpty() || password.length < 6) {
-                idpass.error = "6 caratteri richiesti"
-                idpass.requestFocus()
+                editMail.error = "6 caratteri richiesti"
+                editMail.requestFocus()
                 return@setOnClickListener
             }
 
@@ -58,9 +58,9 @@ class RegistrazioneFragment : Fragment() {
 
                 if(task.isSuccessful){
 
+                    val currentUID = mAuth!!.currentUser!!.uid
                     val utentiRef = database.getReference("utenti")
-                    val currentUid = mAuth!!.currentUser!!.uid
-                    val currentUidRef = utentiRef.child(currentUid)
+                    val currentUIDRef = utentiRef.child(currentUID)
 
                     val dateFormatter = SimpleDateFormat("dd/MM/yyyy hh.mm.ss")
                     dateFormatter.setTimeZone(TimeZone.getTimeZone("GMT+2"));
@@ -68,13 +68,12 @@ class RegistrazioneFragment : Fragment() {
                     val today = Date()
                     val s = dateFormatter.format(today)
 
-                    var datiUtente = Utente(editUsername.text.toString(),editp.text.toString(),idpass.text.toString(),editNome.text.toString(),editCognome.text.toString(),mySpinner.getSelectedItem().toString(),s)
-                    currentUidRef.setValue(datiUtente)
-                    //currentUidRef.child("compiti").push()
+                    var datiUtente = Utente(editNome.text.toString(),editCognome.text.toString(),editCellulare.text.toString(),editMail.text.toString(),editPassword.text.toString(),mySpinner.getSelectedItem().toString(),s)
+                    currentUIDRef.setValue(datiUtente)
 
-                    val classeRef = utentiRef.child(currentUid).child("classe")
+                    val ruoloRef = utentiRef.child(currentUID).child("ruolo")
 
-                    classeRef.addValueEventListener(object: ValueEventListener {
+                    ruoloRef.addValueEventListener(object: ValueEventListener {
 
                         override fun onCancelled(p0: DatabaseError){
                             //niente
@@ -88,7 +87,9 @@ class RegistrazioneFragment : Fragment() {
                                 Navigation.findNavController(it).navigate(R.id.action_registrazioneFragment_to_capoFragment2)
                             }
                             else {
-                                Navigation.findNavController(it).navigate(R.id.action_registrazioneFragment_to_compitiFragment)
+                                val ruoloFlag = Bundle()
+                                ruoloFlag.putString("ruolo dipendente", valore)
+                                Navigation.findNavController(it).navigate(R.id.action_registrazioneFragment_to_compitiFragment,ruoloFlag)
                             }
                         }
                     })

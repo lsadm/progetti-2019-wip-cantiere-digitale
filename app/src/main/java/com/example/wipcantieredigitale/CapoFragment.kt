@@ -12,7 +12,6 @@ import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
-
 import kotlinx.android.synthetic.main.fragment_capo.*
 
 class CapoFragment: Fragment() {
@@ -26,24 +25,28 @@ class CapoFragment: Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         val database = FirebaseDatabase.getInstance()
-        val myRef = database.getReference().child("utenti")
+        val utentiRef = database.getReference().child("utenti")
 
-        myRef.addListenerForSingleValueEvent(object : ValueEventListener {
+        utentiRef.addListenerForSingleValueEvent(object : ValueEventListener {
+
             var lista=ArrayList<Utente?>()
+
             override fun onDataChange(dataSnapshot: DataSnapshot) {
-                 for (dsp in dataSnapshot.getChildren()) {
-                     if(dsp.getValue(Utente::class.java)!!.classe=="Lavoratore")
-                         lista.add(dsp.getValue(Utente::class.java)) //add result into array list
-
+                for (dsp in dataSnapshot.getChildren()) {
+                    if(dsp.getValue(Utente::class.java)!!.ruolo=="Dipendente")
+                        lista.add(dsp.getValue(Utente::class.java))
                 }
-                listLavoratori.layoutManager = LinearLayoutManager(activity)
-            listLavoratori.adapter = CapoAdapter(lista, requireContext())}
-
-                override fun onCancelled(error: DatabaseError) {
-                    // Failed to read value
-                    Log.w(ContentValues.TAG, "Failed to read value.", error.toException())
-                }
+                // Imposto il layout manager a lineare per avere scrolling in una direzione
+                listDipendenti.layoutManager = LinearLayoutManager(activity)
+                //Associo l'adapter alla RecycleView
+                listDipendenti.adapter = CapoAdapter(lista, requireContext())
+            }
+            override fun onCancelled(error: DatabaseError) {
+                // Failed to read value
+                Log.w(ContentValues.TAG, "Failed to read value.", error.toException())
+            }
         })
     }
 }

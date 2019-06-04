@@ -11,7 +11,7 @@
     </fragment>
     <fragment android:id="@+id/capoFragment" android:name="com.example.wipcantieredigitale.CapoFragment"
               android:label="fragment_capo" tools:layout="@layout/fragment_capo">
-        <action android:id="@+id/action_capoFragment_to_lavoratoreFragment" app:destination="@id/lavoratoreFragment"/>
+        <action android:id="@+id/action_capoFragment_to_dipendenteFragment" app:destination="@id/dipendenteFragment"/>
     </fragment>
     <fragment android:id="@+id/compitiFragment" android:name="com.example.wipcantieredigitale.CompitiFragment"
               android:label="fragment_compiti" tools:layout="@layout/fragment_compiti">
@@ -24,10 +24,10 @@
               android:label="CompitoFragment">
         <action android:id="@+id/action_compitoFragment_to_compitiFragment" app:destination="@id/compitiFragment"/>
     </fragment>
-    <fragment android:id="@+id/lavoratoreFragment" android:name="com.example.wipcantieredigitale.LavoratoreFragment"
-              android:label="LavoratoreFragment">
-        <action android:id="@+id/action_lavoratoreFragment_to_compitiFragment" app:destination="@id/compitiFragment"/>
-        <action android:id="@+id/action_lavoratoreFragment_to_chatFragment" app:destination="@id/chatFragment"/>
+    <fragment android:id="@+id/dipendenteFragment" android:name="com.example.wipcantieredigitale.DipendenteFragment"
+              android:label="DipendenteFragment">
+        <action android:id="@+id/action_dipendenteFragment_to_compitiFragment" app:destination="@id/compitiFragment"/>
+        <action android:id="@+id/action_dipendenteFragment_to_chatFragment" app:destination="@id/chatFragment"/>
     </fragment>
     <fragment android:id="@+id/registrazioneFragment"
               android:name="com.example.wipcantieredigitale.RegistrazioneFragment"
@@ -35,7 +35,6 @@
         <action android:id="@+id/action_registrazioneFragment_to_capoFragment2" app:destination="@id/capoFragment"/>
         <action android:id="@+id/action_registrazioneFragment_to_compitiFragment"
                 app:destination="@id/compitiFragment"/>
-        <action android:id="@+id/action_registrazioneFragment_to_loginFragment" app:destination="@id/loginFragment"/>
     </fragment>
     <fragment android:id="@+id/aggiungiCompitoFragment"
               android:name="com.example.wipcantieredigitale.AggiungiCompitoFragment"

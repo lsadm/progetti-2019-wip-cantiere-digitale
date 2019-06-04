@@ -8,18 +8,18 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.Navigation
-import com.example.wipcantieredigitale.datamodel.compito
+import com.example.wipcantieredigitale.datamodel.Compito
+import com.example.wipcantieredigitale.datamodel.Utente
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 
 import kotlinx.android.synthetic.main.fragment_compiti.*
+import kotlinx.android.synthetic.main.fragment_dipendente.*
 
-/**
- *
- */
-   class CompitiFragment: Fragment() {
+class CompitiFragment: Fragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -28,41 +28,62 @@ import kotlinx.android.synthetic.main.fragment_compiti.*
         return inflater.inflate(R.layout.fragment_compiti, container, false)
     }
 
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-          val database = FirebaseDatabase.getInstance()
 
+        val database = FirebaseDatabase.getInstance()
+        val compitiRef = database.getReference().child("compiti")
+        var lista = ArrayList<Compito?>()
+        
+        compitiRef.addListenerForSingleValueEvent(object : ValueEventListener {
 
-       val prova=(activity as MainActivity).getL()
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
 
-        fabChat.setOnClickListener {
-            Navigation.findNavController(it).navigate(R.id.action_compitiFragment_to_messaggiFragment)
-        }
+                arguments?.let {
+                    val dipendente: Utente? = it.getParcelable("dipendente scelto")
+                    val ruoloFlag: String? = it.getString("ruolo dipendente")
 
-        fabAggiungiCompito.setOnClickListener {
-                val b=Bundle();
-                b.putParcelable("scelta",prova)
-                Navigation.findNavController(it).navigate(R.id.action_compitiFragment_to_aggiungiCompitoFragment,b)}
-        val myRef = database.getReference(prova!!.username)
-            myRef.addListenerForSingleValueEvent (object : ValueEventListener {
-                var lista =ArrayList<compito?>()
-                var cont=0;
+                    if (ruoloFlag == "Dipendente") {
 
-        override fun onDataChange(dataSnapshot: DataSnapshot) {
-            if(dataSnapshot.hasChild("compiti")){
-                for (dsp in dataSnapshot.child("compiti").getChildren())
-                    lista.add(dsp.getValue(compito::class.java))
-                for(item in lista )
-                    if(item?.done==true)
-                        cont++;
-                numero.text=cont.toString()
-                ListaCompiti.layoutManager = LinearLayoutManager(activity)
-                ListaCompiti.adapter = CompitiAdapter (lista, requireContext())
-              }
+                        var mAuth = FirebaseAuth.getInstance()
 
+                        for (dsp in dataSnapshot.getChildren()) {
+                            if (dsp.getValue(Compito::class.java)!!.dipendenteMail == mAuth!!.currentUser!!.email.toString())
+                                lista.add(dsp.getValue(Compito::class.java))
+                        }
+                    } else {
+                        dipendente?.let {
+                            for (dsp in dataSnapshot.getChildren()) {
+                                if (dsp.getValue(Compito::class.java)!!.dipendenteMail == it.mail)
+                                    lista.add(dsp.getValue(Compito::class.java))
+                            }
+                        }
+                    }
+                }
+
+                // Imposto il layout manager a lineare per avere scrolling in una direzione
+                listCompiti.layoutManager = LinearLayoutManager(activity)
+                //Associo l'adapter alla RecycleView
+                listCompiti.adapter = CompitiAdapter(lista, requireContext())
             }
-        override  fun onCancelled(error: DatabaseError) {
 
-             Log.w(ContentValues.TAG, "Failed to read value.", error.toException())
-        }})}}
+            override fun onCancelled(error: DatabaseError) {
+                // Failed to read value
+                Log.w(ContentValues.TAG, "Failed to read value.", error.toException())
+            }
+        })
+
+        fabAddCompito.setOnClickListener {
+            arguments?.let {
+                val dipendente: Utente? = it.getParcelable("dipendente scelto")
+                val ruoloFlag: String? = it.getString("ruolo dipendente")
+
+                val bundle = Bundle()
+                bundle.putParcelable("dipendente scelto", dipendente)
+                bundle.putString("ruolo dipendente", ruoloFlag)
+                Navigation.findNavController(view)
+                    .navigate(R.id.action_compitiFragment_to_aggiungiCompitoFragment, bundle)
+            }
+        }
+    }
+}

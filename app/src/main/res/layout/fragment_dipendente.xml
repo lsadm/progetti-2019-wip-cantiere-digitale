@@ -4,18 +4,18 @@
                                              xmlns:tools="http://schemas.android.com/tools"
                                              android:layout_width="match_parent"
                                              android:layout_height="match_parent"
-                                             tools:context=".lavoratore">
+                                             tools:context=".dipendente">
 
 
     <Button
             android:text="@string/Chat"
             android:layout_width="0dp"
-            android:layout_height="80dp"
+            android:layout_height="60dp"
             android:id="@+id/btnChat"
             android:backgroundTint="#4D1CD6" android:textColor="#FFFFFF"
-            app:layout_constraintStart_toStartOf="@+id/listaCompiti"
-            app:layout_constraintEnd_toEndOf="@+id/listaCompiti" android:layout_marginTop="8dp"
-            app:layout_constraintTop_toBottomOf="@+id/listaCompiti"/>
+            app:layout_constraintStart_toStartOf="@+id/btnCompiti"
+            app:layout_constraintEnd_toEndOf="@+id/btnCompiti" android:layout_marginTop="8dp"
+            app:layout_constraintTop_toBottomOf="@+id/btnCompiti"/>
     <TextView
             android:text="@string/schedaDipendente"
             android:layout_width="wrap_content"
@@ -46,17 +46,17 @@
             android:layout_width="0dp"
             android:layout_height="25dp"
             android:ems="10"
-            android:id="@+id/campoUser"
-            android:hint="@string/user_name"
+            android:id="@+id/campoCellulare"
+            android:hint="@string/vuoto"
             android:layout_marginTop="8dp"
             app:layout_constraintTop_toBottomOf="@+id/campoCognome"
             app:layout_constraintStart_toStartOf="@+id/campoCognome"
             android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="@+id/campoCognome"/>
     <TextView
-            android:text="@string/username"
+            android:text="@string/cellulare"
             android:layout_width="0dp"
-            android:layout_height="25dp" android:id="@+id/tvusername"
+            android:layout_height="25dp" android:id="@+id/tvCellulare"
             android:textStyle="bold"
             android:textSize="16sp" android:layout_marginTop="8dp"
             app:layout_constraintTop_toBottomOf="@+id/tvcognome"
@@ -66,7 +66,7 @@
             android:layout_height="25dp"
             android:ems="10"
             android:id="@+id/campoNome"
-            android:hint="@string/nome"
+            android:hint="@string/vuoto"
             app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginEnd="16dp"
             app:layout_constraintStart_toEndOf="@+id/tvnome" android:layout_marginStart="8dp"
@@ -76,7 +76,7 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:id="@+id/campoMail"
-            android:hint="@string/InsMail"
+            android:hint="@string/vuoto"
             android:layout_marginTop="8dp"
             app:layout_constraintTop_toBottomOf="@+id/campoTempo" app:layout_constraintStart_toEndOf="@+id/tvMail"
             android:layout_marginStart="8dp"
@@ -93,8 +93,8 @@
     <Button
             android:text="@string/listaC"
             android:layout_width="0dp"
-            android:layout_height="80dp"
-            android:id="@+id/listaCompiti"
+            android:layout_height="60dp"
+            android:id="@+id/btnCompiti"
             app:layout_constraintStart_toStartOf="@+id/tvMail"
             app:layout_constraintEnd_toEndOf="@+id/campoMail" android:textColor="#FFFFFF"
             android:backgroundTint="#4D1CD6" android:layout_marginTop="64dp"
@@ -105,23 +105,23 @@
             android:layout_height="25dp"
             android:id="@+id/tvTempo" android:textSize="16sp"
             android:textStyle="bold" android:layout_marginTop="8dp"
-            app:layout_constraintTop_toBottomOf="@+id/tvusername"
-            app:layout_constraintStart_toStartOf="@+id/tvusername" app:layout_constraintEnd_toEndOf="@+id/tvusername"/>
+            app:layout_constraintTop_toBottomOf="@+id/tvCellulare"
+            app:layout_constraintStart_toStartOf="@+id/tvCellulare" app:layout_constraintEnd_toEndOf="@+id/tvCellulare"/>
     <TextView
             android:layout_width="0dp"
             android:layout_height="25dp"
             android:ems="10"
             android:id="@+id/campoTempo"
-            android:hint="@string/tempo" android:textSize="16sp"
-            app:layout_constraintStart_toStartOf="@+id/campoUser" android:layout_marginTop="8dp"
-            app:layout_constraintTop_toBottomOf="@+id/campoUser"
-            app:layout_constraintEnd_toEndOf="@+id/campoUser"/>
+            android:hint="@string/vuoto" android:textSize="16sp"
+            app:layout_constraintStart_toStartOf="@+id/campoCellulare" android:layout_marginTop="8dp"
+            app:layout_constraintTop_toBottomOf="@+id/campoCellulare"
+            app:layout_constraintEnd_toEndOf="@+id/campoCellulare"/>
     <TextView
             android:layout_width="0dp"
             android:layout_height="25dp"
             android:ems="10"
             android:id="@+id/campoCognome"
-            android:hint="@string/cognome"
+            android:hint="@string/vuoto"
             android:layout_marginTop="8dp"
             app:layout_constraintTop_toBottomOf="@+id/campoNome"
             app:layout_constraintStart_toStartOf="@+id/campoNome"
