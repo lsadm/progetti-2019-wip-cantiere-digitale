@@ -59,6 +59,7 @@
     <string name="tvHint">Inserisci i tuoi dati:</string>
     <string name="cellulare">Cellulare</string>
     <string name="vuoto">vuoto</string>
+    <string name="chat">Chat</string>
 
     //spinner
 

@@ -1,14 +1,17 @@
 package com.example.wipcantieredigitale
 
 
+import android.content.ContentValues
 import android.os.Bundle
 import android.support.v4.app.Fragment
+import android.support.v7.widget.LinearLayoutManager
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.navigation.Navigation
-import com.example.wipcantieredigitale.datamodel.Chat
+import com.example.wipcantieredigitale.datamodel.Messaggio
 import com.example.wipcantieredigitale.datamodel.Utente
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
@@ -27,44 +30,68 @@ class ChatFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        /*val mittente=(activity as MainActivity).getL()
 
-        //Recupero username dipendente
-        arguments?.let {
-            val prova: Utente? = it.getParcelable("scelta")
-            prova?.let {
-                //nomeDipendente.text = it.username
+        var mAuth = FirebaseAuth.getInstance()
+        val database = FirebaseDatabase.getInstance()
+        var lista = ArrayList<Messaggio?>()
+        /////////////////////////////////////////////////////////////////////////
+        //Recupero il numero di cellulare dell'utente corrente
+        val cellulareRef = database.getReference().child("utenti")
+            .child(mAuth.currentUser!!.uid).child("cellulare")
+        var cellulare = ""
 
-                //val destinatario = it.username
+        cellulareRef.addListenerForSingleValueEvent(object : ValueEventListener {
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
+                cellulare = dataSnapshot.getValue().toString()
+            }
 
-                val database = FirebaseDatabase.getInstance()
-                val myRef = database.getReference()
+            override fun onCancelled(error: DatabaseError) {
+                // Failed to read value
+                Log.w(ContentValues.TAG, "Failed to read value.", error.toException())
+            }
+        })//////////////////////////////////////////////////////////////////////
+        val cellulareChatRef = database.getReference().child("chat").child(cellulare)
 
-                //INSERIMENTO MESSAGGI
-                btnInvia.setOnClickListener {
+        //Lettura messaggi
+        cellulareChatRef.addListenerForSingleValueEvent(object : ValueEventListener {
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
 
-                    //if(!editMessage.text.toString().equals("")){   //Se il campo non è scrittura non è vuoto:
+                arguments?.let {
 
-                        val chatRef = database.getReference("chat")
-                        val myMessagesRef = chatRef.child(destinatario)
+                    val dipendente: Utente? = it.getParcelable("dipendente scelto")
+                    dipendente?.let {
 
-                        myMessagesRef.addListenerForSingleValueEvent(object : ValueEventListener {
-
-                            override fun onDataChange(dataSnapshot: DataSnapshot) {
-
-                                    var nameList= Chat(mittente!!.username, editMessage.text.toString())
-                                    myMessagesRef.push().setValue(nameList)
-
-                                    Navigation.findNavController(view).navigateUp()
-
+                        for (dsp in dataSnapshot.getChildren()) {
+                            if (dsp.getValue(Messaggio::class.java)!!.mittente == it.cellulare) {
+                                lista.add(dsp.getValue(Messaggio::class.java))
                             }
-                            override fun onCancelled(error: DatabaseError) {
-                            }
-                        })
-                    //}
+                        }
+                    }
+                }
+                // Imposto il layout manager a lineare per avere scrolling in una direzione
+                listMessaggi.layoutManager = LinearLayoutManager(activity)
+                //Associo l'adapter alla RecycleView
+                listMessaggi.adapter = MessaggiAdapter(lista, requireContext())
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                // Failed to read value
+                Log.w(ContentValues.TAG, "Failed to read value.", error.toException())
+            }
+        })
+
+        btnInvia.setOnClickListener {
+
+            arguments?.let {
+
+                val dipendente: Utente? = it.getParcelable("dipendente scelto")
+                dipendente?.let {
+                    val newMessage = cellulareChatRef.push()
+                    val datiMessagge = Messaggio(it.cellulare, editMessaggio.text.toString())
+                    newMessage.setValue(datiMessagge)
                 }
             }
-        }*/
+            MessaggiAdapter(lista, requireContext()).notifyDataSetChanged()
+        }
     }
 }
-

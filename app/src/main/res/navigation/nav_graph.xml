@@ -19,6 +19,7 @@
         <action android:id="@+id/action_compitiFragment_to_aggiungiCompitoFragment"
                 app:destination="@id/aggiungiCompitoFragment"/>
         <action android:id="@+id/action_compitiFragment_to_messaggiFragment" app:destination="@id/messaggiFragment"/>
+        <action android:id="@+id/action_compitiFragment_to_chatFragment" app:destination="@id/chatFragment"/>
     </fragment>
     <fragment android:id="@+id/compitoFragment" android:name="com.example.wipcantieredigitale.CompitoFragment"
               android:label="CompitoFragment">
