@@ -23,25 +23,49 @@
                     android:textSize="30sp"
                     android:textColor="#4D1CD6"/>
             <TextView
+                    android:text="@string/incaricato"
+                    android:layout_width="wrap_content"
+                    android:layout_height="68dp" android:id="@+id/tvIncaricato"
+                    android:layout_marginBottom="8dp"
+                    app:layout_constraintBottom_toTopOf="@+id/tvDescrizionee"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:layout_marginEnd="8dp" app:layout_constraintStart_toStartOf="parent"
+                    android:layout_marginStart="8dp" app:layout_constraintHorizontal_bias="0.073"
+                    android:layout_marginTop="8dp" app:layout_constraintTop_toBottomOf="@+id/tvNomeCompito"
+                    app:layout_constraintVertical_bias="0.0" android:textStyle="bold"
+                    android:textColor="@color/colorPrimaryDark"/>
+            <TextView
                     android:layout_width="0dp"
                     android:layout_height="300dp" android:id="@+id/tvDescrizionee"
-                    android:layout_marginTop="32dp"
+                    android:layout_marginTop="132dp"
                     app:layout_constraintTop_toBottomOf="@+id/tvNomeCompito"
                     android:text="@string/descrizione" android:visibility="visible" tools:visibility="visible"
                     android:background="?attr/colorButtonNormal" app:layout_constraintEnd_toEndOf="parent"
                     android:layout_marginEnd="32dp"
                     app:layout_constraintStart_toStartOf="@+id/tvNomeCompito" android:textAlignment="center"
-                    android:textSize="18sp" android:backgroundTint="#25818181"/>
+                    android:textSize="18sp" android:backgroundTint="#25818181"
+                    app:layout_constraintHorizontal_bias="1.0"/>
             <Button
                     android:layout_width="0dp"
                     android:layout_height="80dp"
                     android:id="@+id/btnFatto"
                     android:text="@string/Done"
-                    android:layout_marginTop="32dp"
+                    android:layout_marginTop="60dp"
                     app:layout_constraintTop_toBottomOf="@+id/tvDescrizionee"
                     app:layout_constraintEnd_toEndOf="@+id/tvDescrizionee"
                     app:layout_constraintStart_toStartOf="@+id/tvDescrizionee" android:textColor="#FFFFFF"
-                    android:backgroundTint="#4D1CD6"/>
+                    android:backgroundTint="#4D1CD6" app:layout_constraintHorizontal_bias="0.0"/>
+            <TextView
+                    android:text="@string/empty"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/Incaricato" app:layout_constraintStart_toEndOf="@+id/tvIncaricato"
+                    android:layout_marginStart="8dp" app:layout_constraintEnd_toEndOf="parent"
+                    android:layout_marginEnd="8dp" android:layout_marginBottom="8dp"
+                    app:layout_constraintBottom_toTopOf="@+id/tvDescrizionee" android:layout_marginTop="8dp"
+                    app:layout_constraintTop_toBottomOf="@+id/tvNomeCompito"
+                    app:layout_constraintHorizontal_bias="0.085" app:layout_constraintVertical_bias="0.0"
+                    android:textStyle="bold"/>
         </android.support.constraint.ConstraintLayout>
     </ScrollView>
 

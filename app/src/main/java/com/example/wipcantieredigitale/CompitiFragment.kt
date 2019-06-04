@@ -15,9 +15,7 @@ import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
-
 import kotlinx.android.synthetic.main.fragment_compiti.*
-import kotlinx.android.synthetic.main.fragment_dipendente.*
 
 class CompitiFragment: Fragment() {
 
@@ -99,3 +97,5 @@ class CompitiFragment: Fragment() {
         }
     }
 }
+// bundle necessari poiché essendo i fragment condivisi per le 2 tipologie di utente,servono approcci differenti in base a come
+// si effettua il login,

@@ -85,11 +85,13 @@ class RegistrazioneFragment : Fragment() {
 
                             if (valore == "Capo") {
                                 Navigation.findNavController(it).navigate(R.id.action_registrazioneFragment_to_capoFragment2)
+
                             }
                             else {
                                 val ruoloFlag = Bundle()
                                 ruoloFlag.putString("ruolo dipendente", valore)
                                 Navigation.findNavController(it).navigate(R.id.action_registrazioneFragment_to_compitiFragment,ruoloFlag)
+
                             }
                         }
                     })

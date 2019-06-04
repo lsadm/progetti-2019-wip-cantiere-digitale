@@ -10,7 +10,7 @@ import android.os.Handler
 import androidx.navigation.Navigation
 
 class SplashScreen : Fragment() {
-
+var esecuzione=0
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -21,11 +21,21 @@ class SplashScreen : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+       if(esecuzione==0){
         Handler().postDelayed({
+            esecuzione=1
             Navigation.findNavController(view).navigate(R.id.action_splashScreen_to_welcomeFragment)
         }, 1000)
 
     }
+    else{if (getActivity() != null) {
+           getActivity()!!.getSupportFragmentManager().beginTransaction().remove(this).commit();
+            try {
+               getFragmentManager()!!.popBackStack();
+                activity!!.finish()
+           }  catch (e:Exception) {
+               e.printStackTrace()
+           }
+       }
 
-}
+}}}
