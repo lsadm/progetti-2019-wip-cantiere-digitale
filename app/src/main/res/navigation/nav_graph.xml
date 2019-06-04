@@ -57,10 +57,13 @@
     <fragment android:id="@+id/splashScreen" android:name="com.example.wipcantieredigitale.SplashScreen"
               android:label="fragment_splash_screen" tools:layout="@layout/fragment_splash_screen">
         <action android:id="@+id/action_splashScreen_to_welcomeFragment" app:destination="@id/welcomeFragment"/>
+        <action android:id="@+id/action_splashScreen_self" app:destination="@id/splashScreen"
+                app:popUpTo="@id/splashScreen" app:popUpToInclusive="true" app:popExitAnim="@anim/nav_default_exit_anim"
+                app:launchSingleTop="true"/>
     </fragment>
     <fragment android:id="@+id/listaInteraCompiti" android:name="ListaInteraCompitiFragment"
-              android:label="ListaInteraCompitiFragment">
+              android:label="compitiFragment">
         <action android:id="@+id/action_listaInteraCompiti_to_capoFragment" app:destination="@id/capoFragment"/>
-        <action android:id="@+id/action_compitiFragment_to_compitoFragment2" app:destination="@id/compitoFragment"/>
+        <action android:id="@+id/action_compitiFragment_to_compitoFragment" app:destination="@id/compitoFragment"/>
     </fragment>
 </navigation>

@@ -1,22 +1,13 @@
 package com.example.wipcantieredigitale
 
 
-import android.content.ContentValues
-import android.content.Context
+ import android.content.Context
 import android.os.Bundle
-import android.support.v7.widget.LinearLayoutManager
-import android.support.v7.widget.RecyclerView
-import android.util.Log
-import android.view.LayoutInflater
+ import android.support.v7.widget.RecyclerView
+ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.navigation.Navigation
-import com.example.wipcantieredigitale.datamodel.Compito
-import com.example.wipcantieredigitale.datamodel.Utente
-import com.google.firebase.database.DataSnapshot
-import com.google.firebase.database.DatabaseError
-import com.google.firebase.database.FirebaseDatabase
-import com.google.firebase.database.ValueEventListener
-import kotlinx.android.synthetic.main.fragment_compiti.*
+ import com.example.wipcantieredigitale.datamodel.Utente
 
 
 class CapoAdapter(val dataset: ArrayList<Utente?>, val context: Context) : RecyclerView.Adapter<DipendenteRiga>() {
