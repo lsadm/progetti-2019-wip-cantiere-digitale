@@ -7,7 +7,8 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
- import com.example.wipcantieredigitale.datamodel.Utente
+import androidx.navigation.Navigation
+import com.example.wipcantieredigitale.datamodel.Utente
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
@@ -25,7 +26,10 @@ class CapoFragment: Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+       ListaAttivitá.setOnClickListener{
+           Navigation.findNavController(view)
+               .navigate(R.id.action_capoFragment_to_listaInteraCompiti)
+       }
         val database = FirebaseDatabase.getInstance()
         val utentiRef = database.getReference().child("utenti")
 
@@ -49,4 +53,5 @@ class CapoFragment: Fragment() {
             }
         })
     }
+
 }

@@ -34,6 +34,7 @@ class CompitiAdapter(val dataset: ArrayList<Compito?>, val context: Context) : R
             val compitoBundle = Bundle()
             compitoBundle.putParcelable("compito scelto", compito)
             Navigation.findNavController(it).navigate(R.id.action_compitiFragment_to_compitoFragment, compitoBundle)
+
         }
     }
 
