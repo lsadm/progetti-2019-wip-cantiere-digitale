@@ -31,6 +31,7 @@ class CompitiFragment: Fragment() {
 
         val database = FirebaseDatabase.getInstance()
         val compitiRef = database.getReference().child("compiti")
+        compitiRef.keepSynced(true)
         var lista = ArrayList<Compito?>()
         
         compitiRef.addListenerForSingleValueEvent(object : ValueEventListener {

@@ -37,6 +37,7 @@ class ListaInteraCompitiFragment : Fragment() {
             Navigation.findNavController(view)
                 .navigateUp()}
     val compitiRef = database.getReference().child("compiti")
+        compitiRef.keepSynced(true) //caching
     var lista = ArrayList<Compito?>()
     compitiRef.addListenerForSingleValueEvent(object : ValueEventListener {
 

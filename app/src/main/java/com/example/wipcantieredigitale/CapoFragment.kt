@@ -30,9 +30,9 @@ class CapoFragment: Fragment() {
            Navigation.findNavController(view)
                .navigate(R.id.action_capoFragment_to_listaInteraCompiti)
        }
-        val database = FirebaseDatabase.getInstance()
-        val utentiRef = database.getReference().child("utenti")
-
+        val database = FirebaseDatabase.getInstance().getReference()
+        val utentiRef = database.child("utenti")
+        utentiRef.keepSynced(true) //CACHING della lettura effettuata dal database
         utentiRef.addListenerForSingleValueEvent(object : ValueEventListener {
 
             var lista=ArrayList<Utente?>()

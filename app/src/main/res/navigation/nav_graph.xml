@@ -28,7 +28,7 @@
     <fragment android:id="@+id/dipendenteFragment" android:name="com.example.wipcantieredigitale.DipendenteFragment"
               android:label="DipendenteFragment">
         <action android:id="@+id/action_dipendenteFragment_to_compitiFragment" app:destination="@id/compitiFragment"/>
-        <action android:id="@+id/action_dipendenteFragment_to_chat" app:destination="@id/chat"/>
+        <action android:id="@+id/action_dipendenteFragment_to_chatFragment" app:destination="@id/chatFragment"/>
     </fragment>
     <fragment android:id="@+id/registrazioneFragment"
               android:name="com.example.wipcantieredigitale.RegistrazioneFragment"
@@ -49,8 +49,6 @@
         <action android:id="@+id/action_welcomeFragment_to_registrazioneFragment"
                 app:destination="@id/registrazioneFragment"/>
     </fragment>
-    <fragment android:id="@+id/chat" android:name="com.example.wipcantieredigitale.MessaggiFragment"
-              android:label="chat" tools:layout="@layout/fragment_chat"/>
     <fragment android:id="@+id/splashScreen" android:name="com.example.wipcantieredigitale.SplashScreen"
               android:label="fragment_splash_screen" tools:layout="@layout/fragment_splash_screen">
         <action android:id="@+id/action_splashScreen_to_welcomeFragment" app:destination="@id/welcomeFragment"/>

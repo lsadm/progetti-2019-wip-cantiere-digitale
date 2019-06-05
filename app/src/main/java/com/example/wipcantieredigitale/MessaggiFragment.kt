@@ -33,6 +33,7 @@ class MessaggiFragment: Fragment() {
 
         val database=FirebaseDatabase.getInstance()
         val messaggiRef = database.getReference().child("chat")
+        messaggiRef.keepSynced(true)
          var lista=ArrayList<Messaggio?>()
 
         messaggiRef.addListenerForSingleValueEvent(object : ValueEventListener {

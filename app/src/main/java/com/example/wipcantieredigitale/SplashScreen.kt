@@ -31,8 +31,7 @@ var esecuzione=0
     else{if (getActivity() != null) {
            getActivity()!!.getSupportFragmentManager().beginTransaction().remove(this).commit();
             try {
-               getFragmentManager()!!.popBackStack();
-                activity!!.finish()
+                 activity!!.finish()
            }  catch (e:Exception) {
                e.printStackTrace()
            }
