@@ -13,6 +13,8 @@ class MainActivity :  AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
     }
+
+   //aggiunte per implementare uscita tramite pressioni consecutive del tasto back
     private var TriploBack =0
     override fun onBackPressed() {
         if (TriploBack==3) {
@@ -31,7 +33,7 @@ class MainActivity :  AppCompatActivity() {
         android.os.Handler().postDelayed({
           this.TriploBack=0
 
-        }, 2000)
+        }, 1000)
     }
 }
 

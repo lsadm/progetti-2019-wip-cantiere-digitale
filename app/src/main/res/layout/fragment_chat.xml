@@ -12,7 +12,7 @@
             app:layout_constraintStart_toStartOf="parent"
             android:textColor="#4D1CD6" android:textSize="14sp" android:layout_marginStart="16dp"
             android:layout_marginEnd="8dp"
-            app:layout_constraintEnd_toStartOf="@+id/ListaDipendenti" app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintEnd_toStartOf="@id/chatTitle" app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintTop_toBottomOf="@+id/chatTitle" android:layout_marginTop="12dp"/>
     <TextView
             android:text="@string/destinatario"
@@ -21,7 +21,7 @@
             app:layout_constraintStart_toStartOf="parent"
             android:textColor="#4D1CD6" android:textSize="14sp"
             android:layout_marginEnd="8dp"
-            app:layout_constraintEnd_toStartOf="@+id/ListaDipendenti" app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintEnd_toStartOf="@id/tvMittente" app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintTop_toBottomOf="@+id/tvMittente" android:layout_marginTop="20dp"
             android:layout_marginBottom="8dp" app:layout_constraintBottom_toTopOf="@+id/guideline"
             app:layout_constraintVertical_bias="0.027" android:layout_marginStart="16dp"/>

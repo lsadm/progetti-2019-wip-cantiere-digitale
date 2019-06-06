@@ -1,6 +1,8 @@
 package com.example.wipcantieredigitale
 
 
+import android.content.Context
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.view.LayoutInflater
@@ -18,7 +20,11 @@ import com.google.firebase.auth.FirebaseAuth
 
 
 class LoginFragment: Fragment() {
-
+    private val PREF_NAME = "wipcantieredigitale"
+    private val PREF_MAIL = "Email"
+    private val PREF_PASSWORD = "Password"
+    private val PREF_AUTOLOGIN = "AutoLogin" //parole chiave sharedpref
+    private lateinit var sharedPref: SharedPreferences
     var mAuth = FirebaseAuth.getInstance()
     var database = FirebaseDatabase.getInstance()
 
@@ -31,40 +37,52 @@ class LoginFragment: Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        sharedPref = activity!!.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE)
+        val autologin = sharedPref.getBoolean(PREF_AUTOLOGIN, false)
+
+        val editor = sharedPref.edit()
+        checkAutoLogin.isChecked = autologin
+        if( autologin) //se si é scelto di memorizzare i dati,tramite sharePref non sará necessario rinserirli
+        {
+            editMail.setText(sharedPref.getString(PREF_MAIL,""))
+            editPassword.setText(sharedPref.getString(PREF_PASSWORD,""))
+        }
 
         btnSignin.setOnClickListener {
-
+      //tasto per effettuare il login reso non clickabile fino a che la richiesta di login non viene completata
             btnSignin.isClickable=false
-
             hideKeyboard()
-
-            val email = editmail.text.toString().trim()
-            val password = editMail.text.toString().trim()
+             val email = editMail.text.toString().trim()
+             val password = editPassword.text.toString().trim()
 
             if (email.isEmpty()) {
-                editmail.error = "email richiesta"
-                editmail.requestFocus()
-                btnSignin.isClickable=true
-                return@setOnClickListener
-            }
-
-            if (password.isEmpty() || password.length < 6) {
-                editMail.error = "6 caratteri richiesti"
+                editMail.error = "email richiesta"
                 editMail.requestFocus()
                 btnSignin.isClickable=true
                 return@setOnClickListener
             }
 
+            if (password.isEmpty() || password.length < 6) {
+                editPassword.error = "6 caratteri richiesti"
+                editPassword.requestFocus()
+                btnSignin.isClickable=true
+                return@setOnClickListener
+            }
+
+
             mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener { task ->
 
                 if(task.isSuccessful){
-
+                    editor.putString(PREF_MAIL,editMail.text.toString())
+                    editor.putString(PREF_PASSWORD,editPassword.text.toString())
+                    editor.putBoolean(PREF_AUTOLOGIN,checkAutoLogin.isChecked)
+                    editor.apply();
                     val currentUID = mAuth!!.currentUser!!.uid
                     val utentiRef = database.getReference("utenti")
                     val ruoloRef = utentiRef.child(currentUID).child("ruolo")
 
-                    ruoloRef.addValueEventListener(object: ValueEventListener {
-
+                    ruoloRef.addListenerForSingleValueEvent(object: ValueEventListener {
+                        //lettura database per ricavare il luogo,necessario per la gestione dei fragment successivi.
                         override fun onCancelled(p0: DatabaseError){
                             //niente
                         }
@@ -79,6 +97,7 @@ class LoginFragment: Fragment() {
                             else {
                                 val ruoloFlag = Bundle()
                                 ruoloFlag.putString("ruolo dipendente", valore)
+                                //passaggio del ruoloFlag,per opportuna gestione.
                                 Navigation.findNavController(it).navigate(R.id.action_loginFragment_to_compitiFragment,ruoloFlag)
                             }
                         }
@@ -86,7 +105,7 @@ class LoginFragment: Fragment() {
                 }
                 else
                 {
-                    Toast.makeText(context , "Errato" , Toast.LENGTH_SHORT).show()
+                    Toast.makeText(context , "Password Errata" , Toast.LENGTH_SHORT).show()
                     btnSignin.isClickable=true
                 }
             }

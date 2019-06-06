@@ -17,7 +17,7 @@ import com.google.firebase.auth.FirebaseAuth
 
 import kotlinx.android.synthetic.main.fragment_registrazione.*
 import kotlinx.android.synthetic.main.fragment_registrazione.editCellulare
-import kotlinx.android.synthetic.main.fragment_registrazione.editMail
+import kotlinx.android.synthetic.main.fragment_registrazione.editPassword
 import kotlinx.android.synthetic.main.fragment_registrazione.editNome
 import kotlinx.android.synthetic.main.fragment_registrazione.editCognome
 import java.text.SimpleDateFormat
@@ -49,8 +49,8 @@ class RegistrazioneFragment : Fragment() {
                 return@setOnClickListener
             }
             if (password.isEmpty() || password.length < 6) {
-                editMail.error = "6 caratteri richiesti"
-                editMail.requestFocus()
+                editPassword.error = "6 caratteri richiesti"
+                editPassword.requestFocus()
                 return@setOnClickListener
             }
 
@@ -68,7 +68,7 @@ class RegistrazioneFragment : Fragment() {
                     val today = Date()
                     val s = dateFormatter.format(today)
 
-                    var datiUtente = Utente(editNome.text.toString(),editCognome.text.toString(),editCellulare.text.toString(),editMail.text.toString(),editPassword.text.toString(),mySpinner.getSelectedItem().toString(),s)
+                    var datiUtente = Utente(editNome.text.toString(),editCognome.text.toString(),editCellulare.text.toString(),editPassword.text.toString(),editPassword.text.toString(),SpinnerScelta.getSelectedItem().toString(),s)
                     currentUIDRef.setValue(datiUtente)
 
                     val ruoloRef = utentiRef.child(currentUID).child("ruolo")

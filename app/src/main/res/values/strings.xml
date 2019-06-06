@@ -67,6 +67,8 @@
     <string name="destinatario">Destinatario</string>
     <string name="InserireM">Inserire Messaggio</string>
     <string name="MessRicevuti">Messaggi Ricevuti</string>
+    <string name="AutoLogin">Memorizzare i dati d\'accesso?</string>
+    <string name="Immagine">Logo</string>
 
     //spinner
 
