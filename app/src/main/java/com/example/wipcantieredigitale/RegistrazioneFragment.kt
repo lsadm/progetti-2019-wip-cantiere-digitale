@@ -13,13 +13,15 @@ import com.example.wipcantieredigitale.datamodel.Utente
 import com.google.firebase.database.FirebaseDatabase
 import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
+import kotlinx.android.synthetic.main.fragment_login.*
 import kotlinx.android.synthetic.main.fragment_registrazione.*
+import kotlinx.android.synthetic.main.fragment_registrazione.editMail
+import kotlinx.android.synthetic.main.fragment_registrazione.editPassword
 import java.text.SimpleDateFormat
 import java.util.*
 
 
 class RegistrazioneFragment : Fragment() {
-    var registrazione=0 //check per rimuovere fragment registrazione ed evitarne doppie in 1 sessione
     var mAuth = FirebaseAuth.getInstance()
     var database = FirebaseDatabase.getInstance()
 
@@ -34,9 +36,7 @@ class RegistrazioneFragment : Fragment() {
     @SuppressLint("SimpleDateFormat")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        if (registrazione==1){ //ritorna al WelcomeFragment se giá mi sono registrato 1 volta,e riapre eventualmente una nuova sessone di Registrazione
-            activity!!.run { getSupportFragmentManager().popBackStack() }
-            getActivity()!!.getSupportFragmentManager().beginTransaction().remove(this).commit();}
+
         btnCrea.setOnClickListener {
 
             val email = editMail.text.toString().trim()
@@ -56,7 +56,6 @@ class RegistrazioneFragment : Fragment() {
             mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener { task ->
 
                 if (task.isSuccessful) {
-                    registrazione=1
                     val currentUID = mAuth!!.currentUser!!.uid
                     val utentiRef = database.getReference("utenti")
                     val currentUIDRef = utentiRef.child(currentUID)
@@ -76,24 +75,14 @@ class RegistrazioneFragment : Fragment() {
                         tempoAssunzione
                     )
                     currentUIDRef.setValue(datiUtente) //salva nel database
+                    mAuth.signOut() //dopo la scrittura ritorno al menu iniziale,e do la possibilitá di scegliere se registrare un altro account o di effettuare il login
+                    Navigation.findNavController(it).navigateUp()
+                    Toast.makeText(context, "Registrazione andata a buon fine", Toast.LENGTH_SHORT).show()
+
+                }
 
 
-                            if (SpinnerRuolo.getSelectedItem().toString() == "Capo") {
-                                Navigation.findNavController(it)
-                                    .navigate(R.id.action_registrazioneFragment_to_capoFragment2)
-
-                            } else {
-                                val ruoloFlag = Bundle()
-                                ruoloFlag.putString("ruolo dipendente", SpinnerRuolo.getSelectedItem().toString())
-                                Navigation.findNavController(it)
-                                    .navigate(R.id.action_registrazioneFragment_to_compitiFragment, ruoloFlag)
-
-                            }}
-
-
-
-
-                 else {
+                else {
                     Toast.makeText(context, "L'account è già stato registrato", Toast.LENGTH_SHORT).show()
                 }
 
@@ -101,38 +90,3 @@ class RegistrazioneFragment : Fragment() {
 
         }
     }}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-            /*
-
-
-                   */
-
-
-
-
-
-
-
-
-
-
