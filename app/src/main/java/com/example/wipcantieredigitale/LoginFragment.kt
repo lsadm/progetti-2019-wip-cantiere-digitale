@@ -51,8 +51,7 @@ class LoginFragment: Fragment() {
         btnSignin.setOnClickListener {
       //tasto per effettuare il login reso non clickabile fino a che la richiesta di login non viene completata
             btnSignin.isClickable=false
-            hideKeyboard()
-             val email = editMail.text.toString().trim()
+              val email = editMail.text.toString().trim()
              val password = editPassword.text.toString().trim()
 
             if (email.isEmpty()) {
@@ -76,7 +75,7 @@ class LoginFragment: Fragment() {
                     editor.putString(PREF_MAIL,editMail.text.toString())
                     editor.putString(PREF_PASSWORD,editPassword.text.toString())
                     editor.putBoolean(PREF_AUTOLOGIN,checkAutoLogin.isChecked)
-                    editor.apply();
+                    editor.apply()
                     val currentUID = mAuth!!.currentUser!!.uid
                     val utentiRef = database.getReference("utenti")
                     val ruoloRef = utentiRef.child(currentUID).child("ruolo")
