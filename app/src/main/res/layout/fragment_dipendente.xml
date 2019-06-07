@@ -4,7 +4,7 @@
                                              xmlns:tools="http://schemas.android.com/tools"
                                              android:layout_width="match_parent"
                                              android:layout_height="match_parent"
-                                             tools:context=".dipendente">
+                                             tools:context=".DipendenteFragment">
 
 
     <Button
@@ -20,10 +20,11 @@
             android:text="@string/schedaDipendente"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" android:id="@+id/nomeCompito2"
-            app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="32dp"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" android:layout_marginTop="32dp"
             android:textSize="30sp"
-            android:textColor="#4D1CD6"/>
+            android:textColor="#4D1CD6" app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp"
+            app:layout_constraintHorizontal_bias="0.0" android:layout_marginStart="32dp"/>
     <TextView
             android:text="@string/Nome"
             android:layout_width="90dp"

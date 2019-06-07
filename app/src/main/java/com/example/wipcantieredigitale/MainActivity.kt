@@ -1,5 +1,6 @@
 package com.example.wipcantieredigitale
 
+ import android.content.pm.ActivityInfo
  import android.os.Bundle
  import android.support.v7.app.AppCompatActivity
  import android.widget.Toast
@@ -12,17 +13,17 @@ class MainActivity :  AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        setRequestedOrientation (ActivityInfo.SCREEN_ORIENTATION_PORTRAIT)     //  Solo modalitá verticale
     }
 
    //aggiunte per implementare uscita tramite pressioni consecutive del tasto back
     private var TriploBack =0
     override fun onBackPressed() {
         if (TriploBack==3) {
-            finish();
+            finish()
         }else
         {TriploBack++
-
-                super.onBackPressed()
+     super.onBackPressed()
             }
 
 
@@ -33,7 +34,7 @@ class MainActivity :  AppCompatActivity() {
         android.os.Handler().postDelayed({
           this.TriploBack=0
 
-        }, 1000)
+        }, 1500)
     }
 }
 
