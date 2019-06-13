@@ -13,6 +13,7 @@ import com.example.wipcantieredigitale.datamodel.Utente
 import com.google.firebase.database.FirebaseDatabase
 import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseAuthUserCollisionException
 import kotlinx.android.synthetic.main.fragment_login.*
 import kotlinx.android.synthetic.main.fragment_registrazione.*
 import kotlinx.android.synthetic.main.fragment_registrazione.editMail
@@ -41,6 +42,7 @@ class RegistrazioneFragment : Fragment() {
 
             val email = editMail.text.toString().trim()
             val password = editPassword.text.toString().trim()
+            val cellulare=editCellulare.text.toString().trim()
 
             if (email.isEmpty()) {
                 editMail.error = "Email richiesta"
@@ -52,6 +54,12 @@ class RegistrazioneFragment : Fragment() {
                 editPassword.requestFocus()
                 return@setOnClickListener
             }
+            if (cellulare.isEmpty()|| cellulare.toIntOrNull()==null) {
+                editCellulare.error = "Inserire numero di cellulare valido"
+                editCellulare.requestFocus()
+                return@setOnClickListener
+            }
+
 
             mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener { task ->
 
@@ -82,11 +90,15 @@ class RegistrazioneFragment : Fragment() {
                 }
 
 
-                else {
+                else { if (task.getException() is FirebaseAuthUserCollisionException) //controlla pre-esistenza
+
                     Toast.makeText(context, "L'account è già stato registrato", Toast.LENGTH_SHORT).show()
+                else
+                    Toast.makeText(context, "Campi non validi", Toast.LENGTH_SHORT).show() //altri casi di errore
+
+
                 }
 
             }
+        }}}
 
-        }
-    }}
