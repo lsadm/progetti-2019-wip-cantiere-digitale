@@ -83,7 +83,6 @@ class RegistrazioneFragment : Fragment() {
                         tempoAssunzione
                     )
                     currentUIDRef.setValue(datiUtente) //salva nel database
-                    mAuth.signOut() //dopo la scrittura ritorno al menu iniziale,e do la possibilitá di scegliere se registrare un altro account o di effettuare il login
                     Navigation.findNavController(it).navigateUp()
                     Toast.makeText(context, "Registrazione andata a buon fine", Toast.LENGTH_SHORT).show()
 
@@ -100,5 +99,6 @@ class RegistrazioneFragment : Fragment() {
                 }
 
             }
+            mAuth.signOut()
         }}}
 

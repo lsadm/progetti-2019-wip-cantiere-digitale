@@ -29,8 +29,7 @@ var esecuzione=0
 
     }
     else{if (getActivity() != null) {
-           getActivity()!!.getSupportFragmentManager().beginTransaction().remove(this).commit();
-            try {
+             try {
                  activity!!.finish()
            }  catch (e:Exception) {
                e.printStackTrace()

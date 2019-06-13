@@ -37,6 +37,8 @@ class LoginFragment: Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        mAuth.signOut()//
+
         sharedPref = activity!!.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE)
         val autologin = sharedPref.getBoolean(PREF_AUTOLOGIN, false)
 
@@ -51,7 +53,7 @@ class LoginFragment: Fragment() {
         btnSignin.setOnClickListener {
       //tasto per effettuare il login reso non clickabile fino a che la richiesta di login non viene completata
             btnSignin.isClickable=false
-              val email = editMail.text.toString().trim()
+            val email = editMail.text.toString().trim()
              val password = editPassword.text.toString().trim()
 
             if (email.isEmpty()) {
@@ -104,7 +106,7 @@ class LoginFragment: Fragment() {
                 }
                 else
                 {
-                    Toast.makeText(context , "Password Errata" , Toast.LENGTH_SHORT).show()
+                    Toast.makeText(context , "Campi non validi" , Toast.LENGTH_SHORT).show()
                     btnSignin.isClickable=true
                 }
             }
