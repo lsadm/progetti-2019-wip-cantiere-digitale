@@ -37,8 +37,6 @@ class LoginFragment: Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        mAuth.signOut()//
-
         sharedPref = activity!!.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE)
         val autologin = sharedPref.getBoolean(PREF_AUTOLOGIN, false)
 

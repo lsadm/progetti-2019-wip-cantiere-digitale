@@ -2,7 +2,9 @@ package com.example.wipcantieredigitale
 
  import android.app.Activity
  import android.content.Context
-  import android.os.Bundle
+ import android.os.AsyncTask
+ import android.os.AsyncTask.execute
+ import android.os.Bundle
  import android.support.v4.app.Fragment
  import android.support.v7.app.AppCompatActivity
  import android.view.View
@@ -12,7 +14,6 @@ package com.example.wipcantieredigitale
 
 class MainActivity :  AppCompatActivity() {
     private var TriploBack = 0
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -21,6 +22,7 @@ class MainActivity :  AppCompatActivity() {
 
 
     override fun onBackPressed() {
+        val  toast = Toast.makeText(this, "Ripremere Back per terminare l'applicazione", Toast.LENGTH_SHORT)
         if (TriploBack == 3) {
             finish()
         } else {
@@ -31,12 +33,11 @@ class MainActivity :  AppCompatActivity() {
 
 
         if (TriploBack == 2)
-            Toast.makeText(this, "Ripremere Back per terminare l'applicazione", Toast.LENGTH_SHORT).show()
-
-        android.os.Handler().postDelayed({
-            this.TriploBack = 0
-
-        }, 1500)
+           toast.show();
+         android.os.Handler().postDelayed({
+             toast.cancel();
+             this.TriploBack = 0
+        }, 500)
     }
 
     fun Fragment.hideKeyboard() {
