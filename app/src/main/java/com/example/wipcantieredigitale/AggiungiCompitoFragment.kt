@@ -27,7 +27,7 @@ class AggiungiCompitoFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        var mAuth = FirebaseAuth.getInstance()
+        val mAuth = FirebaseAuth.getInstance()
         val database = FirebaseDatabase.getInstance()
         val compitiRef = database.getReference("compiti")
 
@@ -41,14 +41,14 @@ class AggiungiCompitoFragment : Fragment() {
                     if (ruoloFlag=="Dipendente") {
 
                         val newCompito = compitiRef.push()
-                        var datiCompito = Compito(editNomeCompito.text.toString(), tvDescrizionee.text.toString(), false, mAuth!!.currentUser!!.email.toString(), newCompito.key!!)
+                        val datiCompito = Compito(editNomeCompito.text.toString(), tvDescrizionee.text.toString(), false, mAuth!!.currentUser!!.email.toString(), newCompito.key!!)
                         newCompito.setValue(datiCompito)
                     }
                     else {
                         dipendente?.let {
 
                             val newCompito = compitiRef.push()
-                            var datiCompito = Compito(editNomeCompito.text.toString(),tvDescrizionee.text.toString(),false, it.mail, newCompito.key!!)
+                            val datiCompito = Compito(editNomeCompito.text.toString(),tvDescrizionee.text.toString(),false, it.mail, newCompito.key!!,approvato = false)
                             newCompito.setValue(datiCompito)
                         }
                     }

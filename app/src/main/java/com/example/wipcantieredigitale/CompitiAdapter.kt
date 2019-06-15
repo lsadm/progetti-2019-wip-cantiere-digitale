@@ -2,7 +2,8 @@ package com.example.wipcantieredigitale
 
 
 import android.content.Context
- import android.os.Bundle
+import android.graphics.Color
+import android.os.Bundle
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -22,11 +23,13 @@ class CompitiAdapter(val dataset: ArrayList<Compito?>, val context: Context) : R
 
     override fun onBindViewHolder(viewHolder: CompitoRiga, position: Int) {
 
-        var compito = dataset.get(position)
+        val compito = dataset.get(position)
 
         viewHolder.nome.text = compito?.nome
         viewHolder.descrizione.text = compito?.descrizione
-        if(compito!!.done)
+        if(compito!!.done && !compito.approvato)
+            viewHolder.nome.setBackgroundColor(Color.GRAY)
+        if(compito.approvato)
             viewHolder.nome.setChecked(true)
 
         viewHolder.itemView.setOnClickListener {
