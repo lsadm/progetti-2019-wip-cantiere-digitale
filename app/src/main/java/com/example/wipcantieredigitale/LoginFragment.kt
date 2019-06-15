@@ -13,7 +13,7 @@ import androidx.navigation.Navigation
 import com.google.firebase.database.FirebaseDatabase
 import kotlinx.android.synthetic.main.fragment_login.*
 
- import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.ValueEventListener
 import com.google.firebase.auth.FirebaseAuth
@@ -49,10 +49,10 @@ class LoginFragment: Fragment() {
         }
 
         btnSignin.setOnClickListener {
-      //tasto per effettuare il login reso non clickabile fino a che la richiesta di login non viene completata
+            //tasto per effettuare il login reso non clickabile fino a che la richiesta di login non viene completata
             btnSignin.isClickable=false
             val email = editMail.text.toString().trim()
-             val password = editPassword.text.toString().trim()
+            val password = editPassword.text.toString().trim()
 
             if (email.isEmpty()) {
                 editMail.error = "email richiesta"
@@ -85,7 +85,7 @@ class LoginFragment: Fragment() {
                         override fun onCancelled(p0: DatabaseError){
                             //niente
                         }
-                                            
+
                         override fun onDataChange(snapshot: DataSnapshot) {
 
                             val valore=snapshot.getValue(String::class.java)
@@ -94,10 +94,9 @@ class LoginFragment: Fragment() {
                                 Navigation.findNavController(it).navigate(R.id.action_loginFragment_to_capoFragment)
                             }
                             else {
-                                val ruoloFlag = Bundle()
-                                ruoloFlag.putString("ruolo dipendente", valore)
-                                //passaggio del ruoloFlag,per opportuna gestione.
-                                Navigation.findNavController(it).navigate(R.id.action_loginFragment_to_compitiFragment,ruoloFlag)
+                                val Flag = Bundle()
+                                // invio '' bundle''vuoto necessario per opportuno funzionamento nel caso Dipendente
+                                Navigation.findNavController(it).navigate(R.id.action_loginFragment_to_compitiFragment,Flag)
                             }
                         }
                     })
@@ -111,3 +110,4 @@ class LoginFragment: Fragment() {
         }
     }
 }
+

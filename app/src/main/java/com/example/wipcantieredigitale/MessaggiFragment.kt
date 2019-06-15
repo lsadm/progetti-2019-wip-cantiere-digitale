@@ -34,40 +34,41 @@ class MessaggiFragment: Fragment() {
         val database=FirebaseDatabase.getInstance()
         val messaggiRef = database.getReference().child("chat")
         messaggiRef.keepSynced(true)
-         var lista=ArrayList<Messaggio?>()
+        val lista=ArrayList<Messaggio?>()
 
         messaggiRef.addListenerForSingleValueEvent(object : ValueEventListener {
 
 
-                override fun onDataChange(dataSnapshot: DataSnapshot) {
-                    arguments?.let {
-                        val dipendente: Utente? = it.getParcelable("dipendente scelto")
-                        val ruoloFlag: String? = it.getString("ruolo dipendente")
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
+                arguments?.let {
+                    val dipendente: Utente? = it.getParcelable("dipendente scelto")
 
-                        if (ruoloFlag == "Dipendente") {
+                    if (dipendente==null) {
 
-                            var mAuth = FirebaseAuth.getInstance()
+                        val mAuth = FirebaseAuth.getInstance()
 
                         for (dsp in dataSnapshot.getChildren()) {
-                    if(dsp.getValue(Messaggio::class.java)!!.destinatario.toString().trim() ==mAuth.currentUser!!.email.toString())
-                         lista.add(dsp.getValue(Messaggio::class.java))
-                }}
-                        else
-                        {dipendente?.let {
+                            if(dsp.getValue(Messaggio::class.java)!!.destinatario.trim() ==mAuth.currentUser!!.email.toString())
+                                lista.add(dsp.getValue(Messaggio::class.java))
+                        }}
+                    else
+                    {
+                        dipendente.let {
                             for (dsp in dataSnapshot.getChildren()) {
                                 if (dsp.getValue(Messaggio::class.java)!!.destinatario == it.mail)
-                                    lista.add(dsp.getValue(Messaggio::class.java))}}}
-                 // Imposto il layout manager a lineare per avere scrolling in una direzione
-                listMessaggi.layoutManager = LinearLayoutManager(activity)
-                //Associo l'adapter alla RecycleView
-                listMessaggi.adapter = MessaggiAdapter(lista, requireContext())
-             }}
+                                    lista.add(dsp.getValue(Messaggio::class.java))}}
+                    }
+                    // Imposto il layout manager a lineare per avere scrolling in una direzione
+                    listMessaggi.layoutManager = LinearLayoutManager(activity)
+                    //Associo l'adapter alla RecycleView
+                    listMessaggi.adapter = MessaggiAdapter(lista, requireContext())
+                }}
             override fun onCancelled(error: DatabaseError) {
                 // Failed to read value
                 Log.w(ContentValues.TAG, "Failed to read value.", error.toException())
             }
         })}
-    }
+}
 
 
 

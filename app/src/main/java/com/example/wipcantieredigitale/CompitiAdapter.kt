@@ -22,7 +22,7 @@ class CompitiAdapter(val dataset: ArrayList<Compito?>, val context: Context) : R
     }
 
     override fun onBindViewHolder(viewHolder: CompitoRiga, position: Int) {
-
+        viewHolder.setIsRecyclable(false)
         val compito = dataset.get(position)
 
         viewHolder.nome.text = compito?.nome

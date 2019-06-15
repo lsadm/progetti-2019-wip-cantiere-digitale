@@ -32,26 +32,26 @@ class CompitiFragment: Fragment() {
         val database = FirebaseDatabase.getInstance()
         val compitiRef = database.getReference().child("compiti")
         compitiRef.keepSynced(true)
-        var lista = ArrayList<Compito?>()
-        
+        val lista = ArrayList<Compito?>()
+        val mAuth = FirebaseAuth.getInstance()
+
+
         compitiRef.addListenerForSingleValueEvent(object : ValueEventListener {
 
             override fun onDataChange(dataSnapshot: DataSnapshot) {
 
                 arguments?.let {
                     val dipendente: Utente? = it.getParcelable("dipendente scelto")
-                    val ruoloFlag: String? = it.getString("ruolo dipendente")
 
-                    if (ruoloFlag == "Dipendente") {
+                    if (dipendente==null) {
 
-                        var mAuth = FirebaseAuth.getInstance()
 
                         for (dsp in dataSnapshot.getChildren()) {
                             if (dsp.getValue(Compito::class.java)!!.dipendenteMail == mAuth!!.currentUser!!.email.toString())
                                 lista.add(dsp.getValue(Compito::class.java))
                         }
                     } else {
-                        dipendente?.let {
+                        dipendente.let {
                             for (dsp in dataSnapshot.getChildren()) {
                                 if (dsp.getValue(Compito::class.java)!!.dipendenteMail == it.mail)
                                     lista.add(dsp.getValue(Compito::class.java))
@@ -75,11 +75,9 @@ class CompitiFragment: Fragment() {
         fabAddCompito.setOnClickListener {
             arguments?.let {
                 val dipendente: Utente? = it.getParcelable("dipendente scelto")
-                val ruoloFlag: String? = it.getString("ruolo dipendente")
-
                 val bundle = Bundle()
                 bundle.putParcelable("dipendente scelto", dipendente)
-                bundle.putString("ruolo dipendente", ruoloFlag)
+
                 Navigation.findNavController(view)
                     .navigate(R.id.action_compitiFragment_to_aggiungiCompitoFragment, bundle)
             }
@@ -87,12 +85,9 @@ class CompitiFragment: Fragment() {
         fabChat.setOnClickListener {
             arguments?.let {
                 val dipendente: Utente? = it.getParcelable("dipendente scelto")
-                val ruoloFlag: String? = it.getString("ruolo dipendente")
-
                 val bundle = Bundle()
                 bundle.putParcelable("dipendente scelto", dipendente)
-                bundle.putString("ruolo dipendente", ruoloFlag)
-             Navigation.findNavController(view).navigate(R.id.action_compitiFragment_to_messaggiFragment,bundle)
+                Navigation.findNavController(view).navigate(R.id.action_compitiFragment_to_messaggiFragment,bundle)
 
             }
         }

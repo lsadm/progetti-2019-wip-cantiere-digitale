@@ -21,15 +21,15 @@ class CapoFragment: Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-         return inflater.inflate(R.layout.fragment_capo, container, false)
+        return inflater.inflate(R.layout.fragment_capo, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-       ListaAttivitá.setOnClickListener{
-           Navigation.findNavController(view)
-               .navigate(R.id.action_capoFragment_to_listaInteraCompiti)
-       }
+        ListaAttivitá.setOnClickListener{
+            Navigation.findNavController(view)
+                .navigate(R.id.action_capoFragment_to_listaInteraCompiti)
+        }
         val database = FirebaseDatabase.getInstance().getReference()
         val utentiRef = database.child("utenti")
         utentiRef.keepSynced(true) //CACHING della lettura effettuata dal database
@@ -48,7 +48,6 @@ class CapoFragment: Fragment() {
                 listDipendenti.adapter = CapoAdapter(lista, requireContext())
             }
             override fun onCancelled(error: DatabaseError) {
-                // Failed to read value
                 Log.w(ContentValues.TAG, "Failed to read value.", error.toException())
             }
         })

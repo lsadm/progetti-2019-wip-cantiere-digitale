@@ -36,16 +36,15 @@ class AggiungiCompitoFragment : Fragment() {
             if(!editNomeCompito.text.toString().equals(""))
                 arguments?.let {
                     val dipendente: Utente? = it.getParcelable("dipendente scelto")
-                    val ruoloFlag: String? = it.getString("ruolo dipendente")
 
-                    if (ruoloFlag=="Dipendente") {
+                    if (dipendente==null) {
 
                         val newCompito = compitiRef.push()
-                        val datiCompito = Compito(editNomeCompito.text.toString(), tvDescrizionee.text.toString(), false, mAuth!!.currentUser!!.email.toString(), newCompito.key!!)
+                        val datiCompito = Compito(editNomeCompito.text.toString(), tvDescrizionee.text.toString(), false, mAuth!!.currentUser!!.email.toString(), newCompito.key!!,approvato = false)
                         newCompito.setValue(datiCompito)
                     }
                     else {
-                        dipendente?.let {
+                        dipendente.let {
 
                             val newCompito = compitiRef.push()
                             val datiCompito = Compito(editNomeCompito.text.toString(),tvDescrizionee.text.toString(),false, it.mail, newCompito.key!!,approvato = false)
@@ -59,4 +58,5 @@ class AggiungiCompitoFragment : Fragment() {
         }
     }
 }
+
 
